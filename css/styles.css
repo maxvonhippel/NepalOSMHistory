@@ -1,0 +1,41 @@
+@import url('../plugins/PruneCluster/dist/LeafletStyleSheet.css');
+@font-face{
+	font-family:testFont;
+	src: url(../fonts/RobotoTTF/Roboto-Regular.ttf);
+	
+}
+body, table{
+	color:#47525e;
+}
+h1.pageTitle{
+	font-family:testFont;
+	font-size:47px;
+	text-align:center;
+}
+#mapid{
+	min-height:640px;
+	//height:640px;
+}
+#nepalStatistics{
+	min-height:320px;
+}
+#selectionStatistics{
+	min-height:320px;
+}
+h2.sectionTitle{
+	font-family:testFont;
+	font-size: 32px;
+	text-align:center; 
+}
+table .center{
+	text-align:center !important;
+}
+table .right{
+	text-align:right !important;
+}
+tr .highlighted{
+	color:white !important;
+}
+th{
+	text-align:center !important;
+}
