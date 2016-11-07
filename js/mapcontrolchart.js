@@ -1,11 +1,16 @@
-// google chart
 
 google.charts.load('current', {'packages':['annotationchart']});
 google.charts.setOnLoadCallback(init);
 //	initialize our data source
-function init() { 
-	//	populate our google chart with data
-	jx("data/newedit.csv", "chart"); 
+function init() {
+	
+	jx("data/newedit.csv", "chart");
+	    		    
+}
+
+function updateData(e) {
+	// update the map
+	showRange(e['start'], e['end']);
 }
 	    
 function jx(name, div) {
@@ -14,7 +19,7 @@ function jx(name, div) {
 		
 		url: name,
 		async: false,
-		ready: function(csvd) {
+		success: function(csvd) {
 			cdata = $.csv.toArrays(csvd, {onParseValue: $.csv.hooks.castToScalar});
 			for (var i = 1; i < cdata.length; i++) {
 						
@@ -29,19 +34,15 @@ function jx(name, div) {
 				displayAnnotations: true,
 				displayZoomButtons: false
 				// colors: ['#BBE876', '#A871E8', '#FF8F48']
-    		};
+    			};
+
 			chart.draw(data, options);
 
 		},
 		dataType: "text",
-	    error: function (request, status, error) {
-			alert("failed");
-	    }
+		error: function (request, status, error) {
+			alert("failed to load data to timeline chart - ajax error");
+	    	}
 	});
 
-}
-
-function updateData(e) {
-	// update the map
-	showRange(e['start'], e['end']);
 }

@@ -12,9 +12,16 @@ h1.pageTitle{
 	font-size:47px;
 	text-align:center;
 }
-#mapid{
+#mapchartbox{
 	min-height:640px;
-	//height:640px;
+}
+#mapid{
+	min-height:520px;
+	width:100%;
+}
+#chart{
+	min-height:120px;
+	width:100%;
 }
 #nepalStatistics{
 	min-height:320px;

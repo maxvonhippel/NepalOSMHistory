@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <head>
-	<link href="http://www.w3schools.com/lib/w3.css" rel="stylesheet"/>
-	<link href="css/styles.css" rel="stylesheet"/>
 	<!---- jquery --->
-	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/jquery.csv.js"></script>
 	<script src="js/jquery.csv.min.js"></script>
+	<!--- google charts --->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<!---- css ---->
+	<link href="http://www.w3schools.com/lib/w3.css" rel="stylesheet"/>
+	<link href="css/styles.css" rel="stylesheet"/>
 	<!---- src ---->
 	<script src="js/script.js"></script>
 	<!--Leaflet-->
@@ -15,14 +18,13 @@
 	<script src="data/nepal-border.js"></script>
 	<!--- prune cluseter --->
 	<script src="plugins/PruneCluster/dist/PruneCluster.js"></script>
-	<!--- google charts --->
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<!--LeafletSlider-->
+	<!---
 	<script src="plugins/leafletSlider/SliderControl.js"></script>
 	<script src="plugins/leafletSlider/jquery-1.9.1.min.js"></script>
 	<script src="plugins/leafletSlider/jquery-ui.js"></script>
 	<link rel="stylesheet" href="plugins/leafletSlider/jquery-ui.css" />
-	<script src="plugins/leafletSlider/epoch.json"></script>
+	<script src="plugins/leafletSlider/epoch.json"></script>--->
 	<!--fa icons-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	
@@ -33,16 +35,15 @@
 	<h1 class="pageTitle" id="pageTitle">OpenStreetMap Nepal Statistics</h1>
 	<div class="w3-row w3-center">
 		
-		<!--- start of map --->
-		<div id="mapid" class="w3-border w3-col l9 s12 w3-sand w3-display-container">
-		<script type="text/javascript" src="js/jsonclustermap.js"></script></div>
+		<div id="#mapchartbox" class="w3-border w3-col l9 s12 w3-sand">
+			<div id="mapid" class="w3-border w3-col l9 s12 w3-sand w3-display-container"></div>
+			<script type="text/javascript" src="js/jsonclustermap.js"></script>
+			<!--- start of chart --->
+			<div id="chart" class="w3-border w3-col l9 s12 w3-sand w3-display-container"></div>
+			<script type="text/javascript" src="js/mapcontrolchart.js"></script>
+			<!--- end of chart --->
+		</div>
 		<!--- end of map --->
-		
-		<!--- start of chart slider --->
-		<!--- currently not showing up --->
-		<!-- <div id="chart" class="w3-border w3-col l12 s12 w3-display-bottommiddle w3-blue"></div>
-		<script type="text/javascript" src="js/mapcontrolchart.js"></script> --->
-		<!---- end of chart slider --->
 		
 		
 		<div class="w3-col l3 s12 w3-light-grey w3-center">			
