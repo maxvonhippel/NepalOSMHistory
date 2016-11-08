@@ -81,20 +81,21 @@ fillmap();
 // this handles updates to what should be visible on the map
 var lastUpdate = 0;
 window.setInterval(function () {
-    var now = +new Date();
-    if ((now - lastUpdate) < 400) {
-    	return;
-    }
+	var now = +new Date();
+	if ((now - lastUpdate) < 400) {
+    		return;
+    	}
 
-    for (i = 0; i < size / 2; ++i) {
-        var coef = i < size / 8 ? 10 : 1;
-        var ll = markers[i].position;
-        ll.lat += (Math.random() - 0.5) * 0.00001 * coef;
-        ll.lng += (Math.random() - 0.5) * 0.00002 * coef;
-    }
+    	for (i = 0; i < size / 2; ++i) {
+        	var coef = i < size / 8 ? 10 : 1;
+		var ll = markers[i].position;
+		ll.lat += (Math.random() - 0.5) * 0.00001 * coef;
+		ll.lng += (Math.random() - 0.5) * 0.00002 * coef;
+    	}
 
-    leafletView.ProcessView();
-    lastUpdate = now;
+    	leafletView.ProcessView();
+    	lastUpdate = now;
+    	
 }, 500);
 
 // we add the leaflet view to the map, thus showing the clusters from the prune cluster object

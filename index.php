@@ -16,16 +16,8 @@
 	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 	<script src="js/BoundaryCanvas.js"></script>
 	<script src="data/nepal-border.js"></script>
-	<!--- prune cluseter --->
+	<!--- prune cluster --->
 	<script src="plugins/PruneCluster/dist/PruneCluster.js"></script>
-	<!--LeafletSlider-->
-	<!---
-	<script src="plugins/leafletSlider/SliderControl.js"></script>
-	<script src="plugins/leafletSlider/jquery-1.9.1.min.js"></script>
-	<script src="plugins/leafletSlider/jquery-ui.js"></script>
-	<link rel="stylesheet" href="plugins/leafletSlider/jquery-ui.css" />
-	<script src="plugins/leafletSlider/epoch.json"></script>--->
-	<!--fa icons-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	
 	
