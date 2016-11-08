@@ -3,6 +3,7 @@ google.charts.load('current', {'packages':['annotationchart']});
 google.charts.setOnLoadCallback(init);
 var name = "data/newedit.csv";
 var div = "chart";
+var chart, data;
 
 // called when range changes in chart
 function updateData(e) {
@@ -32,8 +33,8 @@ function init() {
 					cdata[i][0] = new Date(parts[0], parts[1]-1, parts[2]);
 							
 				}
-				var data = new google.visualization.arrayToDataTable(cdata);
-				var chart = new google.visualization.AnnotationChart(document.getElementById(div));
+				data = new google.visualization.arrayToDataTable(cdata);
+				chart = new google.visualization.AnnotationChart(document.getElementById(div));
 				google.visualization.events.addListener(chart, 'rangechange', updateData);
 				var options = {
 					displayAnnotations: false,
@@ -41,6 +42,19 @@ function init() {
 					// colors: ['#BBE876', '#A871E8', '#FF8F48'] // uncomment to customize colors used in chart
 	    			};
 				chart.draw(data, options);
+				
+				//create trigger to resizeEnd event     
+				$(window).resize(function() {
+				    if(this.resizeTO) clearTimeout(this.resizeTO);
+				    this.resizeTO = setTimeout(function() {
+				        $(this).trigger('resizeEnd');
+				    }, 500);
+				});
+				
+				//redraw graph when window resize is completed  
+				$(window).on('resizeEnd', function() {
+				    chart.draw(data, options);
+				});
 			});
 		},
 		dataType: "text",
