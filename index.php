@@ -4,6 +4,12 @@
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/jquery.csv.js"></script>
 	<script src="js/jquery.csv.min.js"></script>
+	<!-- For the SearchBox -->
+	<link href="css/search.css" rel="stylesheet">
+	<!--fa icons-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	<!--OSM Usernames Variable-->
+	<script src="resources/usernames.js"></script>
 	<!--- google charts --->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<!---- css ---->
@@ -29,7 +35,23 @@
 	<div class="w3-row w3-center">
 		
 		<div id="#mapchartbox" class="w3-border w3-col l9 s12 w3-sand w3-display-container">
-			<div id="mapid" class="w3-border w3-col l9 s12 w3-sand"></div>
+			<div id="mapid" class="w3-border w3-col l9 s12 w3-sand">
+				<!-- For the searchbox -->
+				<div id="wrap" class="w3-col l4 s10 w3-display-topright">			
+					<!--<form>
+						<div id="searchResults"><input type="text" id="searchBox" name="search" placeholder="Search for Locality name or OSM Username..." onkeyup="fetch_Addr_Username(this.value)"  onblur="hide_searchResults()"/></div>
+						
+						<div id="searchResults_usernames" style="display:none">OSM Userames</div>
+						<div id="searchResults_nominatim" style="display:none">Nominatim</div>
+					</form>-->
+					<input id="searchBox" type="text" onkeyup="matched(this.value)" placeholder="Search for place or OSM username..."/>
+					<div id="console">	
+					</div>
+						<ul id="username" class="w3-ul w3-card-2">	
+					</ul>
+				</div>
+			<!-- End of searchbox -->
+			</div>
 			<script type="text/javascript" src="js/jsonclustermap.js"></script>
 			<!--- start of chart --->
 			<div id="chart" class="w3-border w3-col l9 s12 w3-sand"></div>

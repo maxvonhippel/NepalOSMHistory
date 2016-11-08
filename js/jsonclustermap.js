@@ -118,17 +118,78 @@ map.on('moveend', function(ev){
 	south=_bounds.getSouth();
 	east=_bounds.getEast();
 	west=_bounds.getWest();
-	
-	// modify page title
-	
-	/*$('#pageTitle').html(
-		'north='+north+
-		'<br/>east='+east+
-		'<br/>south='+south+
-		'<br/>west='+west
-	);*/
-	
-	// modify statistics cards
-	
-	// modify data in google chart below
+	/*
+	$.ajax({
+		url:"server/api.php", //processing script on the server
+		type: "POST",
+		data: {"north":north, "south":south,"east":east,"west":west},
+		success: function(response){
+			//alert(response);
+		},
+		error: function (xhr, errmsg, err) {
+			alert (xhr.status + "\n\n" + xhr.responseText);
+		}
+		
+	})
+	*/
 });
+
+//For the SearchBox
+function fetch_Addr_Username(value){
+	$.ajax({
+		url:"resources/usernames.js",
+		type:"POST",
+		success:function(response){
+			show_searchResults();
+			//alert(response);
+		},
+		error: function (xhr, errmsg, err) {
+			alert (xhr.status + "\n\n" + xhr.responseText);
+		}
+	
+	})
+}
+
+function show_searchResults(){
+	$("#username").show();
+	//$("#searchResults_usernames").show();
+	
+}
+
+function hide_searchResults(){
+	//alert('shoot');
+	$("#username").hide();
+	$("#console").hide();
+	//$("#searchResults_usernames").hide();
+	
+}
+
+
+usernames = [
+  "Sazal(Solaris)",
+  "NamaBudhathoki",
+  "PratikGautam"
+];
+
+function request_for_data(val) {
+  document.getElementById('searchBox').value = val; //populate searchBox with the selected value from the <li> element.
+  
+  hide_searchResults(); //hide <ul> upon selection of an <li>
+  
+  //query the server with data=[val]
+}
+
+function matched(searchText) {
+  document.getElementById('console').innerHTML = "";
+  document.getElementById('username').innerHTML = "";
+  show_searchResults();
+  for (i = 0; i < usernames.length; ++i) {
+    if (searchText == "") {
+      document.getElementById('console').innerHTML = "";
+      document.getElementById('username').innerHTML = "";
+    } else if (usernames[i].match(new RegExp(searchText, "i"))) {
+      document.getElementById('console').innerHTML += usernames[i];
+      $('#username').append("<li onclick='request_for_data(this.innerHTML)'>" + usernames[i] + "</li>");
+    }
+  }
+}
