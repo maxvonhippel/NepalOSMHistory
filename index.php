@@ -21,6 +21,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	<!--- cards updater --->
 	<script type="text/javascript" src="js/cards.js"></script>
+	<!--- d3.js --->
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 	
 	
 </head>
@@ -33,8 +35,9 @@
 			<div id="mapid" class="w3-border w3-col l9 s12 w3-sand"></div>
 			<script type="text/javascript" src="js/jsonclustermap.js"></script>
 			<!--- start of chart --->
-			<div id="chart" class="w3-border w3-col l9 s12 w3-sand"></div>
-			<script type="text/javascript" src="js/mapcontrolchart.js"></script>
+			<svg id="chart" class="w3-border w3-col l9 s12 w3-sand"></svg>
+			<!---<script type="text/javascript" src="js/mapcontrolchart.js"></script>--->
+			<script type="text/javascript" src="js/d3mapchart.js"></script>
 			<!--- end of chart --->
 		</div>
 		<!--- end of map --->
