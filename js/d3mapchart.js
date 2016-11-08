@@ -3,11 +3,11 @@ var div = "svg";
 
 // define the area in which we will draw the two charts
 var svg = d3.select(div),
-	margin = {top: 20, right: 20, bottom: 110, left: 40},
-	margin2 = {top: 100, right: 20, bottom: 30, left: 40},
-	width = +$(div).outerWidth(true) - margin.left - margin.right,
-	height = +$(div).outerHeight(true) - margin.top - margin.bottom,
-	height2 = +$(div).outerHeight(true) - margin2.top - margin2.bottom;
+	margin = {top: 20, right: 20, bottom: (svg.node().getBoundingClientRect().height / 2) - 40, left: 20},
+	margin2 = {top: (svg.node().getBoundingClientRect().height / 2) - 40, right: 20, bottom: 20, left: 40},
+	width = svg.node().getBoundingClientRect().width - margin.left - margin.right,
+	height = svg.node().getBoundingClientRect().height - margin.top - margin.bottom,
+	height2 = svg.node().getBoundingClientRect().width - margin2.top - margin2.bottom;
 
 // define our date parser
 // 2015-05-26 00:00:00+05:45
@@ -62,7 +62,7 @@ d3.csv("data/newedit.csv", type, function(error, data) {
 	if (error) throw error;
 
 	x.domain(d3.extent(data, function(d) { return d.date; }));
-	y.domain([0, d3.max(data, function(d) { return d["new features"]; })]);
+	y.domain([0, d3.max(data, function(d) { return d.new_features })]);
 	x2.domain(x.domain());
 	y2.domain(y.domain());
 
