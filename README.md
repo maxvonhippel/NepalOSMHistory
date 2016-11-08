@@ -17,7 +17,7 @@ To make this work, you're going to need to do a few things.
 	> 
 	> git clone https://github.com/maxvonhippel/NepalOSMHistory.git
 
-3.  You need to make a GEOJSON file with some data in Nepal and name it dirtydata.json, and put it in the data folder in the repository.  We will add code and instructions for database generation, population, querying, etc. soon, and when we do so you will be able to use our toolset to create this file.  For now, if you want to play with this repo, just know that the format of the file looks like this:
+3.  You need to make a GeoJSON file with some data in Nepal and name it dirtydata.json, and put it in the data folder in the repository.  We will add code and instructions for database generation, population, querying, etc. soon, and when we do so you will be able to use our toolset to create this file.  For now, if you want to play with this repo, just know that the format of the file looks like this:
 
 ```GEOJSON
 {
@@ -38,11 +38,12 @@ To make this work, you're going to need to do a few things.
 				"timestamp":"2007-07-05T01:42:23+05:45"
 			}
 		},
-		... etc
-		... etc
+		"etc":"...etc"
 	]
 }
 
 ```
+This is in accordance with the GeoJSON [spec](http://geojson.org/geojson-spec.html).
+
 
 You can reach Max on Twitter [`@_m_vh`](https://twitter.com/_m_vh), or Kathmandu Living Labs [`@KTMLivingLabs`](https://twitter.com/KTMLivingLabs).  Feel free to fork.  **MIT License with Attribution.**

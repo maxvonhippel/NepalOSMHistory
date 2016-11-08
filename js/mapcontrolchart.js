@@ -4,14 +4,7 @@ google.charts.setOnLoadCallback(init);
 var name = "data/newedit.csv";
 var div = "chart";
 var chart, data;
-
-// called when range changes in chart
-function updateData(e) {
-	// showRange is a function in jsonclustermap.js
-	showRange(e['start'], e['end']);
-	// update the selection statistics box
-	updateCardsRange(e['start'], e['end']);
-}
+var self = this;
 
 // used to initialize the map	    
 function init() {
@@ -35,7 +28,7 @@ function init() {
 				}
 				data = new google.visualization.arrayToDataTable(cdata);
 				chart = new google.visualization.AnnotationChart(document.getElementById(div));
-				google.visualization.events.addListener(chart, 'rangechange', updateData);
+				google.visualization.events.addListener(chart, 'rangechange', waitReady);
 				var options = {
 					displayAnnotations: false,
 					displayZoomButtons: false,
@@ -55,6 +48,18 @@ function init() {
 				$(window).on('resizeEnd', function() {
 				    chart.draw(data, options);
 				});
+				
+				// called on range change
+				function waitReady(e) {
+					// create a one-time listener for when the chart is ready
+					google.visualization.events.addOneTimeListener(chart, 'ready', function() {
+						// showRange is a function in jsonclustermap.js
+						self.showRange(e['start'], e['end']);
+						// update the selection statistics box
+						self.updateCardsRange(e['start'], e['end']);
+					});
+				}
+				
 			});
 		},
 		dataType: "text",
