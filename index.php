@@ -35,11 +35,11 @@
 	<h1 class="pageTitle" id="pageTitle">OpenStreetMap Nepal Statistics</h1>
 	<div class="w3-row w3-center">
 		
-		<div id="#mapchartbox" class="w3-border w3-col l9 s12 w3-sand">
-			<div id="mapid" class="w3-border w3-col l9 s12 w3-sand w3-display-container"></div>
+		<div id="#mapchartbox" class="w3-border w3-col l9 s12 w3-sand w3-display-container">
+			<div id="mapid" class="w3-border w3-col l9 s12 w3-sand"></div>
 			<script type="text/javascript" src="js/jsonclustermap.js"></script>
 			<!--- start of chart --->
-			<div id="chart" class="w3-border w3-col l9 s12 w3-sand w3-display-container"></div>
+			<div id="chart" class="w3-border w3-col l9 s12 w3-sand"></div>
 			<script type="text/javascript" src="js/mapcontrolchart.js"></script>
 			<!--- end of chart --->
 		</div>
