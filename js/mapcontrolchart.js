@@ -8,6 +8,8 @@ var div = "chart";
 function updateData(e) {
 	// showRange is a function in jsonclustermap.js
 	showRange(e['start'], e['end']);
+	// update the selection statistics box
+	updateCardsRange(e['start'], e['end']);
 }
 
 // used to initialize the map	    
