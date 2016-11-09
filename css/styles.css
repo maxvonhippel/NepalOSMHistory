@@ -46,3 +46,9 @@ tr .highlighted{
 th{
 	text-align:center !important;
 }
+ul{
+	margin-right:10px !important;
+	padding-right:10px !important;
+	postion:relative;
+	
+}
