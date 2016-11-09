@@ -1,3 +1,16 @@
+// Hello.
+//
+// This is JSHint, a tool that helps to detect errors and potential
+// problems in your JavaScript code.
+//
+// To start, simply enter some JavaScript anywhere on this page. Your
+// report will appear on the right side.
+//
+// Additionally, you can toggle specific options in the Configure
+// menu.
+
+// USE THIS SITE FOR DEBUGGING: http://jshint.com
+
 // set up the options for our initial map
 var southWest = L.latLng(26.487043, 78.739439);
 var northEast = L.latLng(30.688485, 89.847341);
@@ -34,26 +47,13 @@ function fillmap() {
 	// this is an asynchronous request.  It is exactly the same as JQUERY/AJAX, this is what
 	// happens "under the hood" when you use those tools anyway.  This may even be a tiny bit
 	// faster.  But we get more granular control.
-	var request = new XMLHttpRequest();
-	request.open("GET", "data/dirtydate.json", true);
-	request.onload = function (e) {
-		// on asynchronous load of the file, we check if it is ready to be read
-		if (request.readyState === 4) {
-		    if (request.status === 200) 
-		    	parseresponse(request);	// if so, we send it to our parsing function
-		    else xmlhttperr();	// if not, we had an error, so we log it to the console
-		}
-	};
-	request.onerror = function (e) {
-		xmlhttperr();	// if we make it here there was an error, so we log it
-	};
-	request.send(null); // this sends the request which leads to the asynchronous events listed above
+	$.getJSON( "data/dirtydate.json", { format:"json" } ).done(function(data) {
+		parseresponse(data);
+	});
 }
 
 // this function parses our response once we get it (see code above in fillmap() )
-function parseresponse(request) {
-	// we successfully, asynchronously recieved the json
-	var json = JSON.parse(request.responseText);
+function parseresponse(json) {
 	// loop over the json features
 	for (var a = 0; a < json.features.length; a++) {
 		// for each feature, get the longitude and latitude
@@ -62,7 +62,7 @@ function parseresponse(request) {
 		// for now we are only mapping features which have a lon and lat, so not relations or ways unfortunately
 		// would be a good feature to add in the future!
 		// but we do consider relations and ways in all of our printed statistics on the website in cards and charts
-		if (lon != 0.0 && lat != 0.0) {
+		if (lon !== 0.0 && lat !== 0.0) {
 			// initialize a marker in our prune cluster object for this feature from the json
 			var marker = new PruneCluster.Marker(lat, lon);
 			marker.data.datestamp = new Date(json.features[a].properties.timestamp);
@@ -71,11 +71,6 @@ function parseresponse(request) {
 			leafletView.RegisterMarker(marker);
 		}
 	}
-}
-
-// if we have an error with our asynchronous file loading, this will get called
-function xmlhttperr() {
-	console.error("there was an error with the async xmlhttprequest for the geojson file used to populate the cluster map.");
 }
 
 // fillmap() starts the entire series of events outlined above
@@ -88,15 +83,14 @@ window.setInterval(function () {
 	if ((now - lastUpdate) < 400) {
     		return;
     	}
-    	if (markers[0] != null) {
-		for (i = 0; i < size / 2; ++i) {
-	        	var coef = i < size / 8 ? 10 : 1;
+	for (i = 0; i < size / 2; ++i) {
+		if (typeof markers != "undefined" && typeof markers[i] != "undefined" && markers[i].hasOwnProperty("<position>")) {
+			var coef = i < size / 8 ? 10 : 1;
 			var ll = markers[i].position;
 			ll.lat += (Math.random() - 0.5) * 0.00001 * coef;
 			ll.lng += (Math.random() - 0.5) * 0.00002 * coef;
-	    	}   	
-    	}
-
+		}
+	}   	
     	leafletView.ProcessView();
     	lastUpdate = now;
     	
@@ -154,7 +148,7 @@ function fetch_Addr_Username(value){
 			alert (xhr.status + "\n\n" + xhr.responseText);
 		}
 	
-	})
+	});
 }
 
 function show_searchResults(){
@@ -210,7 +204,7 @@ function request_for_data() {
 			alert (xhr.status + "\n\n" + xhr.responseText);
 		}
 		
-	})
+	});
 
 }
 
@@ -219,7 +213,7 @@ function matched(searchText) {
   document.getElementById('username').innerHTML = "";
   show_searchResults();
   for (i = 0; i < usernames.length; ++i) {
-    if (searchText == "") {
+    if (searchText === "") {
       document.getElementById('console').innerHTML = "";
       document.getElementById('username').innerHTML = "";
     } else if (usernames[i].match(new RegExp(searchText, "i"))) {
