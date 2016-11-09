@@ -72,25 +72,25 @@
 					</tr>
 					<tr>
 						<td>Mappers</td>
-						<td class="right">1,920</td>
+						<td id="nepalMappers" class="right">1,920</td>
 						
 					</tr>
 					<tr>
 						<td>Buildings</td>
 						
-						<td class="right">600,000</td>
+						<td id="nepalBuildings" class="right">600,000</td>
 					</tr>
 					<tr>
 						<td>Roads (in km)</td>
-						<td class="right">94,000</td>
+						<td id="nepalRoads" class="right">94,000</td>
 					</tr>
 					<tr>
 						<td>Schools</td>
-						<td class="right">3,216</td>
+						<td id="nepalSchools" class="right">3,216</td>
 					</tr>
 					<tr>
 						<td>Hospitals</td>
-						<td class="right">1,012</td>
+						<td id="nepalHospitals" class="right">1,012</td>
 					</tr>
 				</table>				
 			</div>
