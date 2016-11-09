@@ -88,12 +88,13 @@ window.setInterval(function () {
 	if ((now - lastUpdate) < 400) {
     		return;
     	}
-
-    	for (i = 0; i < size / 2; ++i) {
-        	var coef = i < size / 8 ? 10 : 1;
-		var ll = markers[i].position;
-		ll.lat += (Math.random() - 0.5) * 0.00001 * coef;
-		ll.lng += (Math.random() - 0.5) * 0.00002 * coef;
+    	if (markers[0] != null) {
+		for (i = 0; i < size / 2; ++i) {
+	        	var coef = i < size / 8 ? 10 : 1;
+			var ll = markers[i].position;
+			ll.lat += (Math.random() - 0.5) * 0.00001 * coef;
+			ll.lng += (Math.random() - 0.5) * 0.00002 * coef;
+	    	}   	
     	}
 
     	leafletView.ProcessView();
