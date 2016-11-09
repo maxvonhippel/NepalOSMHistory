@@ -48,37 +48,6 @@ var leafletView = new PruneClusterForLeaflet(160);
 var size = 10000;
 var markers = [];
 
-// we will use this function to populate the map with data from GEOJSON
-function fillmap() {
-	// this is an asynchronous request.  It is exactly the same as JQUERY/AJAX, this is what
-	// happens "under the hood" when you use those tools anyway.  This may even be a tiny bit
-	// faster.  But we get more granular control.
-	$.getJSON( "data/dirtydate.json", { format:"json" } ).done(function(data) {
-		parseresponse(data);
-	});
-}
-
-// this function parses our response once we get it (see code above in fillmap() )
-function parseresponse(json) {
-	// loop over the json features
-	for (var a = 0; a < json.features.length; a++) {
-		// for each feature, get the longitude and latitude
-		var lon = json.features[a].geometry.coordinates[0];
-		var lat = json.features[a].geometry.coordinates[1];
-		// for now we are only mapping features which have a lon and lat, so not relations or ways unfortunately
-		// would be a good feature to add in the future!
-		// but we do consider relations and ways in all of our printed statistics on the website in cards and charts
-		if (lon !== 0.0 && lat !== 0.0) {
-			// initialize a marker in our prune cluster object for this feature from the json
-			var marker = new PruneCluster.Marker(lat, lon);
-			marker.data.datestamp = new Date(json.features[a].properties.timestamp);
-			marker.data.popup = "user: " + json.features[a].properties.user + " timestamp: " + marker.data.datestamp + " version: " + json.features[a].properties.version + " feature_id: " + json.features[a].properties.feature_id;
-			markers.push(marker);
-			leafletView.RegisterMarker(marker);
-		}
-	}
-}
-
 // fillmap() starts the entire series of events outlined above
 //fillmap();
 
