@@ -9,11 +9,17 @@ var mapOptions = {
 	maxBounds: L.latLngBounds(southWest, northEast)
 };
 
-// initialize global variables here
-var gNorth, gEast, gWest, gSouth, gStartTime, gEndTime, gUsername;
-
 // find the div and put the map there
 var map = L.map("mapid", mapOptions);
+
+// initialize global variables here
+gNorth = northEast.lat,
+gEast = northEast.lng, 
+gWest = southWest.lng, 
+gSouth = southWest.lat, 
+gStartTime="", 
+gEndTime="", 
+gUsername="";
 
 // find our nepal border geometry so we can mask anything outside nepal
 var latLngGeom = nepal_border;
@@ -79,7 +85,7 @@ function xmlhttperr() {
 }
 
 // fillmap() starts the entire series of events outlined above
-fillmap();
+//fillmap();
 
 // this handles updates to what should be visible on the map
 var lastUpdate = 0;
@@ -200,8 +206,10 @@ function request_for_data() {
 			"north":gNorth, 
 			"south":gSouth,
 			"east":gEast,
-			"west":gWwest
-			
+			"west":gWest,
+			"startTime":gStartTime,
+			"endTime":gEndTime,
+			"username":gUsername
 		},
 		success: function(response){
 			alert(response);
