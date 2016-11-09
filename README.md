@@ -67,3 +67,14 @@ You can reach Max on Twitter [`@_m_vh`](https://twitter.com/_m_vh), or Kathmandu
 #Performance
 
 At the moment, page loading with *local* GeoJSON and CSV takes me about 15 seconds, consuming 625 MB of memory, at 20.93 Mbps according to [OOKLA](http://beta.speedtest.net).  Obviously this needs to be cut down.  Once we start getting GeoJSON data and CSV from the server we'll have a better idea what sort of performance to expect and what we're working with.  On the bright side, we can make the rest of the page responsive while we asynchronously load the data in the back.
+
+#Prerequisites/Dependencies
+
+* PECL & Pear
+	* [see install instructions here](https://jason.pureconcepts.net/2012/10/install-pear-pecl-mac-os-x/)
+* PHP 7.0
+* PHP Intl
+	* [see install instructions here](http://budiirawan.com/install-php-intl-extension-os-x/)
+* composer
+
+All this is way more difficult on mac than on other patforms.  Useful links include [this](http://pagegwood.com/web-development/how-to-enable-intl-extension-mamp-osx-10-9-2/) and [this](http://stackoverflow.com/questions/4145667/how-to-override-the-path-of-php-to-use-the-mamp-path) and [this](https://github.com/docker-library/php/issues/57). 	

@@ -1,6 +1,3 @@
 [submodule "plugins/PruneCluster"]
 	path = plugins/PruneCluster
 	url = https://github.com/SINTEF-9012/PruneCluster.git
-[submodule "plugins/jsonreader"]
-	path = plugins/jsonreader
-	url = https://github.com/pcrov/JsonReader.git
