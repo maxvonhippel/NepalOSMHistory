@@ -1,6 +1,6 @@
 [submodule "plugins/PruneCluster"]
 	path = plugins/PruneCluster
 	url = https://github.com/SINTEF-9012/PruneCluster.git
-[submodule "plugins/jsonstreamingparser"]
-	path = plugins/jsonstreamingparser
-	url = https://github.com/salsify/jsonstreamingparser.git
+[submodule "plugins/jsonreader"]
+	path = plugins/jsonreader
+	url = https://github.com/pcrov/JsonReader.git

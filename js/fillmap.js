@@ -1,29 +1,29 @@
-function getContent(num)
+function getContent()
 {
+	if (!!window.EventSource) {
+		// http://www.howopensource.com/2014/12/introduction-to-server-sent-events/
+    		var source = new EventSource("server/map-data.php");
+    		source.addEventListener("message", function(e) {
+			console.log(e.data);
+		}, false);
+		
+		source.addEventListener("open", function(e) {
+			console.log("Connection was opened.");
+		}, false);
+		
+		source.addEventListener("error", function(e) {
+			console.log("Error - connection was lost.");
+		}, false);
+		
+    	} else {
+		alert("Your browser does not support Server-sent events! Please upgrade it!");
+	}
 
-    $.ajax(
-        {
-            type: 'GET',
-            url: 'server/map-data.php',
-            data: {'feature': num},
-            success: function(data){
-                // put result data into "obj"
-                if ($.trim(data)) {
-	                var obj = jQuery.parseJSON(data);
-	                if ($.trim(obj)) {
-		         	// parse the response
-			 	parseresponse(obj);
-			 	getContent(++num);       
-	                }
-                }
-            }
-        }
-    );
 }
 
 // initialize jQuery
 $(function() {
-    getContent(0);
+    getContent();
 });
 
 // this function parses our response once we get it (see code above in fillmap() )

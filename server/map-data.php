@@ -1,14 +1,51 @@
 <?php
-$features = array( '{"type":"Feature","geometry":{"type":"Point","coordinates":[85.3019553,27.7257842]},"properties":{"feature_id":31303849,"id":4627,"version":1,"uid":"7094","user":"Eratosthenes","timestamp":"2007-07-05T01:42:23+05:45"}}', '{"type":"Feature","geometry":{"type":"Point","coordinates":[85.4019553,26.7257842]},"properties":{"feature_id":1,"id":1,"version":1,"uid":"7","user":"Bob","timestamp":"2007-07-05T01:42:23+05:45"}}' );
+// https://github.com/pcrov/JsonReader/wiki/Examples
+// http://www.howopensource.com/2014/12/introduction-to-server-sent-events/
+require 'plugins/jsonreader/src/JsonReader.php';
+use pcrov\JsonReader\JsonReader;
 
-// set php runtime to unlimited
-set_time_limit(0);
-// where does the data come from ? In real world this would be a SQL query or something
-$data_source_file = 'data.txt';
-// main loop
-if (isset($_GET['feature'])) {
-	// get content of data.txt
-	$r = (int)$_GET['feature'];
-        echo $r >= count($features) ? null : $features [(int)$_GET['feature']];
+header("Content-Type: text/event-stream");
+header("Cache-Control: no-cache");
+header("Connection: keep-alive");
+
+$lastId = $_SERVER["HTTP_LAST_EVENT_ID"];
+if (isset($lastId) && !empty($lastId) && is_numeric($lastId)) {
+    $lastId = intval($lastId);
+    $lastId++;
+}
+/*
+while($reader->read("feature")) {
+	echo $reader->value();
+	sendMessage($lastId, $reader->value());
+	$lastId++;
+	sleep(2);
+}
+*/
+//$reader = new JsonReader();
+//$reader->open("data/dirtydate.json");
+
+while (true) {
+	/*
+	$reader->read("feature")
+	if ($reader->value()) {
+		sendMessage($lastId, $reader->value());
+		$lastId++;
+	}
+	sleep(2);
+*/
+    $data = "hello";
+    
+    if ($data) {
+        sendMessage($lastId, $data);
+        $lastId++;
+    }
+    
+}
+
+function sendMessage($id, $data) {
+    echo "id: $id\n";
+    echo "data: $data\n\n";
+    ob_flush();
+    flush();
 }
 ?>
