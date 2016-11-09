@@ -9,6 +9,9 @@ var mapOptions = {
 	maxBounds: L.latLngBounds(southWest, northEast)
 };
 
+// initialize global variables here
+var gNorth, gEast, gWest, gSouth, gStartTime, gEndTime, gUsername;
+
 // find the div and put the map there
 var map = L.map("mapid", mapOptions);
 
@@ -112,12 +115,15 @@ function showRange(start, end) {
 
 //Fire this when map is panned/zoomed/reset
 map.on('moveend', function(ev){
-	//get new southWest and northEast values
+	//set new values for global geo coordinates
 	_bounds=map.getBounds();
-	north=_bounds.getNorth();
-	south=_bounds.getSouth();
-	east=_bounds.getEast();
-	west=_bounds.getWest();
+	gNorth=_bounds.getNorth();
+	gSouth=_bounds.getSouth();
+	gEast=_bounds.getEast();
+	gWest=_bounds.getWest();
+	
+	//
+	
 	/*
 	$.ajax({
 		url:"server/api.php", //processing script on the server
@@ -171,12 +177,40 @@ usernames = [
   "PratikGautam"
 ];
 
-function request_for_data(val) {
-  document.getElementById('searchBox').value = val; //populate searchBox with the selected value from the <li> element.
+function setSearchBoxContent(val){
+	document.getElementById('searchBox').value = val; //populate searchBox with the selected value from the <li> element.
+	hide_searchResults(); //hide <ul> upon selection of an <li>
+	request_for_data();
+}
+
+function request_for_data() {
+  //document.getElementById('searchBox').value = val; //populate searchBox with the selected value from the <li> element. //obsolete (cosider deleting this)
   
-  hide_searchResults(); //hide <ul> upon selection of an <li>
+  //hide_searchResults(); //hide <ul> upon selection of an <li> //obsolete (cosider deleting this)
   
-  //query the server with data=[val]
+  //get current states of all [data] for this AJAX request /*This step might be redundant if all globals are set elsewhere*/
+  
+  
+  //query the server with the current states of all [data]
+  $.ajax({
+		url:"server/api.php", //processing script on the server
+		type: "POST",
+		data: {
+			"north":gNorth, 
+			"south":gSouth,
+			"east":gEast,
+			"west":gWwest
+			
+		},
+		success: function(response){
+			alert(response);
+		},
+		error: function (xhr, errmsg, err) {
+			alert (xhr.status + "\n\n" + xhr.responseText);
+		}
+		
+	})
+
 }
 
 function matched(searchText) {
@@ -189,7 +223,8 @@ function matched(searchText) {
       document.getElementById('username').innerHTML = "";
     } else if (usernames[i].match(new RegExp(searchText, "i"))) {
       document.getElementById('console').innerHTML += usernames[i];
-      $('#username').append("<li onclick='request_for_data(this.innerHTML)'>" + usernames[i] + "</li>");
+      //$('#username').append("<li onclick='request_for_data(this.innerHTML)'>" + usernames[i] + "</li>");
+	  $('#username').append("<li onclick='setSearchBoxContent(this.innerHTML)'>" + usernames[i] + "</li>");
     }
   }
 }
