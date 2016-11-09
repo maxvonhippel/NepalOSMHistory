@@ -1,27 +1,27 @@
-fillmap();
+function getContent()
+{
 
-// we will use this function to populate the map with data from GEOJSON
-function fillmap() {
-
-
-	$.ajax({
-		url:"server/map-data.php", //processing script on the server
-		type: "POST",
-		data: "json",
-		dataType: "text",
-		success: function(json){
-			var arr = new Array();
-			arr = JSON.parse(json);
-			parseresponse(arr);
-		},
-		error: function (xhr, errmsg, err) {
-			alert (xhr.status + "\n\n" + xhr.responseText);
-		}
-		
-	})
-	
+    $.ajax(
+        {
+            type: 'GET',
+            url: 'server/map-data.php',
+            data: 'feature',
+            success: function(data){
+                // put result data into "obj"
+                var obj = jQuery.parseJSON(data);
+                if (obj !== null) {
+	                // parse the response
+	                parseresponse(obj);
+                }
+            }
+        }
+    );
 }
 
+// initialize jQuery
+$(function() {
+    getContent();
+});
 
 // this function parses our response once we get it (see code above in fillmap() )
 function parseresponse(json) {
