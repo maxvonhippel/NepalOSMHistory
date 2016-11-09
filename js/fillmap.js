@@ -1,17 +1,20 @@
-function getContent()
+function getContent(num)
 {
 
     $.ajax(
         {
             type: 'GET',
             url: 'server/map-data.php',
-            data: 'feature',
+            data: {'feature': num},
             success: function(data){
                 // put result data into "obj"
-                var obj = jQuery.parseJSON(data);
-                if (obj !== null) {
-	                // parse the response
-	                parseresponse(obj);
+                if ($.trim(data)) {
+	                var obj = jQuery.parseJSON(data);
+	                if ($.trim(obj)) {
+		         	// parse the response
+			 	parseresponse(obj);
+			 	getContent(++num);       
+	                }
                 }
             }
         }
@@ -20,7 +23,7 @@ function getContent()
 
 // initialize jQuery
 $(function() {
-    getContent();
+    getContent(0);
 });
 
 // this function parses our response once we get it (see code above in fillmap() )
