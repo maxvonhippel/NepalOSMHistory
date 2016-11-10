@@ -78,7 +78,17 @@ You can reach Max on Twitter [`@_m_vh`](https://twitter.com/_m_vh), or Kathmandu
 	
 Remember to [initialize and pull the submodules](http://stackoverflow.com/questions/1030169/easy-way-pull-latest-of-all-submodules), too.  Also, you need to initialize composer, and require the json streamer.
 
+The following list of commands should (hopefully) work:
+
 ```bash
+# go to the path in your MAMP/XAMPP/etc server where you plan to host the project
+cd /path/to/your/server/htdoc
+# clone the project
+git clone https://github.com/maxvonhippel/NepalOSMHistory.git
+cd NepalOSMHistory
+# clone the submodules
+git submodule update --init --recursive
+# set up composer
 cd server
 composer init
 composer require salsify/json-streaming-parser:dev-master
