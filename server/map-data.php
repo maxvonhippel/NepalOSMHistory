@@ -12,9 +12,9 @@ if (isset($lastId) && !empty($lastId) && is_numeric($lastId)) {
     $lastId++;
 }
 
-require_once dirname(__FILE__) . '/../plugins/phpjson/vendor/autoload.php';
+require_once dirname(__FILE__) . '/plugins/phpjson/vendor/autoload.php';
 
-$testfile = dirname(__FILE__) . '/../data/dirtydate.json';
+$testfile = dirname(__FILE__) . '/data/dirtydate.json';
 
 $listener = new \JsonStreamingParser\Listener\GeoJsonListener(function ($item) {
     //var_dump($item);
