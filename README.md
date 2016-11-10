@@ -70,11 +70,7 @@ At the moment, page loading with *local* GeoJSON and CSV takes me about 15 secon
 
 #Prerequisites/Dependencies
 
-* PECL & Pear
-	* [see install instructions here](https://jason.pureconcepts.net/2012/10/install-pear-pecl-mac-os-x/)
-* PHP 7.0
-* PHP Intl
-	* [see install instructions here](http://budiirawan.com/install-php-intl-extension-os-x/)
-* composer
-
-All this is way more difficult on mac than on other patforms.  Useful links include [this](http://pagegwood.com/web-development/how-to-enable-intl-extension-mamp-osx-10-9-2/) and [this](http://stackoverflow.com/questions/4145667/how-to-override-the-path-of-php-to-use-the-mamp-path) and [this](https://github.com/docker-library/php/issues/57). 	
+* [stream-json](https://github.com/clue/php-json-stream#install)
+* mamp	
+* php 7.0+
+* composer for php
