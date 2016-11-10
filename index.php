@@ -27,6 +27,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	<!--- cards updater --->
 	<script type="text/javascript" src="js/cards.js"></script>
+	<!--- map filler --->
+	<script type="text/javascript" src="js/fillmap.js"></script>
 	
 </head>
 

@@ -2,6 +2,8 @@
 
 The **Nepal OSM History Visualizer** is a project by Kathmandu Living Labs and the Dartmouth Dickey Center.  It was built by Sazal and Max, and designed by Paras and Sazal.
 
+![](documentation/nepalstatskllosm.png)
+
 This project is an attempt to replicate the features of the [OpenStreetMaps Analytics Tool](http://osm-analytics.org) (OSMA).  The primary difference is that we are incorporating full edit history, meaning that our database and our metadata (charts, graphs, statistics, etc.) take into account every single edit ever done to every single feature, even if that edit is not currently visible.  OSMA does not do this, and they acknowledge it as a major limitation in their [README](https://github.com/hotosm/osm-analytics).
 
 To make this work, you're going to need to do a few things.
@@ -61,9 +63,14 @@ You can reach Max on Twitter [`@_m_vh`](https://twitter.com/_m_vh), or Kathmandu
 
 1. Google Charts is too slow right now.  It either needs to be optimized for at minimum 50% speed increase, or replaced with an alternative such as [D3.JS](http://bl.ocks.org/mbostock/34f08d5e11952a80609169b7917d4172) (I can't get this to not look like garbage when squeezed to be less tall, maybe worth giving another shot later on) or [Dygraphs](http://dygraphs.com/tests/range-selector.html) (see [article relating to Dygraphs and R](https://rstudio.github.io/dygraphs/gallery-range-selector.html)).
 2. `cards.js` needs to send queries to GeoDjango server per Sazal's API, get the response, and update accordingly per user selections.
-3. `jsonclustermap.js` needs to be able to AJAX a GeoDjango file from a server, or otherwise get data from the server, if we want this tool to be broadly deployable.
-4. `jsonclustermap.js` needs user and place search.
+2. `fillmap.js` needs user and place search.
 
-#Performance
 
-At the moment, page loading with *local* GeoJSON and CSV takes me about 15 seconds, consuming 625 MB of memory, at 20.93 Mbps according to [OOKLA](http://beta.speedtest.net).  Obviously this needs to be cut down.  Once we start getting GeoJSON data and CSV from the server we'll have a better idea what sort of performance to expect and what we're working with.  On the bright side, we can make the rest of the page responsive while we asynchronously load the data in the back.
+#Prerequisites/Dependencies
+
+* GIT Submodules:
+	* [Salsify's PHP JSON Streamer](https://github.com/salsify/jsonstreamingparser)
+		* MAMP	
+		* php > 5.4
+		* composer for php 	
+	* [PruneCluster](https://github.com/SINTEF-9012/PruneCluster)
