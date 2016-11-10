@@ -4,7 +4,8 @@ function getContent()
 		// http://www.howopensource.com/2014/12/introduction-to-server-sent-events/
     		var source = new EventSource("server/map-data.php");
     		source.addEventListener("message", function(e) {
-			console.log(e.data);
+			var json = $.parseJSON(e.data);
+			parseresponse(json);
 		}, false);
 		
 		source.addEventListener("open", function(e) {
