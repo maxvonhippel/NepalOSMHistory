@@ -76,4 +76,13 @@ You can reach Max on Twitter [`@_m_vh`](https://twitter.com/_m_vh), or Kathmandu
 			* [instructions for Windows - php & Composer](http://i.justrealized.com/2013/install-composer-windows/)	
 	* [PruneCluster](https://github.com/SINTEF-9012/PruneCluster)
 	
-Remember to [initialize and pull the submodules](http://stackoverflow.com/questions/1030169/easy-way-pull-latest-of-all-submodules), too.
+Remember to [initialize and pull the submodules](http://stackoverflow.com/questions/1030169/easy-way-pull-latest-of-all-submodules), too.  Also, you need to initialize composer, and require the json streamer.
+
+```bash
+cd server
+composer init
+composer require salsify/json-streaming-parser:dev-master
+composer update
+cd plugins/phpjson
+composer update
+```
