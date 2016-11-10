@@ -2,5 +2,5 @@
 	path = plugins/PruneCluster
 	url = https://github.com/SINTEF-9012/PruneCluster.git
 [submodule "phpjson"]
-	path = plugins/phpjson
+	path = server/plugins/phpjson
 	url = https://github.com/salsify/jsonstreamingparser.git
