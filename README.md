@@ -44,6 +44,7 @@ mv composer.phar /usr/local/bin/composer
 composer
 # ok, composer is installed, let's set up composer for our project
 composer init
+# just press return until it finishes, but say no to the bit about requiring stuff
 composer require salsify/json-streaming-parser:dev-master
 composer update
 cd plugins/phpjson
