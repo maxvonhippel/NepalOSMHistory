@@ -64,7 +64,8 @@
 		
 		<div class="w3-col l3 s12 w3-light-grey w3-center">			
 			<div id="nepalStatistics" class="w3-container w3-light-grey">
-				<p class="w3-tooltip">Nepal Statistics <i class="fa fa-info-circle" style="font-size:18px;color:#2196f3"><span style="position:relative;bottom:20px;height:30px;width:40px" class="w3-text w3-card-4 w3-animate-opacity w3-yellow tooltip">Shows the cumulative statistics of the entire Nepal</span></i><p>
+				<!--<p class="w3-tooltip">Nepal Statistics <i class="fa fa-info-circle" style="font-size:18px;color:#2196f3"><span style="position:relative;bottom:20px;height:30px;width:40px" class="w3-text w3-card-4 w3-animate-opacity w3-yellow tooltip">Shows the cumulative statistics of the entire Nepal</span></i><p> -->
+				<p class="w3-tooltip">Nepal Statistics <span class="w3-text w3-card-4 w3-animate-opacity w3-yellow tooltip">Shows the cumulative statisics of the entire Nepal</span><p>
 				<table class="w3-table-all w3-card-4" align="center">
 					<tr>
 						<th>Features</th>
@@ -110,23 +111,23 @@
 					</tr>-->
 					<tr>
 						<td>Buildings</td>
-						<td class="right">2,114</td>
-						<td class="right">600,000</td>
+						<td id="selectedBuildings_start" class="right">2,114</td>
+						<td id="selectedBuildings_end" class="right"class="right">600,000</td>
 					</tr>
 					<tr>
 						<td>Roads (in km)</td>
-						<td class="right">1,517</td>
-						<td class="right">94,000</td>
+						<td id="selectedRoads_start" class="right">1,517</td>
+						<td id="selectedRoads_end" class="right">94,000</td>
 					</tr>
 					<tr>
 						<td>Schools</td>
-						<td class="right">53</td>
-						<td class="right">3,216</td>
+						<td id="selectedSchools_start" class="right">53</td>
+						<td id="selectedSchools_end" class="right">3,216</td>
 					</tr>
 					<tr>
 						<td>Hospitals</td>
-						<td class="right">23</td>
-						<td class="right">1,012</td>
+						<td id="selectedHospitals_start" class="right">23</td>
+						<td id="selectedHospitals_end" class="right">1,012</td>
 					</tr>
 				</table>
 			</div>				
@@ -137,14 +138,17 @@
 	<h2 class="sectionTitle">OpenStreetMap Nepal Leaderboards</h2>
 	<div class="w3-container w3-row w3-center">
 		<div class="w3-col l6 s12 w3-display-container" style="height:265px"><p>Nodes</p>
-			<table class="w3-table-all w3-card-4 w3-col l11 s12 w3-display-middle"><!--Nodes Table-->
+			<table id="tblNodes" class="w3-table-all w3-card-4 w3-col l11 s12 w3-display-middle"><!--Nodes Table-->
+				<thead>
 				<tr>
 					<th>Rank</th>
 					<th>OSM Username</th>
 					<th>Nodes</th>
 					<th>Most Frequently edited POI</th>
 				</tr>
-				<tr>
+				</thead>
+				<tbody>
+				<tr class="w3-blue highlighted">
 					<td class="center">1</td>
 					<td class="center">Nama Budhathoki</td>
 					<td class="center">12,14,145</td>
@@ -157,22 +161,26 @@
 					<td class="center">10,18,216</td>
 					<td class="center">Airport</td>
 				</tr>
-				<tr class="w3-blue highlighted">
+				<tr>
 					<td class="center">3</td>
 					<td class="center">Sazal(Solaris)</td>
 					<td class="center">10,18,216</td>
 					<td class="center">Airport</td>
 				</tr>
+				</tbody>
 			</table>
 		</div>
 		<div class="w3-col l6 s12 w3-display-container" style="height:265px"><p>Ways</p>
-			<table class="w3-table-all w3-card-4 w3-col l11 s12 w3-display-middle"><!--Ways Table-->
+			<table id= "tblWays" class="w3-table-all w3-card-4 w3-col l11 s12 w3-display-middle"><!--Ways Table-->
+			<thead>
 				<tr>
 					<th>Rank</th>
 					<th>OSM Username</th>
 					<th>Ways</th>
 					<th>Most Frequently edited POI</th>
 				</tr>
+				</thead>
+				<tbody>
 				<tr class="w3-blue highlighted">
 					<td class="center">1</td>
 					<td class="center">Sazal(Solaris)</td>
@@ -192,6 +200,7 @@
 					<td class="center">Airport</td>
 					
 				</tr>
+				</tbody>
 			</table>
 		</div>
 		

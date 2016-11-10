@@ -200,7 +200,7 @@ function request_for_data() {
   
   //query the server with the current states of all [data]
   $.ajax({
-		url:"server/api.php", //processing script on the server
+		url:"server/api.php?"+Math.random(), //processing script on the server; for now it is hooked to a direct json response;
 		type: "POST",
 		data: {
 			"north":gNorth, 
@@ -212,7 +212,14 @@ function request_for_data() {
 			"username":gUsername
 		},
 		success: function(response){
-			alert(response);
+			//Creat JSON object from the response text
+			var _obj = JSON.parse(response);
+			//Update Nepal Statistics Table
+			updateNepalStatistics(_obj);
+			//Update Selection Statistics Table
+			updateSelectedStatistics(_obj);
+			updateNodes(_obj);
+			updateWays(_obj);
 		},
 		error: function (xhr, errmsg, err) {
 			alert (xhr.status + "\n\n" + xhr.responseText);
