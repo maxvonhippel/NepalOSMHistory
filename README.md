@@ -52,9 +52,9 @@ composer update
 
 Lastly, you need to make a GeoJSON file with some data in Nepal and name it **dirtydate.json**, and put it in the **server/data** folder in the repository.  
 
-	(Or name it whatever you want, use data from wherever you want, and modify [fillmap.js](https://github.com/maxvonhippel/NepalOSMHistory/blob/master/js/fillmap.js) accordingly.  It's not a complex script, you can easily modify it to fit your needs.)  
+(Or name it whatever you want, use data from wherever you want, and modify [fillmap.js](https://github.com/maxvonhippel/NepalOSMHistory/blob/master/js/fillmap.js) accordingly.  It's not a complex script, you can easily modify it to fit your needs.)  
 
-	We will add code and instructions for database generation, population, querying, etc. soon, and when we do so you will be able to use our toolset to create this file.  For now, if you want to play with this repo, just know that the format of the file looks like this:
+We will add code and instructions for database generation, population, querying, etc. soon, and when we do so you will be able to use our toolset to create this file.  For now, if you want to play with this repo, just know that the format of the file looks like this:
 
 ```GEOJSON
 {
@@ -74,8 +74,7 @@ Lastly, you need to make a GeoJSON file with some data in Nepal and name it **di
 				"user":"Eratosthenes",
 				"timestamp":"2007-07-05T01:42:23+05:45"
 			}
-		},
-		"etc":"...etc"
+		}
 	]
 }
 
