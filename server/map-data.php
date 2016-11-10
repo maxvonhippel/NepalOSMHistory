@@ -1,7 +1,7 @@
 <?php
 // https://github.com/pcrov/JsonReader/wiki/Examples
 // http://www.howopensource.com/2014/12/introduction-to-server-sent-events/
-
+/*
 header("Content-Type: text/event-stream");
 header("Cache-Control: no-cache");
 header("Connection: keep-alive");
@@ -11,7 +11,24 @@ if (isset($lastId) && !empty($lastId) && is_numeric($lastId)) {
     $lastId = intval($lastId);
     $lastId++;
 }
+*/
+require_once dirname(__FILE__) . '/../plugins/phpjson/vendor/autoload.php';
 
+$testfile = dirname(__FILE__) . '/../data/dirtydate.json';
+
+$listener = new \JsonStreamingParser\Listener\GeoJsonListener(function ($item) {
+    var_dump($item);
+});
+$stream = fopen($testfile, 'r');
+try {
+    $parser = new \JsonStreamingParser\Parser($stream, $listener);
+    $parser->parse();
+    fclose($stream);
+} catch (Exception $e) {
+    fclose($stream);
+    throw $e;
+}
+/*
 while (true) {
 
    $data = "hello";
@@ -29,4 +46,5 @@ function sendMessage($id, $data) {
     ob_flush();
     flush();
 }
+*/
 ?>
