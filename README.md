@@ -70,7 +70,8 @@ You can reach Max on Twitter [`@_m_vh`](https://twitter.com/_m_vh), or Kathmandu
 
 * GIT Submodules:
 	* [Salsify's PHP JSON Streamer](https://github.com/salsify/jsonstreamingparser)
-		* MAMP	
+		* MAMP or XAMPP
 		* php > 5.4
-		* composer for php 	
+		* composer for php 
+			* [instructions for Windows - php & Composer](http://i.justrealized.com/2013/install-composer-windows/)	
 	* [PruneCluster](https://github.com/SINTEF-9012/PruneCluster)
