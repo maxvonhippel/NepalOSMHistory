@@ -37,6 +37,12 @@ cd NepalOSMHistory
 git submodule update --init --recursive
 # set up composer
 cd server
+# install composer - this part is a bit more tricky - see:
+# https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx
+php composer-setup.php --install-dir=bin --filename=composer
+mv composer.phar /usr/local/bin/composer
+composer
+# ok, composer is installed, let's set up composer for our project
 composer init
 composer require salsify/json-streaming-parser:dev-master
 composer update
