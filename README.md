@@ -55,7 +55,7 @@ Lastly, you need to make a GeoJSON file with some data in Nepal and name it **di
 
 (Or name it whatever you want, use data from wherever you want, and modify [fillmap.js](https://github.com/maxvonhippel/NepalOSMHistory/blob/master/js/fillmap.js) accordingly.  It's not a complex script, you can easily modify it to fit your needs.)  
 
-We will add code and instructions for database generation, population, querying, etc. soon, and when we do so you will be able to use our toolset to create this file.  For now, if you want to play with this repo, just know that the format of the file looks like this:
+If you'd like to generate the json data yourself, you can find instructions in the [Wiki](https://github.com/maxvonhippel/NepalOSMHistory/wiki) on how to set up and use a GeoDjango database.  If you'd like to get started with the repo immediately, you just need to make a **dirtydate.json** file that looks like this:
 
 ```GEOJSON
 {
@@ -88,4 +88,6 @@ This is in accordance with the GeoJSON [spec](http://geojson.org/geojson-spec.ht
 ```
 Using an ugly GeoJSON file significantly reduces file size.
 
-You can reach Max on Twitter [`@_m_vh`](https://twitter.com/_m_vh), or Kathmandu Living Labs [`@KTMLivingLabs`](https://twitter.com/KTMLivingLabs).  Feel free to fork.  **MIT License with Attribution.**
+You can reach Max on Twitter [`@_m_vh`](https://twitter.com/_m_vh), or Kathmandu Living Labs [`@KTMLivingLabs`](https://twitter.com/KTMLivingLabs).  We accept and welcome pull requests!  But regardless, feel free to fork.  **MIT License with Attribution.**
+
+Head on over to the [Wiki](https://github.com/maxvonhippel/NepalOSMHistory/wiki) for more information!  It's definitely a work in progress, but there should be more details there to illuminate anything not made immediately clear in the README.  And if something is missing, let us know!
