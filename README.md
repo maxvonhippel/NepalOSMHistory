@@ -51,11 +51,13 @@ cd plugins/phpjson
 composer update
 ```
 
-Lastly, you need to make a GeoJSON file with some data in Nepal and name it **dirtydate.json**, and put it in the **server/data** folder in the repository.  
+#Data
+
+You need to make a GeoJSON file with some data in Nepal and name it **dirtydate.json**, and put it in the **server/data** folder in the repository.  
 
 (Or name it whatever you want, use data from wherever you want, and modify [fillmap.js](https://github.com/maxvonhippel/NepalOSMHistory/blob/master/js/fillmap.js) accordingly.  It's not a complex script, you can easily modify it to fit your needs.)  
 
-If you'd like to generate the json data yourself, you can find instructions in the [Wiki](https://github.com/maxvonhippel/NepalOSMHistory/wiki) on how to set up and use a GeoDjango database.  If you'd like to get started with the repo immediately, you just need to make a **dirtydate.json** file that looks like this:
+If you'd like to get started with the repo immediately, you just need to make a **dirtydate.json** file that looks like this:
 
 ```GEOJSON
 {
@@ -88,6 +90,10 @@ This is in accordance with the GeoJSON [spec](http://geojson.org/geojson-spec.ht
 ```
 Using an ugly GeoJSON file significantly reduces file size.
 
+#Other Important Stuff To Know
+
 You can reach Max on Twitter [`@_m_vh`](https://twitter.com/_m_vh), or Kathmandu Living Labs [`@KTMLivingLabs`](https://twitter.com/KTMLivingLabs).  We accept and welcome pull requests!  But regardless, feel free to fork.  **MIT License with Attribution.**
 
 Head on over to the [Wiki](https://github.com/maxvonhippel/NepalOSMHistory/wiki) for more information!  It's definitely a work in progress, but there should be more details there to illuminate anything not made immediately clear in the README.  And if something is missing, let us know!
+
+We are working on documenting our server setup in the Wiki.  We have a PostGIS GeoDjango database with full history data that responds to queries and outputs json, and we explain how to build and use it in the Wiki.
