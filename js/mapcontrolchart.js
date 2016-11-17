@@ -53,10 +53,17 @@ function init() {
 				function waitReady(e) {
 					// create a one-time listener for when the chart is ready
 					google.visualization.events.addOneTimeListener(chart, 'ready', function() {
+						//set the global variables [gStartTime] and [gEndTime] here:
+						gStartTime=e['start'];
+						gEndTime=e['end'];
+						//request data from the server with new [gStartTime] and [gEndTime]
+						request_for_data();
+						
 						// showRange is a function in jsonclustermap.js
 						self.showRange(e['start'], e['end']);
 						// update the selection statistics box
 						self.updateCardsRange(e['start'], e['end']);
+						
 					});
 				}
 				

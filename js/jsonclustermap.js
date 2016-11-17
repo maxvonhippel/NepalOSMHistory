@@ -18,7 +18,7 @@ var mapOptions = {
 	center: [28.478348, 86.542285],
 	zoom: 7,
     minZoom:7,
-	maxZoom:19,
+	maxZoom:18,
 	maxBounds: L.latLngBounds(southWest, northEast)
 };
 
@@ -33,6 +33,10 @@ gSouth = southWest.lat,
 gStartTime="", 
 gEndTime="", 
 gUsername="";
+gCallFlag=0;
+countTimes=0;
+countTest=0;
+searchText="";
 
 // find our nepal border geometry so we can mask anything outside nepal
 var latLngGeom = nepal_border;
@@ -42,6 +46,22 @@ var osm = L.TileLayer.boundaryCanvas('http://{s}.tile.openstreetmap.org/{z}/{x}/
     boundary: nepal_border, 
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>'
 }).addTo(map);
+
+//Add leaflet-search controls here
+var searchLayer = L.layerGroup().addTo(map);
+//... adding data in searchLayer ...
+map.addControl( new L.Control.Search({
+	url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
+	jsonpParam: 'json_callback',
+	propertyName: 'display_name',
+	propertyLoc: ['lat','lon'],
+	marker: L.circleMarker([0,0],{radius:30}),
+	autoCollapse: true,
+	autoType: false,
+	minLength: 0
+}) );
+
+//searchLayer is a L.LayerGroup contains searched markers
 
 // initialize the prune cluster object
 var leafletView = new PruneClusterForLeaflet(160);
@@ -56,8 +76,8 @@ var lastUpdate = 0;
 window.setInterval(function () {
 	var now = +new Date();
 	if ((now - lastUpdate) < 400) {
-    		return;
-    	}
+		return;
+	}
 	for (i = 0; i < size / 2; ++i) {
 		if (typeof markers != "undefined" && typeof markers[i] != "undefined" && markers[i].hasOwnProperty("<position>")) {
 			var coef = i < size / 8 ? 10 : 1;
@@ -66,9 +86,9 @@ window.setInterval(function () {
 			ll.lng += (Math.random() - 0.5) * 0.00002 * coef;
 		}
 	}   	
-    	leafletView.ProcessView();
-    	lastUpdate = now;
-    	
+	leafletView.ProcessView();
+	lastUpdate = now;
+	
 }, 500);
 
 // we add the leaflet view to the map, thus showing the clusters from the prune cluster object
@@ -91,78 +111,78 @@ map.on('moveend', function(ev){
 	gSouth=_bounds.getSouth();
 	gEast=_bounds.getEast();
 	gWest=_bounds.getWest();
+	request_for_data();
 	
 	//
 	
 	/*
-	$.ajax({
+		$.ajax({
 		url:"server/api.php", //processing script on the server
 		type: "POST",
 		data: {"north":north, "south":south,"east":east,"west":west},
 		success: function(response){
-			//alert(response);
+		//alert(response);
 		},
 		error: function (xhr, errmsg, err) {
-			alert (xhr.status + "\n\n" + xhr.responseText);
+		alert (xhr.status + "\n\n" + xhr.responseText);
 		}
 		
-	})
+		})
 	*/
 });
 
 //For the SearchBox
 function fetch_Addr_Username(value){
 	$.ajax({
-		url:"resources/usernames.js",
+		url:"server/usernames.js",
 		type:"POST",
 		success:function(response){
-			show_searchResults();
-			//alert(response);
+			//show_searchResults();
+			alert(response);
 		},
 		error: function (xhr, errmsg, err) {
 			alert (xhr.status + "\n\n" + xhr.responseText);
 		}
-	
+		
 	});
 }
 
 function show_searchResults(){
 	$("#username").show();
-	//$("#searchResults_usernames").show();
+	//$("#username").fadeTo("fast",1);
+	
 	
 }
 
 function hide_searchResults(){
-	//alert('shoot');
 	$("#username").hide();
-	$("#console").hide();
-	//$("#searchResults_usernames").hide();
+	//$("#username").fadeTo("fast",0);
+	
 	
 }
 
 
-usernames = [
-  "Sazal(Solaris)",
-  "NamaBudhathoki",
-  "PratikGautam"
-];
-
 function setSearchBoxContent(val){
+	gCallFlag=1; //set gCallFlag
+	set_gUsername(val); //set global [gUsername] here
 	document.getElementById('searchBox').value = val; //populate searchBox with the selected value from the <li> element.
 	hide_searchResults(); //hide <ul> upon selection of an <li>
 	request_for_data();
 }
 
 function request_for_data() {
-  //document.getElementById('searchBox').value = val; //populate searchBox with the selected value from the <li> element. //obsolete (cosider deleting this)
-  
-  //hide_searchResults(); //hide <ul> upon selection of an <li> //obsolete (cosider deleting this)
-  
-  //get current states of all [data] for this AJAX request /*This step might be redundant if all globals are set elsewhere*/
-  
-  
-  //query the server with the current states of all [data]
-  $.ajax({
+	console.log("Requesting for Data with the following parameters:\n gNorth:" +
+	gNorth +"\n gSouth:" +
+	gSouth +"\n gEast:"+ 
+	gEast +"\n gWest:"+ 
+	gWest +"\n gStartTime:"+ 
+	gStartTime +"\n gEndTime:"+ 
+	gEndTime +"\n gUsername:"+ 
+	gUsername
+	);
+	
+	//query the server with the current states of all [data]
+	$.ajax({
 		url:"server/api.php?"+Math.random(), //processing script on the server; for now it is hooked to a direct json response;
 		type: "POST",
 		data: {
@@ -189,21 +209,51 @@ function request_for_data() {
 		}
 		
 	});
-
 }
 
 function matched(searchText) {
-  document.getElementById('console').innerHTML = "";
-  document.getElementById('username').innerHTML = "";
-  show_searchResults();
-  for (i = 0; i < usernames.length; ++i) {
-    if (searchText === "") {
-      document.getElementById('console').innerHTML = "";
-      document.getElementById('username').innerHTML = "";
-    } else if (usernames[i].match(new RegExp(searchText, "i"))) {
-      document.getElementById('console').innerHTML += usernames[i];
-      //$('#username').append("<li onclick='request_for_data(this.innerHTML)'>" + usernames[i] + "</li>");
-	  $('#username').append("<li onclick='setSearchBoxContent(this.innerHTML)'>" + usernames[i] + "</li>");
-    }
-  }
+	console.log("keyup...");
+	//document.getElementById('console').innerHTML = "";
+	document.getElementById('username').innerHTML = "";
+	var _matchCount=0; //variable to determine how many resutls are being shown on the name list; initialized to zero
+	show_searchResults();
+	if(searchText != null){
+		if (searchText.length==0){
+			set_gUsername(searchText);
+		}
+		else{
+			var _flag=0;
+			for (i = 0; i < usernames.length; ++i) {
+				if (searchText == "") {
+					//document.getElementById('console').innerHTML = "";
+					document.getElementById('username').innerHTML = "";
+				} 
+				if (usernames[i].match(new RegExp(searchText, "i"))) {
+					//show only 2 elements at max:
+					if(_matchCount<5){ 
+						_matchCount++;
+						//document.getElementById('console').innerHTML += usernames[i];
+						$('#username').append("<li onclick='setSearchBoxContent(this.innerHTML)'>" + usernames[i] + "</li>");
+					}
+				}
+			}	
+		}
+	}
+}
+
+
+function myfocusout(){
+	console.log("myfocusout");
+	if(gUsername==""){
+		$("#searchBox").val("");
+	}
+}
+
+function set_gUsername(val){
+	console.log("setting gUsername as..."+val);
+	gUsername=val;
+	if(val==""){
+		//if the current value of [gUsername] is blank then initiate ajax for all users
+		request_for_data();
+	}
 }

@@ -30,10 +30,12 @@ var osm = L.TileLayer.boundaryCanvas('http://{s}.tile.openstreetmap.org/{z}/{x}/
 }).addTo(mymap);
 
 //Make sure to add the slider to the map ;-) // Doing it in mapmaker.js
-mymap.addControl(sliderControl);
+//mymap.addControl(sliderControl);
 
 //And initialize the slider // Doing it in mapmaker.js
-sliderControl.startSlider();
+//sliderControl.startSlider();
+
+
 
 //Fire this when map is panned/zoomed/reset
 mymap.on('moveend', function(ev){

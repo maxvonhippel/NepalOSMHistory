@@ -21,6 +21,10 @@ input[type=text]:focus {
     width: 100%;
 }
 
+#wrap {
+	z-index:90000;
+}
+
 
 
 
