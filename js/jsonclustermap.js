@@ -47,6 +47,7 @@ var osm = L.TileLayer.boundaryCanvas('http://{s}.tile.openstreetmap.org/{z}/{x}/
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>'
 }).addTo(map);
 
+/*
 //Add leaflet-search controls here
 var searchLayer = L.layerGroup().addTo(map);
 //... adding data in searchLayer ...
@@ -60,6 +61,8 @@ map.addControl( new L.Control.Search({
 	autoType: false,
 	minLength: 0
 }) );
+
+*/
 
 //searchLayer is a L.LayerGroup contains searched markers
 
