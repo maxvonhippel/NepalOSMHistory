@@ -42,6 +42,20 @@ $json='{
 			"Nodes":1018216,
 			"Most Frequently edited POI":"Museum",
 			"highlight":1
+		},
+		"other":{
+			"Rank":255,
+			"OSM Username":"Two Fifty Five",
+			"Nodes":14216,
+			"Most Frequently edited POI":"Two Fifty Diners",
+			"highlight":1
+		},
+		"other2":{
+			"Rank":512,
+			"OSM Username":"Five Twelve",
+			"Nodes":14216,
+			"Most Frequently edited POI":"Five Tweleve Eatery",
+			"highlight":1
 		}
 	},
 	"Ways":{

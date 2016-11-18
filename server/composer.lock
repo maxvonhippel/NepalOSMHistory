@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "46a9539f146eb9ee3c7bf0f9955415f5",
-    "content-hash": "eb7655f514fda3752f5749b5e1939cd4",
+    "hash": "87fb1cc746fb258481194265d8a04ec5",
+    "content-hash": "59dcf565a1172bc298f25a358f93f379",
     "packages": [
         {
             "name": "salsify/json-streaming-parser",
