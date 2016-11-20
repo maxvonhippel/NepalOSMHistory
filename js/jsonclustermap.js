@@ -184,6 +184,14 @@ function request_for_data() {
 	gUsername
 	);
 	
+	//show load icon and keep it displayed till ajax returns
+	//$("#block-everything").toggle();
+	$("#block-everything").show();
+	$("#glassy-effect").css("filter","blur(1px)");
+	
+	//disable_map_controls();
+	
+	
 	//query the server with the current states of all [data]
 	$.ajax({
 		url:"server/api.php?"+Math.random(), //processing script on the server; for now it is hooked to a direct json response;
@@ -206,6 +214,10 @@ function request_for_data() {
 			updateSelectedStatistics(_obj);
 			updateNodes(_obj);
 			updateWays(_obj);
+			//hide load icon
+			$("#block-everything").hide();
+			//$("#glassy-effect").css("filter","blur(0px)");
+			//enable_map_controls();
 		},
 		error: function (xhr, errmsg, err) {
 			alert (xhr.status + "\n\n" + xhr.responseText);
@@ -220,6 +232,7 @@ function matched(searchText) {
 	document.getElementById('username').innerHTML = "";
 	var _matchCount=0; //variable to determine how many resutls are being shown on the name list; initialized to zero
 	show_searchResults();
+	var invalid = /[°"§%()\[\]{}=\\?´`'#<>|,;.:+_-]+/g;
 	if(searchText != null){
 		if (searchText.length==0){
 			set_gUsername(searchText);
@@ -230,7 +243,11 @@ function matched(searchText) {
 				if (searchText == "") {
 					//document.getElementById('console').innerHTML = "";
 					document.getElementById('username').innerHTML = "";
-				} 
+				}
+				if (searchText.indexOf(invalid)){
+					searchText=searchText.replace(invalid,"");
+					console.log(searchText);
+				}
 				if (usernames[i].match(new RegExp(searchText, "i"))) {
 					//show only 2 elements at max:
 					if(_matchCount<5){ 
@@ -259,4 +276,32 @@ function set_gUsername(val){
 		//if the current value of [gUsername] is blank then initiate ajax for all users
 		request_for_data();
 	}
+}
+
+function disable_map_controls(){
+	map._handlers.forEach(function(handler) {
+		handler.disable();
+	});
+	map.dragging.disable();
+map.touchZoom.disable();
+map.doubleClickZoom.disable();
+map.scrollWheelZoom.disable();
+map.boxZoom.disable();
+map.keyboard.disable();
+if (map.tap) map.tap.disable();
+document.getElementById('mapid').style.cursor='default';
+}
+	
+function enable_map_controls(){
+	map._handlers.forEach(function(handler) {
+		handler.enable();
+	});
+	map.dragging.enable();
+map.touchZoom.enable();
+map.doubleClickZoom.enable();
+map.scrollWheelZoom.enable();
+map.boxZoom.enable();
+map.keyboard.enable();
+if (map.tap) map.tap.enable();
+document.getElementById('mapid').style.cursor='grab';
 }

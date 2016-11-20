@@ -40,8 +40,7 @@ $json='{
 			"Rank":3,
 			"OSM Username":"Sazal(Solaris)",
 			"Nodes":1018216,
-			"Most Frequently edited POI":"Museum",
-			"highlight":1
+			"Most Frequently edited POI":"Museum"
 		},
 		"other":{
 			"Rank":255,
@@ -54,8 +53,7 @@ $json='{
 			"Rank":512,
 			"OSM Username":"Five Twelve",
 			"Nodes":14216,
-			"Most Frequently edited POI":"Five Tweleve Eatery",
-			"highlight":1
+			"Most Frequently edited POI":"Five Tweleve Eatery"
 		}
 	},
 	"Ways":{
@@ -63,8 +61,7 @@ $json='{
 			"Rank":1,
 			"OSM Username":"Sazal(Solaris)",
 			"Ways":1214145,
-			"Most Frequently edited POI":"Museum",
-			"highlight":1
+			"Most Frequently edited POI":"Museum"
 		}
 		,
 		"second":{
@@ -79,8 +76,22 @@ $json='{
 			"OSM Username":"Pratik Gautam",
 			"Ways":1018216,
 			"Most Frequently edited POI":"Airport"
+		},
+		"other":{
+			"Rank":255,
+			"OSM Username":"Two Fifty Five",
+			"Ways":14216,
+			"Most Frequently edited POI":"Two Fifty Diners",
+			"highlight":1
+		},
+		"other2":{
+			"Rank":512,
+			"OSM Username":"Five Twelve",
+			"Ways":14216,
+			"Most Frequently edited POI":"Five Tweleve Eatery"
 		}
-	}	
+	}
+	
 }';
 
 print($json);

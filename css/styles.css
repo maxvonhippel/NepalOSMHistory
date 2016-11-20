@@ -52,3 +52,27 @@ ul{
 	postion:relative;
 	
 }
+
+table.center{
+	margin-right:auto;
+	margin-left:auto; 
+	float:none;
+}
+
+div#block-everything{
+	opacity:0.6;
+	position:fixed;
+	z-index:99000;
+	height:100%;
+	width:100%;
+	display:none;
+	background-color:#eaeab3;	
+}
+
+div#glassy-effect{
+	/*opacity:1;*/
+	position:fixed;
+	z-index:98000;
+	height:100%;
+	width:100%;
+}
