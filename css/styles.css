@@ -1,50 +1,116 @@
 @import url('../plugins/PruneCluster/dist/LeafletStyleSheet.css');
 @font-face{
 	font-family:testFont;
-	src: url(../fonts/RobotoTTF/Roboto-Regular.ttf);
-	
+	src: url(../fonts/ClearSans/ClearSans-Thin.ttf);
 }
+
+@font-face{
+	font-family:testFonts;
+	src: url(../fonts/ClearSans/ClearSans-Bold.ttf);
+}
+@font-face{
+	font-family:regular;
+	src: url(../fonts/ClearSans/ClearSans-Regular.ttf);
+}
+@font-face{
+	font-family:light;
+	src: url(../fonts/ClearSans/ClearSans-Light.ttf);
+}
+
 body, table{
 	color:#47525e;
 }
+
 h1.pageTitle{
-	font-family:testFont;
-	font-size:47px;
-	text-align:center;
+	font-family: testFont;
+	text-align: left;
+	display: inline-block;
+	margin: 0;
+	padding-right: 40px;
+	font-size: 28px;
+	line-height: 52px;
+	vertical-align: text-bottom;
+	font-weight: normal;
+	color: white;
+	box-shadow: 0px 2px 3px rgba(0,0,0, 0.5);
+	background-color: #15A6B7; /*rgba(119,164,178, 1)*/
+	width: 100%;
+	position:absolute;
+	z-index:5000;
+	overflow:hidden; 
+	height:57px;
+	
+	
 }
+
 #mapchartbox{
 	min-height:640px;
 }
 #mapid{
 	min-height:520px;
 	width:100%;
+	margin-top: 50px;
+	background-color:rgba(225, 237, 241, 0.72); /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
 }
 #chart{
 	min-height:120px;
 	width:100%;
 }
+
 #nepalStatistics{
-	min-height:320px;
+	font-family:regular;
+	margin-top: 50px;
+	min-height:315px;
+	z-index:5000;
+	background-color:rgba(225, 237, 241, 0.72); /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
+		
 }
 #selectionStatistics{
-	min-height:320px;
+	font-family:regular;
+	min-height:315px;
+	z-index:5000;
+	background-color:rgba(225, 237, 241, 0.72); /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
+	
 }
 h2.sectionTitle{
 	font-family:testFont;
 	font-size: 32px;
 	text-align:center; 
 }
+
+table .left{
+	text-align:left !important;
+	
+}
 table .center{
 	text-align:center !important;
 }
 table .right{
 	text-align:right !important;
+	padding-right: 16px;
+	
 }
 tr .highlighted{
 	color:white !important;
 }
-th{
+th.th_left{
+	text-align:left !important;
+	padding-left: 16px;
+	font-family: testFonts;
+	color:#002D3F;
+}
+th.th_right{
+	text-align:right !important;
+	padding-right: 16px;
+	font-family: testFonts; 
+	color:#002D3F;
+}
+
+
+th.th_center{
 	text-align:center !important;
+	font-family: testFonts; 
+	color:#002D3F;
 }
 ul{
 	margin-right:10px !important;
@@ -75,4 +141,30 @@ div#glassy-effect{
 	z-index:98000;
 	height:100%;
 	width:100%;
+}
+
+#titleOpenStreetMap{
+	color:white; font-family:regular;margin:0px 0px 10px 30px; letter-spacing:0.5px;
+}
+
+#titleStatisticsTool{
+	color:white; overflow:hidden; font-family:testFont;margin:0px 0px 0px 0px; letter-spacing:-1px;
+}
+
+.custom-tooltip{
+	margin-top: 30px; 
+	font-family: testFonts; 
+	color:#002D3F
+}
+
+.tooltip{
+	font-family: Regular;
+	margin-top: 10px; 
+	font-size: 12px;
+	padding: 7px;
+	font-weight:normal;
+}
+
+#tblNepalStatistics{
+	line-height:10px;
 }
