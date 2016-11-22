@@ -6,11 +6,32 @@ var div = "chart";
 var chart, data;
 var self = this;
 
-// used to initialize the map	    
+// inactivity listener for event end detection
+// len in milliseconds, func is a pointer to what should be done upon completion
+var itimer = function(len, func) {
+	this.len = len;
+	this.func = func;
+	this.timer = null;
+};
+
+itimer.prototype.start = function() {
+	if (this.timer != null)
+		clearTimeout(this.timer);
+	this.timer = setTimeout(this.func, this.len);
+};
+
+Date.prototype.addDays = function(days)
+{
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+}
+
+// used to initialize the map
 function init() {
 	// we asynchronously load the csv
 	// I use jQuery instead of httpxml lik in jsconclustermap because I want to use the csv function
-	// same performance basically, maybe a tiny bit slower    
+	// same performance basically, maybe a tiny bit slower
 	jQuery.ajax({
 		// initialize the ajax request
 		url: name,
@@ -21,52 +42,70 @@ function init() {
 				// initialize the DOM data array with csv parising
 				cdata = $.csv.toArrays(csvd, {onParseValue: $.csv.hooks.castToScalar});
 				for (var i = 1; i < cdata.length; i++) {
-					// arrange by datestamp		
+					// arrange by datestamp
 					var parts = (cdata[i][0].split(" ")[0]).match(/(\d+)/g);
 					cdata[i][0] = new Date(parts[0], parts[1]-1, parts[2]);
-							
+
 				}
+
 				data = new google.visualization.arrayToDataTable(cdata);
 				chart = new google.visualization.AnnotationChart(document.getElementById(div));
 				google.visualization.events.addListener(chart, 'rangechange', waitReady);
+
 				var options = {
 					displayAnnotations: false,
 					displayZoomButtons: false,
+<<<<<<< HEAD
 					//colors: ['#15a6b7', '#FF8F48', '#FF8F48'] // uncomment to customize colors used in chart
+=======
+					colors: ['#15A6B7', '#fc721b', '#000000'] // uncomment to customize colors used in chart
+>>>>>>> b0ff7a9710165f1ed8644060d9973375a76da054
 	    			};
+
 				chart.draw(data, options);
-				
-				//create trigger to resizeEnd event     
+				var gStartTime = null;
+				var gEndTime = null;
+
+				function selection_change() {
+
+					//request data from the server with new [gStartTime] and [gEndTime]
+					request_for_data();
+					// showRange is a function in jsonclustermap.js
+					self.showRange(gStartTime, gEndTime);
+					// update the selection statistics box
+					self.updateCardsRange(gStartTime, gEndTime);
+
+				}
+
+				var restim = new itimer(400, chart.draw(data, options));
+				var chartim = new itimer(700, selection_change);
+
+				// create trigger to resizeEnd event
 				$(window).resize(function() {
 				    if(this.resizeTO) clearTimeout(this.resizeTO);
 				    this.resizeTO = setTimeout(function() {
 				        $(this).trigger('resizeEnd');
 				    }, 500);
 				});
-				
-				//redraw graph when window resize is completed  
+
+				//redraw graph when window resize is completed
 				$(window).on('resizeEnd', function() {
-				    chart.draw(data, options);
+				    restim.start();
 				});
-				
+
 				// called on range change
 				function waitReady(e) {
+
 					// create a one-time listener for when the chart is ready
-					google.visualization.events.addOneTimeListener(chart, 'ready', function() {
-						//set the global variables [gStartTime] and [gEndTime] here:
-						gStartTime=e['start'];
-						gEndTime=e['end'];
-						//request data from the server with new [gStartTime] and [gEndTime]
-						request_for_data();
-						
-						// showRange is a function in jsonclustermap.js
-						self.showRange(e['start'], e['end']);
-						// update the selection statistics box
-						self.updateCardsRange(e['start'], e['end']);
-						
-					});
+					gStartTime = e['start'];
+					gEndTime = e['end'];
+					// avoid the bug on extreme zoom where start >= end
+					if (gEndTime.getTime() <= gStartTime.getTime())
+						gEndTime = gStartTime.addDays(1);
+					chartim.start();
+
 				}
-				
+
 			});
 		},
 		dataType: "text",
