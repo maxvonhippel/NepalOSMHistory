@@ -77,7 +77,7 @@ function init() {
 
 				}
 
-				var restim = new itimer(250, drawchart);
+				var restim = new itimer(150, drawchart);
 				var chartim = new itimer(700, selection_change);
 
 				// create trigger to resizeEnd event

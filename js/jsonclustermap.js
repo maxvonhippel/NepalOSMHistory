@@ -11,6 +11,23 @@
 
 // USE THIS SITE FOR DEBUGGING: http://jshint.com
 
+// get the list of usernames
+if (!GLOBALDEBUG) {
+	// try and connect to the Django server
+	$.ajax({
+		url:"http://127.0.1.1:8000/usernames", // django resource
+		type: "GET",
+		async: true,
+		success: function(response){
+			//alert(response);
+		},
+		error: function (xhr, errmsg, err) {
+			console.log(xhr.status + "\n\n" + xhr.responseText);
+		}
+
+	});
+}
+
 // set up the options for our initial map
 var southWest = L.latLng(26.487043, 78.739439);
 var northEast = L.latLng(30.688485, 89.847341);
@@ -136,7 +153,6 @@ map.on('moveend', function(ev){
 
 // For the SearchBox
 function fetch_Addr_Username(value){
-	// can we reach the server?
 	$.ajax({
 		url:"server/usernames.js",
 		type:"POST",
