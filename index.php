@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <head>
+	<!---- global debug variable --->
+	<script src="js/global-debug.js"></script>
 	<!---- jquery --->
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/jquery.csv.js"></script>
@@ -34,8 +36,8 @@
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.src.css">
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.mobile.src.css">
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.mobile.min.css">
-	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.min.css"> 
-	
+	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.min.css">
+
 </head>
 
 <body>
@@ -49,17 +51,17 @@
 			<span id="titleStatisticsTool">Nepal Statistics</span>
 		</h1>
 	</div>
-		
+
 		<div class="w3-row w3-center">
-			
+
 			<div id="#mapchartbox" class="w3-border w3-border-blue-grey w3-col l9 s12 w3-display-container">
 				<div id="mapid" class="w3-border w3-col l9 s12">
 					<!-- For the searchbox -->
-					<div id="wrap" class="w3-col l4 s10 w3-display-topright">			
+					<div id="wrap" class="w3-col l4 s10 w3-display-topright">
 						<input id="searchBox" type="text" onfocus="this.select();" onkeyup="matched(this.value)" placeholder="Search for OSM username..." onfocusout="myfocusout()"/>
-						<!--<div id="console" style="visibility:hidden">	
+						<!--<div id="console" style="visibility:hidden">
 						</div> -->
-						<ul id="username" class="w3-ul w3-card-2">	
+						<ul id="username" class="w3-ul w3-card-2">
 						</ul>
 					</div>
 					<!-- End of searchbox -->
@@ -68,21 +70,21 @@
 				<!--- start of chart --->
 				<div id="chart" class="w3-border w3-col l9 s12"></div>
 				<script type="text/javascript" src="js/mapcontrolchart.js"></script>
-				
+
 				<!--- end of chart --->
 			</div>
 			<!--- end of map --->
-			
-			
-			<div class="w3-col l3 s12 w3-light-grey w3-left">			
+
+
+			<div class="w3-col l3 s12 w3-light-grey w3-left">
 				<div id="nepalStatistics" class="w3-container">
-					<p class="w3-tooltip custom-tooltip">Nepal Statistics 
+					<p class="w3-tooltip custom-tooltip">Nepal Statistics
 						<img src="resources/i_icon.png" width="20px"</img>
 						<span class="w3-text w3-card-2 w3-animate-opacity w3-light-grey tooltip">
 							Shows the cumulative statistics of the entire Nepal
 						</span>
 					</p>
-					
+
 					<table id="tblNepalStatistics" class="w3-table-all w3-card-2" >
 						<tr>
 							<th class="th_left">Features</th>
@@ -91,11 +93,11 @@
 						<tr>
 							<td>Mappers</td>
 							<td id="nepalMappers" class="right">1,920</td>
-							
+
 						</tr>
 						<tr>
 							<td>Buildings</td>
-							
+
 							<td id="nepalBuildings" class="right">600,000</td>
 						</tr>
 						<tr>
@@ -110,13 +112,13 @@
 							<td>Hospitals</td>
 							<td id="nepalHospitals" class="right">1,012</td>
 						</tr>
-					</table>				
+					</table>
 				</div>
 				<div id="selectionStatistics" class="w3-container">
-					<p class="w3-tooltip custom-tooltip">Selection Statistics 
+					<p class="w3-tooltip custom-tooltip">Selection Statistics
 						<img src="resources/i_icon.png" width="20px"</img>
-						<span class="w3-text w3-card-2 w3-animate-opacity w3-light-grey tooltip"> 
-							Shows the statisics of the selected user within the selected date range and the selected (zoomed in) area of the map 
+						<span class="w3-text w3-card-2 w3-animate-opacity w3-light-grey tooltip">
+							Shows the statisics of the selected user within the selected date range and the selected (zoomed in) area of the map
 						</span>
 					</p>
 					<table class="w3-table-all w3-card-2" align="center">
@@ -146,11 +148,11 @@
 							<td id="selectedHospitals_end" class="right">1,012</td>
 						</tr>
 					</table>
-				</div>				
+				</div>
 			</div>
 		</div>
-		
-		
+
+
 		<h2 class="sectionTitle">OpenStreetMap Nepal Leaderboards</h2>
 		<div class="w3-container w3-row w3-center">
 			<div class="w3-col l6 s12 w3-display-container" style="min-height:auto"><p>Nodes</p>
@@ -169,7 +171,7 @@
 							<td class="center">Nama Budhathoki</td>
 							<td class="center">12,14,145</td>
 							<td class="center">Restaurant</td>
-							
+
 						</tr>
 						<tr>
 							<td class="center">2</td>
@@ -201,25 +203,25 @@
 							<td class="center">1</td>
 							<td class="center">Sazal(Solaris)</td>
 							<td class="center">10,18,216</td>
-							<td class="center">Airport</td>					
+							<td class="center">Airport</td>
 						</tr>
 						<tr>
 							<td class="center">2</td>
 							<td class="center">Nama Budhathoki</td>
 							<td class="center">12,14,145</td>
-							<td class="center">Restaurant</td>					
+							<td class="center">Restaurant</td>
 						</tr>
 						<tr>
 							<td class="center">3</td>
 							<td class="center">Pratik Gautam</td>
 							<td class="center">10,18,216</td>
 							<td class="center">Airport</td>
-							
+
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			
+
 		</div>
 		<br/><br/>
 		<!-- </div> <!-- id "glassy-effect" -->

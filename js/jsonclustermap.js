@@ -134,8 +134,9 @@ map.on('moveend', function(ev){
 	*/
 });
 
-//For the SearchBox
+// For the SearchBox
 function fetch_Addr_Username(value){
+	// can we reach the server?
 	$.ajax({
 		url:"server/usernames.js",
 		type:"POST",
