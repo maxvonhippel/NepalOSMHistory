@@ -11,13 +11,21 @@ var self = this;
 var itimer = function(len, func) {
 	this.len = len;
 	this.func = func;
-	this.timer = setTimeout(func, len);
+	this.timer = null;
 };
 
-itimer.prototype.interrupt = function() {
-	clearTimeout(this.timer);
-	this.timer = setTimeout(func, len);
+itimer.prototype.start = function() {
+	if (this.timer != null)
+		clearTimeout(this.timer);
+	this.timer = setTimeout(this.func, this.len);
 };
+
+Date.prototype.addDays = function(days)
+{
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+}
 
 // used to initialize the map
 function init() {
@@ -39,15 +47,34 @@ function init() {
 					cdata[i][0] = new Date(parts[0], parts[1]-1, parts[2]);
 
 				}
+
 				data = new google.visualization.arrayToDataTable(cdata);
 				chart = new google.visualization.AnnotationChart(document.getElementById(div));
 				google.visualization.events.addListener(chart, 'rangechange', waitReady);
+
 				var options = {
 					displayAnnotations: false,
 					displayZoomButtons: false,
 					colors: ['#15A6B7', '#fc721b', '#000000'] // uncomment to customize colors used in chart
 	    			};
+
 				chart.draw(data, options);
+				var gStartTime = null;
+				var gEndTime = null;
+
+				function selection_change() {
+
+					//request data from the server with new [gStartTime] and [gEndTime]
+					request_for_data();
+					// showRange is a function in jsonclustermap.js
+					self.showRange(gStartTime, gEndTime);
+					// update the selection statistics box
+					self.updateCardsRange(gStartTime, gEndTime);
+
+				}
+
+				var restim = new itimer(400, chart.draw(data, options));
+				var chartim = new itimer(700, selection_change);
 
 				// create trigger to resizeEnd event
 				$(window).resize(function() {
@@ -59,26 +86,20 @@ function init() {
 
 				//redraw graph when window resize is completed
 				$(window).on('resizeEnd', function() {
-				    chart.draw(data, options);
+				    restim.start();
 				});
 
 				// called on range change
 				function waitReady(e) {
+
 					// create a one-time listener for when the chart is ready
-					google.visualization.events.addOneTimeListener(chart, 'ready', function() {
+					gStartTime = e['start'];
+					gEndTime = e['end'];
+					// avoid the bug on extreme zoom where start >= end
+					if (gEndTime.getTime() <= gStartTime.getTime())
+						gEndTime = gStartTime.addDays(1);
+					chartim.start();
 
-						//set the global variables [gStartTime] and [gEndTime] here:
-						gStartTime=e['start'];
-						gEndTime=e['end'];
-						//request data from the server with new [gStartTime] and [gEndTime]
-						request_for_data();
-
-						// showRange is a function in jsonclustermap.js
-						self.showRange(e['start'], e['end']);
-						// update the selection statistics box
-						self.updateCardsRange(e['start'], e['end']);
-
-					});
 				}
 
 			});
