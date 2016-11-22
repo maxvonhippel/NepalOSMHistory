@@ -27,11 +27,11 @@ var map = L.map("mapid", mapOptions);
 
 // initialize global variables here
 gNorth = northEast.lat,
-gEast = northEast.lng, 
-gWest = southWest.lng, 
-gSouth = southWest.lat, 
-gStartTime="", 
-gEndTime="", 
+gEast = northEast.lng,
+gWest = southWest.lng,
+gSouth = southWest.lat,
+gStartTime="",
+gEndTime="",
 gUsername="";
 gCallFlag=0;
 countTimes=0;
@@ -43,7 +43,7 @@ var latLngGeom = nepal_border;
 
 // get the map tiles and initialize the tiles and boundary mask on the leflet map
 var osm = L.TileLayer.boundaryCanvas('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    boundary: nepal_border, 
+    boundary: nepal_border,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>'
 }).addTo(map);
 
@@ -88,14 +88,14 @@ window.setInterval(function () {
 			ll.lat += (Math.random() - 0.5) * 0.00001 * coef;
 			ll.lng += (Math.random() - 0.5) * 0.00002 * coef;
 		}
-	}   	
+	}
 	leafletView.ProcessView();
 	lastUpdate = now;
-	
+
 }, 500);
 
 // we add the leaflet view to the map, thus showing the clusters from the prune cluster object
-map.addLayer(leafletView); 
+map.addLayer(leafletView);
 
 // this is the callback for when the google chart date range changes, to filter out what we show in the map
 function showRange(start, end) {
@@ -115,9 +115,9 @@ map.on('moveend', function(ev){
 	gEast=_bounds.getEast();
 	gWest=_bounds.getWest();
 	request_for_data();
-	
+
 	//
-	
+
 	/*
 		$.ajax({
 		url:"server/api.php", //processing script on the server
@@ -129,7 +129,7 @@ map.on('moveend', function(ev){
 		error: function (xhr, errmsg, err) {
 		alert (xhr.status + "\n\n" + xhr.responseText);
 		}
-		
+
 		})
 	*/
 });
@@ -146,22 +146,22 @@ function fetch_Addr_Username(value){
 		error: function (xhr, errmsg, err) {
 			alert (xhr.status + "\n\n" + xhr.responseText);
 		}
-		
+
 	});
 }
 
 function show_searchResults(){
 	$("#username").show();
 	//$("#username").fadeTo("fast",1);
-	
-	
+
+
 }
 
 function hide_searchResults(){
 	$("#username").hide();
 	//$("#username").fadeTo("fast",0);
-	
-	
+
+
 }
 
 
@@ -176,28 +176,28 @@ function setSearchBoxContent(val){
 function request_for_data() {
 	console.log("Requesting for Data with the following parameters:\n gNorth:" +
 	gNorth +"\n gSouth:" +
-	gSouth +"\n gEast:"+ 
-	gEast +"\n gWest:"+ 
-	gWest +"\n gStartTime:"+ 
-	gStartTime +"\n gEndTime:"+ 
-	gEndTime +"\n gUsername:"+ 
+	gSouth +"\n gEast:"+
+	gEast +"\n gWest:"+
+	gWest +"\n gStartTime:"+
+	gStartTime +"\n gEndTime:"+
+	gEndTime +"\n gUsername:"+
 	gUsername
 	);
-	
+
 	//show load icon and keep it displayed till ajax returns
 	//$("#block-everything").toggle();
 	$("#block-everything").show();
 	$("#glassy-effect").css("filter","blur(1px)");
-	
+
 	//disable_map_controls();
-	
-	
+
+
 	//query the server with the current states of all [data]
 	$.ajax({
 		url:"server/api.php?"+Math.random(), //processing script on the server; for now it is hooked to a direct json response;
 		type: "POST",
 		data: {
-			"north":gNorth, 
+			"north":gNorth,
 			"south":gSouth,
 			"east":gEast,
 			"west":gWest,
@@ -222,7 +222,7 @@ function request_for_data() {
 		error: function (xhr, errmsg, err) {
 			alert (xhr.status + "\n\n" + xhr.responseText);
 		}
-		
+
 	});
 }
 
@@ -250,13 +250,13 @@ function matched(searchText) {
 				}
 				if (usernames[i].match(new RegExp(searchText, "i"))) {
 					//show only 2 elements at max:
-					if(_matchCount<5){ 
+					if(_matchCount<5){
 						_matchCount++;
 						//document.getElementById('console').innerHTML += usernames[i];
 						$('#username').append("<li onclick='setSearchBoxContent(this.innerHTML)'>" + usernames[i] + "</li>");
 					}
 				}
-			}	
+			}
 		}
 	}
 }
@@ -283,25 +283,25 @@ function disable_map_controls(){
 		handler.disable();
 	});
 	map.dragging.disable();
-map.touchZoom.disable();
-map.doubleClickZoom.disable();
-map.scrollWheelZoom.disable();
-map.boxZoom.disable();
-map.keyboard.disable();
-if (map.tap) map.tap.disable();
-document.getElementById('mapid').style.cursor='default';
+	map.touchZoom.disable();
+	map.doubleClickZoom.disable();
+	map.scrollWheelZoom.disable();
+	map.boxZoom.disable();
+	map.keyboard.disable();
+	if (map.tap) map.tap.disable();
+	document.getElementById('mapid').style.cursor='default';
 }
-	
+
 function enable_map_controls(){
 	map._handlers.forEach(function(handler) {
 		handler.enable();
 	});
 	map.dragging.enable();
-map.touchZoom.enable();
-map.doubleClickZoom.enable();
-map.scrollWheelZoom.enable();
-map.boxZoom.enable();
-map.keyboard.enable();
-if (map.tap) map.tap.enable();
-document.getElementById('mapid').style.cursor='grab';
+	map.touchZoom.enable();
+	map.doubleClickZoom.enable();
+	map.scrollWheelZoom.enable();
+	map.boxZoom.enable();
+	map.keyboard.enable();
+	if (map.tap) map.tap.enable();
+	document.getElementById('mapid').style.cursor='grab';
 }
