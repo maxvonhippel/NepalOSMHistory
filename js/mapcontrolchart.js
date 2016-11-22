@@ -45,7 +45,7 @@ function init() {
 				var options = {
 					displayAnnotations: false,
 					displayZoomButtons: false,
-					// colors: ['#BBE876', '#A871E8', '#FF8F48'] // uncomment to customize colors used in chart
+					colors: ['#15A6B7', '#fc721b', '#000000'] // uncomment to customize colors used in chart
 	    			};
 				chart.draw(data, options);
 

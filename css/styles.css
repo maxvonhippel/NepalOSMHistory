@@ -67,7 +67,7 @@ h1.pageTitle{
 }
 #selectionStatistics{
 	font-family:regular;
-	min-height:315px;
+	min-height:325px;
 	z-index:5000;
 	background-color:rgba(225, 237, 241, 0.72); /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
 	
