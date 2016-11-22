@@ -52,13 +52,17 @@ function init() {
 				chart = new google.visualization.AnnotationChart(document.getElementById(div));
 				google.visualization.events.addListener(chart, 'rangechange', waitReady);
 
-				var options = {
-					displayAnnotations: false,
-					displayZoomButtons: false,
-					// colors: ['#BBE876', '#A871E8', '#FF8F48'] // uncomment to customize colors used in chart
-	    			};
+				function drawchart() {
+					var options = {
+						displayAnnotations: false,
+						displayZoomButtons: false,
+						// colors: ['#BBE876', '#A871E8', '#FF8F48'] // uncomment to customize colors used in chart
+					};
+					chart.draw(data, options);
+				}
 
-				chart.draw(data, options);
+				drawchart();
+
 				var gStartTime = null;
 				var gEndTime = null;
 
@@ -73,7 +77,7 @@ function init() {
 
 				}
 
-				var restim = new itimer(400, chart.draw(data, options));
+				var restim = new itimer(250, drawchart);
 				var chartim = new itimer(700, selection_change);
 
 				// create trigger to resizeEnd event
