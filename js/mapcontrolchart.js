@@ -52,13 +52,18 @@ function init() {
 				chart = new google.visualization.AnnotationChart(document.getElementById(div));
 				google.visualization.events.addListener(chart, 'rangechange', waitReady);
 
-				var options = {
-					displayAnnotations: false,
-					displayZoomButtons: false,
-					colors: ['#15A6B7', '#fc721b', '#000000'] // uncomment to customize colors used in chart
-	    			};
 
-				chart.draw(data, options);
+	    			function drawchart() {
+		    			var options = {
+						displayAnnotations: false,
+						displayZoomButtons: false,
+						colors: ['#15A6B7', '#fc721b', '#000000'] // uncomment to customize colors used in chart
+	    				};
+	    				chart.draw(data, options);
+	    			}
+
+	    			drawchart();
+
 				var gStartTime = null;
 				var gEndTime = null;
 
@@ -73,20 +78,17 @@ function init() {
 
 				}
 
-				var restim = new itimer(400, chart.draw(data, options));
+				// timer for the chart redraw on window resize
+				var restim = new itimer(300, drawchart);
+				// timer for the events triggered by a time interval selection on the chart
 				var chartim = new itimer(700, selection_change);
 
 				// create trigger to resizeEnd event
 				$(window).resize(function() {
 				    if(this.resizeTO) clearTimeout(this.resizeTO);
 				    this.resizeTO = setTimeout(function() {
-				        $(this).trigger('resizeEnd');
+				        restim.start();
 				    }, 500);
-				});
-
-				//redraw graph when window resize is completed
-				$(window).on('resizeEnd', function() {
-				    restim.start();
 				});
 
 				// called on range change
