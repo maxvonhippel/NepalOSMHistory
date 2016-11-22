@@ -20,6 +20,13 @@ itimer.prototype.start = function() {
 	this.timer = setTimeout(this.func, this.len);
 };
 
+Date.prototype.addDays = function(days)
+{
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+}
+
 // used to initialize the map
 function init() {
 	// we asynchronously load the csv
@@ -84,10 +91,15 @@ function init() {
 
 				// called on range change
 				function waitReady(e) {
+
 					// create a one-time listener for when the chart is ready
 					gStartTime = e['start'];
 					gEndTime = e['end'];
+					// avoid the bug on extreme zoom where start >= end
+					if (gEndTime.getTime() <= gStartTime.getTime())
+						gEndTime = gStartTime.addDays(1);
 					chartim.start();
+
 				}
 
 			});
