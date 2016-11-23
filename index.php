@@ -73,7 +73,7 @@
 		
 		<div class="w3-col l3 s12 w3-light-grey w3-left">
 			<div id="nepalStatistics" class="w3-container">
-				<p class="w3-tooltip custom-tooltip">Nepal Statistics
+				<p class="w3-tooltip custom-tooltip" style="margin-top:30px;">Nepal Statistics
 
 					<img src="resources/i_icon.png" width="20px"</img>
 					<span class="w3-text w3-card-2 w3-animate-opacity w3-light-grey tooltip">
@@ -154,7 +154,8 @@
 
 
 	<h2 id="sectionTitle" class="sectionTitle">
-		<span id="sectionOpenStreetMap">OpenStreetMap Nepal</span>
+		<span id="sectionOpenStreetMap">OpenStreetMap</span>
+		<span id="sectionNepal">Nepal</span>
 		<span id="sectionLeaderboards">LeaderBoards</span>
 	</h2>
 	<div class="w3-container w3-row w3-center"> <!-- Holds all leaderboard tables -->
@@ -165,11 +166,11 @@
 						<th class="th_center">Rank</th>
 						<th class="th_center">OSM Username</th>
 						<th class="th_center">Nodes</th>
-						<th class="th_right">Most Frequently edited POI</th>
+						<th class="th_center">Most Frequently edited POI</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="w3-blue highlighted">
+					<tr class="w3-teal highlighted">
 						<td class="center">1</td>
 						<td class="center">Nama Budhathoki</td>
 						<td class="center">12,14,145</td>
@@ -198,11 +199,11 @@
 						<th td class="center">Rank</th>
 						<th td class="center">OSM Username</th>
 						<th td class="center">Ways</th>
-						<th td class="right">Most Frequently edited POI</th>
+						<th td class="center">Most Frequently edited POI</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="w3-deep-orange highlighted">
+					<tr class="w3-teal highlighted">
 						<td class="center">1</td>
 						<td class="center">Sazal(Solaris)</td>
 						<td class="center">10,18,216</td>

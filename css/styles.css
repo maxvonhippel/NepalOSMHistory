@@ -25,10 +25,10 @@ body, table{
 
 h1.pageTitle{
 	font-family: testFont;
-	text-align: left;
+	text-align: center;
 	display: inline-block;
 	margin: 0;
-	padding-right: 40px;
+	/* padding-right: 40px; */
 	font-size: 28px;
 	line-height: 52px;
 	vertical-align: text-bottom;
@@ -76,22 +76,19 @@ h1.pageTitle{
 }
 h2.sectionTitle{
 	font-family:testFont;
-	font-size: 32px;
 	text-align:center;
-	background-color:red;
 	display: inline-block;
-	margin-top: 10px;
-	padding-right: 40px;
+	margin-top: 3%;
+	/* padding-right: 40px;  */
 	font-size: 21px;
-	line-height: 52px;
+	line-height: 57px;
 	vertical-align: text-bottom;
 	font-weight: normal;
 	color: white;
 	box-shadow: 0px 2px 3px rgba(0,0,0, 0.5);
 	background-color: #09B0A5 ; /* #0BB094 #0DCEAD, rgba(119,164,178, 1)*/
 	width: 100%;
-	/* position:absolute; */
-	z-index:5000;
+	/* position:absolute; z-index:5000; */
 	overflow:hidden; 
 	height:57px;
 	
@@ -189,8 +186,10 @@ div#glassy-effect{
 	margin:0px 0px 0px 0px;
 	letter-spacing:-1px
 	padding-bottom:2px;
-	border-bottom: 2px solid #fc721b;
+	/* border-bottom: 2px solid #fc721b; */
+	
 }
+
 
 .ways{
 	color:red;
@@ -216,8 +215,10 @@ div#glassy-effect{
 }
 
 hr.style-one {
+	margin:0px;
     border: 0;
     height: 1px;
     background: #333;
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
+
