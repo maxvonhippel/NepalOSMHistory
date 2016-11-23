@@ -156,7 +156,7 @@
 		<span id="sectionLeaderboards">LeaderBoards</span>
 	</h2>
 	<div class="w3-container w3-row w3-center"> <!-- Holds all leaderboard tables -->
-		<div class="custom-tooltip w3-col l6 s12 w3-display-container"><p>Nodes</p>
+		<div class="tableHeading w3-col l6 s12 w3-display-container"><p>Nodes</p>
 			<table id="tblNodes" class="w3-table-all w3-card-2 w3-col l11 s12 center"><!--Nodes Table-->
 				<thead>
 					<tr>
@@ -189,14 +189,14 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="custom-tooltip w3-col l6 s12 w3-display-container"><p>Ways</p>
+		<div class="tableHeading w3-col l6 s12 w3-display-container"><p>Ways</p>
 			<table id= "tblWays" class="w3-table-all w3-card-2 w3-col l11 s12 center"><!--Ways Table-->
 				<thead>
 					<tr>
-						<th td class="center">Rank</th>
-						<th td class="center">OSM Username</th>
-						<th td class="center">Ways</th>
-						<th td class="center">Most Frequently edited POI</th>
+						<th td class="th_center">Rank</th>
+						<th td class="th_center">OSM Username</th>
+						<th td class="th_center">Ways</th>
+						<th td class="th_center">Most Frequently edited POI</th>
 					</tr>
 				</thead>
 				<tbody>

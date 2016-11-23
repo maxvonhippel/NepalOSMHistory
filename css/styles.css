@@ -192,16 +192,18 @@ div#glassy-effect{
 	
 }
 
-
-.ways{
-	color:red;
-	font-family:testFont;
-}
-
-
 .custom-tooltip{
 	font-family: testFonts; 
-	color:#002D3F
+	color:#002D3F;
+}
+
+.tableHeading{
+	font-family: testFonts; 
+	color:#002D3F;	
+}
+
+#tblWays , #tblNodes{
+	font-family: Regular;
 }
 
 .tooltip{
