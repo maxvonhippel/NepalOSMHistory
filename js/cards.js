@@ -28,6 +28,19 @@ function updateSelectedStatistics(tables){
 	$("#selectedSchools_end").html(numberWithCommas(tables["Selection Statistics"].Schools_end));
 	$("#selectedHospitals_start").html(numberWithCommas(tables["Selection Statistics"].Hospitals_start));
 	$("#selectedHospitals_end").html(numberWithCommas(tables["Selection Statistics"].Hospitals_end));
+	
+	//Update [], [] and [] below the Selection Statistics Table as well:
+	$("#sel_stat_startDate").html(gStartTime);
+	$("#sel_stat_endDate").html(gEndTime);
+	if (gUsername==""){
+		$("#sel_stat_name").html("all OSM Users");
+	}
+	if(gUsername!=""){
+		$("#sel_stat_name").html("OSM user "+gUsername);
+		
+	}
+	
+	
 }
 
 function updateNodes(tables){
