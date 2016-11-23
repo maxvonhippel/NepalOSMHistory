@@ -1,7 +1,4 @@
 input[type=text] {
-    margin: 30px 0px 0px 0px;
-    margin-right:5%;
-
     width: 40px;
     box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, 0.9);
@@ -14,21 +11,23 @@ input[type=text] {
     padding: 12px 0px 14px 40px;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-    float:right;
+    /*float:right;*/
     height:40px;
     background-size:20px 20px;
     box-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
+}
 
-
-    /*box-shadow: 0px 0px 1px rgba(0,0,0, 0.5); */
-
-    position:absolute;
-
+#searchBox{
+	position:absolute;
+	right:5%;
+	top:30px;
 }
 
 #wrap {
+	position:absolute;
+	top:0px;
+	right:0px;
     z-index:90000;
-
 }
 
 
@@ -55,22 +54,12 @@ input[type=text]:hover{
 }
 
 
-ul.w3-ul li {
-    position: center;
-    padding: 6px 0px 6px 16px;
-    border-bottom: 1px solid #ddd;
-    top: 100%;
-    position: center;
-    left: 0px;
-    float: right;
-    list-style: none;
-    padding-right: 0;
-    min-width: 100%;
-    max-height: 100%;
-    box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
-    background-color: white;
-    z-index: 1010;
-    overflow-y: auto;
-    overflow-x: hidden;
-    cursor: pointer;
+#username{
+	position:absolute;
+	top:80px;
+	right:5%;
+	width: 75%;
+	background-color: white;
+	box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
+	cursor: pointer;
 }

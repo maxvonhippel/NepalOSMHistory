@@ -5,4 +5,4 @@
  * any of the other scripts in the project which are also in index.php, for use on
  * the front page (index.php) of the site
  */
- var GLOBALDEBUG = True;
+ var GLOBALDEBUG = False;

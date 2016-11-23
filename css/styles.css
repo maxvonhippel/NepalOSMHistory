@@ -16,6 +16,10 @@
 	font-family:light;
 	src: url(../fonts/ClearSans/ClearSans-Light.ttf);
 }
+@font-face{
+	font-family:italic;
+	src: url(../fonts/ClearSans/ClearSans-Italic.ttf);
+}
 
 body, table{
 	color:#47525e;
@@ -53,6 +57,7 @@ h1.pageTitle{
 	width:100%;
 	margin-top: 50px;
 	background-color:#EAF2F5; /*rgba(225, 237, 241, 0.72) #D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
+	position:relative;
 }
 #chart{
 	min-height:120px;
@@ -69,7 +74,9 @@ h1.pageTitle{
 }
 #selectionStatistics{
 	font-family:regular;
-	min-height:325px;
+	min-height:345px;
+	max-height:345px;
+	overflow:hidden;
 	z-index:5000;
 	background-color:#EAF2F5; /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
 	
@@ -128,12 +135,7 @@ th.th_center{
 	font-family: testFonts; 
 	color:#002D3F;
 }
-ul{
-	margin-right:10px !important;
-	padding-right:10px !important;
-	postion:relative;
-	
-}
+
 
 table.center{
 	margin-right:auto;

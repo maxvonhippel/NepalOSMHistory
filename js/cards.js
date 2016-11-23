@@ -28,6 +28,19 @@ function updateSelectedStatistics(tables){
 	$("#selectedSchools_end").html(numberWithCommas(tables["Selection Statistics"].Schools_end));
 	$("#selectedHospitals_start").html(numberWithCommas(tables["Selection Statistics"].Hospitals_start));
 	$("#selectedHospitals_end").html(numberWithCommas(tables["Selection Statistics"].Hospitals_end));
+	
+	//Update [], [] and [] below the Selection Statistics Table as well:
+	$("#sel_stat_startDate").html(gStartTime);
+	$("#sel_stat_endDate").html(gEndTime);
+	if (gUsername==""){
+		$("#sel_stat_name").html("all OSM Users");
+	}
+	if(gUsername!=""){
+		$("#sel_stat_name").html("OSM user "+gUsername);
+		
+	}
+	
+	
 }
 
 function updateNodes(tables){
@@ -36,7 +49,7 @@ function updateNodes(tables){
 		$("#tblNodes tbody").append('<tr><td class="center">'+tables.Nodes[row]["Rank"]+'</td><td class="center">'+tables.Nodes[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(tables.Nodes[row]["Nodes"])+'</td><td class="center">'+tables.Nodes[row]["Most Frequently edited POI"]+'</td></tr>');
 		
 		if(tables.Nodes[row].hasOwnProperty('highlight')){
-			$("#tblNodes tr td:contains("+tables.Nodes[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-indigo highlighted')});
+			$("#tblNodes tr td:contains("+tables.Nodes[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-teal highlighted')});
 		}
 	}
 }	
@@ -47,7 +60,7 @@ function updateWays(tables){
 		$("#tblWays tbody").append('<tr><td class="center">'+tables.Ways[row]["Rank"]+'</td><td class="center">'+tables.Ways[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(tables.Ways[row]["Ways"])+'</td><td class="center">'+tables.Ways[row]["Most Frequently edited POI"]+'</td></tr>');
 		
 		if(tables.Ways[row].hasOwnProperty('highlight')){
-			$("#tblWays tr td:contains("+tables.Ways[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-indigo highlighted')});
+			$("#tblWays tr td:contains("+tables.Ways[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-teal highlighted')});
 		}
 	}
 }

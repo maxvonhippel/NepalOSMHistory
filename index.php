@@ -56,18 +56,15 @@
 		<div id="#mapchartbox" class="w3-border w3-border-blue-grey w3-col l9 s12 w3-display-container">
 			<div id="mapid" class="w3-border w3-col l9 s12">
 				<!-- For the searchbox -->
-				<div id="wrap" class="w3-col l4 s10 w3-display-topright">
+				<div id="wrap" class="w3-col l4 s10">
 					<input id="searchBox" type="text" onfocus="this.select();" onkeyup="matched(this.value)" placeholder="Search for OSM username..." onfocusout="myfocusout()"/>
-					<!--<div id="console" style="visibility:hidden">
-					</div> -->
-					<ul id="username" class="w3-ul w3-card-2">
-					</ul>
+					<ul id="username" class="w3-ul w3-card-2"></ul>
 				</div> 
 				<!-- End of searchbox -->
 			</div> <!--- end of map -->
 			<script type="text/javascript" src="js/jsonclustermap.js"></script>
 			<!--- start of chart -->
-			<div id="chart" class="w3-border w3-col l9 s12"></div>
+			<div id="chart" class="w3-border w3-col l9 s12 chartposition"></div>
 			<script type="text/javascript" src="js/mapcontrolchart.js"></script>
 		</div> <!--- end of id=mapchartbox -->
 		
@@ -146,8 +143,8 @@
 						<td id="selectedHospitals_end" class="right">1,012</td>
 					</tr>
 				</table>
-				<p align="right" style="font-style:italic;font-family:testFont">Currently showing statistics for username: Sazal(Solaris)<br/>within 18 July 2016 and 21 Nov 2016</p>
-			</div>
+				<p align="right" style="font-style:italic;font-family:testFont">Currently showing statistics for <span id="sel_stat_name">all OSM users</span> within <span id="sel_stat_startDate">18 July 2016</span> and <span id="sel_stat_endDate">21 Nov 2016</span></p>
+			</div><hr class="style-one"/>
 		</div>
 	</div> <!-- END OF holds map, chart, nepal statistics and selected statistics -->
 

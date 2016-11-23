@@ -1,0 +1,76 @@
+input[type=text] {
+    margin: 30px 0px 0px 0px;
+    margin-right:5%;
+
+    width: 40px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 2px; /* 4px/ 10em for circle*/
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-image: url('../resources/search-icon.png') ;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 0px 14px 40px;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    float:right;
+    height:40px;
+    background-size:20px 20px;
+    box-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
+
+
+    /*box-shadow: 0px 0px 1px rgba(0,0,0, 0.5); */
+
+    /* position:static; */
+
+}
+
+#wrap {
+    z-index:90000;
+
+}
+
+
+input[type=text]:focus {
+  /* background-position: 98% ; Border color green #66CC75 */
+    width: 75%;
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.6);
+    font-family: regular;
+    cursor: auto;
+    font-size:auto;
+    box-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
+   /* position:static; */
+
+}
+
+input[type=text]:hover{
+    background-color:rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    border-color: #fff;
+    box-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
+
+    /*box-shadow: 2px 2px 4px rgba(0,0,0, 0.5); */
+}
+
+
+ul.w3-ul li {
+    position: center;
+    padding: 6px 0px 6px 16px;
+    border-bottom: 1px solid #ddd;
+    top: 100%;
+    position: center;
+    left: 0px;
+    float: right;
+    list-style: none;
+    padding-right: 0;
+    min-width: 100%;
+    max-height: 100%;
+    box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
+    background-color: white;
+    z-index: 1010;
+    overflow-y: auto;
+    overflow-x: hidden;
+    cursor: pointer;
+}
