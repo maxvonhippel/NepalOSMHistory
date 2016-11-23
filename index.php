@@ -114,6 +114,7 @@
 						</tr>
 					</table>
 				</div>
+				<hr class="style-one"/>
 				<div id="selectionStatistics" class="w3-container">
 					<p class="w3-tooltip custom-tooltip">Selection Statistics
 						<img src="resources/i_icon.png" width="20px"</img>
@@ -121,6 +122,7 @@
 							Shows the statisics of the selected user within the selected date range and the selected (zoomed in) area of the map
 						</span>
 					</p>
+					
 					<table class="w3-table-all w3-card-2" align="center">
 						<tr>
 							<th class="th_left">Features</th>
@@ -148,6 +150,7 @@
 							<td id="selectedHospitals_end" class="right">1,012</td>
 						</tr>
 					</table>
+					<p align="right" style="font-style:italic;font-family:testFont">Currently showing statistics for username: Sazal(Solaris)<br/>within 18 July 2016 and 21 Nov 2016</p>
 				</div>
 			</div>
 		</div>
