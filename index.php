@@ -70,17 +70,17 @@
 				<!--- start of chart -->
 				<div id="chart" class="w3-border w3-col l9 s12"></div>
 				<script type="text/javascript" src="js/mapcontrolchart.js"></script>
-<<<<<<< HEAD
-				
+
+
 				<!--- end of chart -->
 			</div>
 			<!--- end of map -->
-			
-			
-			<div class="w3-col l3 s12 w3-light-grey w3-left">			
+
+
+			<div class="w3-col l3 s12 w3-light-grey w3-left">
 				<div id="nepalStatistics" class="w3-container">
-					<p class="w3-tooltip custom-tooltip" style="margin-top: 30px;">Nepal Statistics 
-=======
+					<p class="w3-tooltip custom-tooltip" style="margin-top: 30px;">Nepal Statistics
+
 
 				<!--- end of chart --->
 			</div>
@@ -90,7 +90,7 @@
 			<div class="w3-col l3 s12 w3-light-grey w3-left">
 				<div id="nepalStatistics" class="w3-container">
 					<p class="w3-tooltip custom-tooltip">Nepal Statistics
->>>>>>> c80d8c061d1033981f50f3148460b33b92240457
+
 						<img src="resources/i_icon.png" width="20px"</img>
 						<span class="w3-text w3-card-2 w3-animate-opacity w3-light-grey tooltip">
 							Shows the cumulative statistics of the entire Nepal
@@ -166,18 +166,16 @@
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
-		
-		
+
+
+
 		<h2 id="sectionTitle" class="sectionTitle">
 		<span id="sectionOpenStreetMap">OpenStreetMap Nepal</span>
 		<span id="sectionLeaderboards">LeaderBoards</span>
 		</h2>
-=======
 
 
 		<h2 class="sectionTitle">OpenStreetMap Nepal Leaderboards</h2>
->>>>>>> c80d8c061d1033981f50f3148460b33b92240457
 		<div class="w3-container w3-row w3-center">
 			<div class="custom-tooltip w3-col l6 s12 w3-display-container"><p>Nodes</p>
 				<table id="tblNodes" class="w3-table-all w3-card-2 w3-col l11 s12 center"><!--Nodes Table-->
