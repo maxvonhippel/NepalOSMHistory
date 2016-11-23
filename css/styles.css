@@ -19,6 +19,8 @@
 
 body, table{
 	color:#47525e;
+	background-color:#EAF2F5;
+	
 }
 
 h1.pageTitle{
@@ -50,7 +52,7 @@ h1.pageTitle{
 	min-height:520px;
 	width:100%;
 	margin-top: 50px;
-	background-color:rgba(225, 237, 241, 0.72); /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
+	background-color:#EAF2F5; /*rgba(225, 237, 241, 0.72) #D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
 }
 #chart{
 	min-height:120px;
@@ -62,20 +64,37 @@ h1.pageTitle{
 	margin-top: 50px;
 	min-height:295px;
 	z-index:5000;
-	background-color:rgba(225, 237, 241, 0.72); /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
+	background-color:#EAF2F5; /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
 		
 }
 #selectionStatistics{
 	font-family:regular;
 	min-height:325px;
 	z-index:5000;
-	background-color:rgba(225, 237, 241, 0.72); /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
+	background-color:#EAF2F5; /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
 	
 }
 h2.sectionTitle{
 	font-family:testFont;
 	font-size: 32px;
-	text-align:center; 
+	text-align:center;
+	background-color:red;
+	display: inline-block;
+	margin-top: 10px;
+	padding-right: 40px;
+	font-size: 21px;
+	line-height: 52px;
+	vertical-align: text-bottom;
+	font-weight: normal;
+	color: white;
+	box-shadow: 0px 2px 3px rgba(0,0,0, 0.5);
+	background-color: #09B0A5 ; /* #0BB094 #0DCEAD, rgba(119,164,178, 1)*/
+	width: 100%;
+	/* position:absolute; */
+	z-index:5000;
+	overflow:hidden; 
+	height:57px;
+	
 }
 
 table .left{
@@ -144,15 +163,42 @@ div#glassy-effect{
 }
 
 #titleOpenStreetMap{
-	color:white; font-family:regular;margin:0px 0px 10px 30px; letter-spacing:0.5px;
+	color:white; 
+	font-family:regular;
+	margin:0px 0px 10px 30px; 
+	letter-spacing:0.5px;
 }
 
 #titleStatisticsTool{
-	color:white; overflow:hidden; font-family:testFont;margin:0px 0px 0px 0px; letter-spacing:-1px;
+	color:white; 
+	overflow:hidden; 
+	font-family:testFont;
+	margin:0px 0px 0px 0px; 
+	letter-spacing:-1px;
 }
 
+#sectionOpenStreetMap{
+	color: white;
+	font-family:regular;
+	letter-spacing:0.5px;
+}
+
+#sectionLeaderboards{
+	overflow:hidden; 
+	font-family:testFont;
+	margin:0px 0px 0px 0px;
+	letter-spacing:-1px
+	padding-bottom:2px;
+	border-bottom: 2px solid #fc721b;
+}
+
+.ways{
+	color:red;
+	font-family:testFont;
+}
+
+
 .custom-tooltip{
-	margin-top: 30px; 
 	font-family: testFonts; 
 	color:#002D3F
 }
