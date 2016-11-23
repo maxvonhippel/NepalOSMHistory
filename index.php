@@ -65,18 +65,18 @@
 					<!-- End of searchbox -->
 				</div>
 				<script type="text/javascript" src="js/jsonclustermap.js"></script>
-				<!--- start of chart --->
+				<!--- start of chart -->
 				<div id="chart" class="w3-border w3-col l9 s12"></div>
 				<script type="text/javascript" src="js/mapcontrolchart.js"></script>
 				
-				<!--- end of chart --->
+				<!--- end of chart -->
 			</div>
-			<!--- end of map --->
+			<!--- end of map -->
 			
 			
 			<div class="w3-col l3 s12 w3-light-grey w3-left">			
 				<div id="nepalStatistics" class="w3-container">
-					<p class="w3-tooltip custom-tooltip">Nepal Statistics 
+					<p class="w3-tooltip custom-tooltip" style="margin-top: 30px;">Nepal Statistics 
 						<img src="resources/i_icon.png" width="20px"</img>
 						<span class="w3-text w3-card-2 w3-animate-opacity w3-light-grey tooltip">
 							Shows the cumulative statistics of the entire Nepal
@@ -151,16 +151,19 @@
 		</div>
 		
 		
-		<h2 class="sectionTitle">OpenStreetMap Nepal Leaderboards</h2>
+		<h2 id="sectionTitle" class="sectionTitle">
+		<span id="sectionOpenStreetMap">OpenStreetMap Nepal</span>
+		<span id="sectionLeaderboards">LeaderBoards</span>
+		</h2>
 		<div class="w3-container w3-row w3-center">
-			<div class="w3-col l6 s12 w3-display-container" style="min-height:auto"><p>Nodes</p>
-				<table id="tblNodes" class="w3-table-all w3-card-4 w3-col l11 s12 center"><!--Nodes Table-->
+			<div class="custom-tooltip w3-col l6 s12 w3-display-container"><p>Nodes</p>
+				<table id="tblNodes" class="w3-table-all w3-card-2 w3-col l11 s12 center"><!--Nodes Table-->
 					<thead>
 						<tr>
-							<th>Rank</th>
-							<th>OSM Username</th>
-							<th>Nodes</th>
-							<th>Most Frequently edited POI</th>
+							<th class="th_center">Rank</th>
+							<th class="th_center">OSM Username</th>
+							<th class="th_center">Nodes</th>
+							<th class="th_right">Most Frequently edited POI</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -186,18 +189,18 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="w3-col l6 s12 w3-display-container" style="height:auto"><p>Ways</p>
-				<table id= "tblWays" class="w3-table-all w3-card-4 w3-col l11 s12 center"><!--Ways Table-->
+			<div class="custom-tooltip w3-col l6 s12 w3-display-container"><p>Ways</p>
+				<table id= "tblWays" class="w3-table-all w3-card-2 w3-col l11 s12 center"><!--Ways Table-->
 					<thead>
 						<tr>
-							<th>Rank</th>
-							<th>OSM Username</th>
-							<th>Ways</th>
-							<th>Most Frequently edited POI</th>
+							<th td class="center">Rank</th>
+							<th td class="center">OSM Username</th>
+							<th td class="center">Ways</th>
+							<th td class="right">Most Frequently edited POI</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="w3-blue highlighted">
+						<tr class="w3-deep-orange highlighted">
 							<td class="center">1</td>
 							<td class="center">Sazal(Solaris)</td>
 							<td class="center">10,18,216</td>
