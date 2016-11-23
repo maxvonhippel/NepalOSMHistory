@@ -143,7 +143,7 @@
 						<td id="selectedHospitals_end" class="right">1,012</td>
 					</tr>
 				</table>
-				<p align="right" style="font-style:italic;font-family:testFont">Currently showing statistics for username: Sazal(Solaris) within 18 July 2016 and 21 Nov 2016</p>
+				<p align="right" style="font-style:italic;font-family:testFont">Currently showing statistics for <span id="sel_stat_name">all OSM users</span> within <span id="sel_stat_startDate">18 July 2016</span> and <span id="sel_stat_endDate">21 Nov 2016</span></p>
 			</div><hr class="style-one"/>
 		</div>
 	</div> <!-- END OF holds map, chart, nepal statistics and selected statistics -->
