@@ -1,32 +1,4 @@
-// Hello.
-//
-// This is JSHint, a tool that helps to detect errors and potential
-// problems in your JavaScript code.
-//
-// To start, simply enter some JavaScript anywhere on this page. Your
-// report will appear on the right side.
-//
-// Additionally, you can toggle specific options in the Configure
-// menu.
-
 // USE THIS SITE FOR DEBUGGING: http://jshint.com
-
-// get the list of usernames
-if (!GLOBALDEBUG) {
-	// try and connect to the Django server
-	$.ajax({
-		url:"http://127.0.1.1:8000/usernames", // django resource
-		type: "GET",
-		async: true,
-		success: function(response){
-			//alert(response);
-		},
-		error: function (xhr, errmsg, err) {
-			console.log(xhr.status + "\n\n" + xhr.responseText);
-		}
-
-	});
-}
 
 // set up the options for our initial map
 var southWest = L.latLng(26.487043, 78.739439);
@@ -47,8 +19,6 @@ gNorth = northEast.lat,
 gEast = northEast.lng,
 gWest = southWest.lng,
 gSouth = southWest.lat,
-gStartTime="",
-gEndTime="",
 gUsername="";
 gCallFlag=0;
 countTimes=0;
@@ -81,15 +51,10 @@ map.addControl( new L.Control.Search({
 
 */
 
-//searchLayer is a L.LayerGroup contains searched markers
-
 // initialize the prune cluster object
 var leafletView = new PruneClusterForLeaflet(160);
 var size = 10000;
 var markers = [];
-
-// fillmap() starts the entire series of events outlined above
-//fillmap();
 
 // this handles updates to what should be visible on the map
 var lastUpdate = 0;
@@ -113,15 +78,6 @@ window.setInterval(function () {
 
 // we add the leaflet view to the map, thus showing the clusters from the prune cluster object
 map.addLayer(leafletView);
-
-// this is the callback for when the google chart date range changes, to filter out what we show in the map
-function showRange(start, end) {
-	markers.forEach(function(marker) {
-		// return true if it is not in the date range, false if it is in the daterange
-		marker.filtered = (start > marker.data.datestamp || marker.data.datestamp > end);
-	});
-	leafletView.ProcessView();
-}
 
 //Fire this when map is panned/zoomed/reset
 map.on('moveend', function(ev){
@@ -182,7 +138,7 @@ function hide_searchResults(){
 }
 
 
-function setSearchBoxContent(val){
+function setSearchBoxContent(val) {
 	gCallFlag=1; //set gCallFlag
 	set_gUsername(val); //set global [gUsername] here
 	document.getElementById('searchBox').value = val; //populate searchBox with the selected value from the <li> element.
@@ -196,8 +152,8 @@ function request_for_data() {
 	gSouth +"\n gEast:"+
 	gEast +"\n gWest:"+
 	gWest +"\n gStartTime:"+
-	gStartTime +"\n gEndTime:"+
-	gEndTime +"\n gUsername:"+
+	gStartTime.getFullYear() + "-" + gStartTime.getMonth() + "-" + gStartTime.getDay() + "T" + gStartTime.getHours() + ":" + gStartTime.getMinutes() + ":" + gStartTime.getSeconds() + gStartTime.getTimezoneOffset() +"\n gEndTime:"+
+	gEndTime.getFullYear() + "-" + gEndTime.getMonth() + "-" + gEndTime.getDay() + "T" + gEndTime.getHours() + ":" + gEndTime.getMinutes() + ":" + gEndTime.getSeconds() + gEndTime.getTimezoneOffset() +"\n gUsername:"+
 	gUsername
 	);
 
@@ -207,40 +163,25 @@ function request_for_data() {
 	$("#glassy-effect").css("filter","blur(1px)");
 
 	//disable_map_controls();
+	console.log("asking for json object for selection statistics");
 
 
-	//query the server with the current states of all [data]
-	$.ajax({
-		url:"server/api.php?"+Math.random(), //processing script on the server; for now it is hooked to a direct json response;
-		type: "POST",
-		data: {
-			"north":gNorth,
-			"south":gSouth,
-			"east":gEast,
-			"west":gWest,
-			"startTime":gStartTime,
-			"endTime":gEndTime,
-			"username":gUsername
-		},
-		success: function(response){
-			//Creat JSON object from the response text
-			var _obj = JSON.parse(response);
-			//Update Nepal Statistics Table
-			updateNepalStatistics(_obj);
-			//Update Selection Statistics Table
-			updateSelectedStatistics(_obj);
-			updateNodes(_obj);
-			updateWays(_obj);
-			//hide load icon
-			$("#block-everything").hide();
-			//$("#glassy-effect").css("filter","blur(0px)");
-			//enable_map_controls();
-		},
-		error: function (xhr, errmsg, err) {
-			alert (xhr.status + "\n\n" + xhr.responseText);
-		}
+	var response = selection_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
+	/*
+	var _obj = JSON.parse(response);
+	console.log("requested selection statistics");
+	console.log(response);
+	console.log(_obj);
+	//Update Nepal Statistics Table
+	//updateNepalStatistics(_obj);
+	//Update Selection Statistics Table
+	updateSelectedStatistics(_obj);
+	updateNodes(_obj);
+	updateWays(_obj);
+	//hide load icon
+	*/
+	$("#block-everything").hide();
 
-	});
 }
 
 function matched(searchText) {

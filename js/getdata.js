@@ -24,7 +24,7 @@ function country_stats () {
 	url = baseurl + "jsoncountry/";
 	// get the data
 	$.get(url)
-	.done(function(data)) {
+	.done(function(data) {
 		return str(data);
 	});
 	return null;
@@ -33,12 +33,19 @@ function country_stats () {
 // get and return the json of selection data
 function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 	// format the url
-	url = baseurl + "jsonselection/" + $.format.date(start, 'yyyy-MM-ddTHH:mm:ss') + start.getTimezoneOffset() + "," + $.format.date(end, 'yyyy-MM-ddTHH:mm:ss') + end.getTimezoneOffset() + "/" + str(mn_x) + "/" + str(mn_y) + "/" + str(mx_x) + "/" + str(mx_y) + "/" + user + "/";
+	if (!user || user == null || user == "")
+		user = "user";	// for now, fix the actual server later to be able to handle empty user param
+	url = baseurl + "jsonselection/" + start.getFullYear() + "-" + start.getMonth() + "-" + start.getDay() + "T" + start.getHours() + ":" + start.getMinutes() + ":" + start.getSeconds() + start.getTimezoneOffset() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + end.getDay() + "T" + end.getHours() + ":" + end.getMinutes() + ":" + end.getSeconds() + end.getTimezoneOffset() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + user + "/";
 	// get the data
+	console.log("url to request:");
+	console.log(url);
 	$.get(url)
-	.done(function(data)) {
-		return str(data);
+	.done(function(data) {
+		console.log("response:");
+		console.log(data);
+		return data;
 	});
+	console.log("nothing");
 	return null;
 }
 

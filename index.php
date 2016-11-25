@@ -6,6 +6,9 @@
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/jquery.csv.js"></script>
 	<script src="js/jquery.csv.min.js"></script>
+	<!--- update ui script --->
+	<script type="text/javascript" src="js/updateui.js"></script>
+	<script type="text/javascript" src="js/getdata.js"></script>
 	<!-- For the SearchBox -->
 	<link href="css/search.css" rel="stylesheet">
 	<script src="server/usernames.js"></script> <!-- List of usernames; updated daily on the server  -->
@@ -16,8 +19,6 @@
 	<!---- css ---->
 	<link href="http://www.w3schools.com/lib/w3.css" rel="stylesheet"/>
 	<link href="css/styles.css" rel="stylesheet"/>
-	<!---- src ---->
-	<script src="js/script.js"></script>
 	<!--Leaflet-->
 	<link rel="stylesheet" href="css/leaflet.css" />
 	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
@@ -37,6 +38,11 @@
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.mobile.src.css">
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.mobile.min.css">
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.min.css">
+
+	<script>
+		var gStartTime = null;
+		var gEndTime = null;
+	</script>
 
 </head>
 
@@ -59,7 +65,7 @@
 				<div id="wrap" class="w3-col l4 s10">
 					<input id="searchBox" type="text" onfocus="this.select();" onkeyup="matched(this.value)" placeholder="Search for OSM username..." onfocusout="myfocusout()"/>
 					<ul id="username" class="w3-ul w3-card-2"></ul>
-				</div> 
+				</div>
 				<!-- End of searchbox -->
 			</div> <!--- end of map -->
 			<script type="text/javascript" src="js/jsonclustermap.js"></script>
@@ -67,7 +73,7 @@
 			<div id="chart" class="w3-border w3-col l9 s12 chartposition"></div>
 			<script type="text/javascript" src="js/mapcontrolchart.js"></script>
 		</div> <!--- end of id=mapchartbox -->
-		
+
 		<div class="w3-col l3 s12 w3-light-grey w3-left">
 			<div id="nepalStatistics" class="w3-container">
 				<p class="w3-tooltip custom-tooltip" style="margin-top:30px;">Nepal Statistics
@@ -115,7 +121,7 @@
 						Shows the statisics of the selected user within the selected date range and the selected (zoomed in) area of the map
 					</span>
 				</p>
-				
+
 				<table class="w3-table-all w3-card-2" align="center">
 					<tr>
 						<th class="th_left">Features</th>
@@ -223,10 +229,10 @@
 			</table>
 		</div>
 	</div> <!-- END OF Holds all leaderboard tables -->
-	
+
 	<br/>
 	<br/>
-	
+
 	<!-- </div> <!-- id "glassy-effect" -->
 </body>
 </html>

@@ -63,17 +63,13 @@ function init() {
 
 				drawchart();
 
-				var gStartTime = null;
-				var gEndTime = null;
-
 				function selection_change() {
 
 					//request data from the server with new [gStartTime] and [gEndTime]
-					request_for_data();
-					// showRange is a function in jsonclustermap.js
-					self.showRange(gStartTime, gEndTime);
-					// update the selection statistics box
-					self.updateCardsRange(gStartTime, gEndTime);
+					if (gStartTime != null && gEndTime != null) {
+						request_for_data();
+					self.date_range_change(gStartTime, gEndTime);
+					}
 
 				}
 
