@@ -108,6 +108,7 @@ map.on('moveend', function(ev){
 });
 
 // For the SearchBox
+/*
 function fetch_Addr_Username(value){
 	$.ajax({
 		url:"server/usernames.js",
@@ -122,6 +123,7 @@ function fetch_Addr_Username(value){
 
 	});
 }
+*/
 
 function show_searchResults(){
 	$("#username").show();

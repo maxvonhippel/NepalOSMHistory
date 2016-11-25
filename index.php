@@ -9,9 +9,10 @@
 	<!--- update ui script --->
 	<script type="text/javascript" src="js/updateui.js"></script>
 	<script type="text/javascript" src="js/getdata.js"></script>
-	<!-- For the SearchBox -->
-	<link href="css/search.css" rel="stylesheet">
+	<!--- For the SearchBox -->
+	<!--- switch to resources/usernames.js if we want to use server usernames --->
 	<script src="server/usernames.js"></script> <!-- List of usernames; updated daily on the server  -->
+	<link href="css/search.css" rel="stylesheet">
 	<!--fa icons-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	<!--- google charts --->
