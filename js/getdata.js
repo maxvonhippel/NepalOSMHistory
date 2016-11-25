@@ -1,5 +1,5 @@
 // this script gets data from the server
-var baseurl = "http://192.168.1.25:8000/";
+var baseurl = "http://192.168.1.161:8000/";
 
 // get and return the array of usernames
 // example: see server/geodjango/example output/testusernames.txt
@@ -7,15 +7,23 @@ function usernames () {
 	// format the url
 	url = baseurl + "usernames/";
 	var usernames = [];
-	// get the data
-	$.get(url)
-	.done(function(data) {
-    	usernames = data;
-    	console.log("got usernames:");
-    	console.log(usernames);
-    	return usernames;
-  	});
-  	return null;
+	$.ajax({
+
+    	url: url,
+		data: null,
+		type: 'GET',
+    	crossDomain: true,
+		dataType: 'jsonp',
+		success: function(data) {
+			usernames = data;
+			console.log("got usernames:");
+    		console.log(usernames);
+    		return usernames;
+		},
+		error: function() { alert('Failed!'); }
+
+	});
+	return null;
 }
 
 // get and return the json of country data

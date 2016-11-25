@@ -9,6 +9,10 @@
 	<!--- update ui script --->
 	<script type="text/javascript" src="js/updateui.js"></script>
 	<script type="text/javascript" src="js/getdata.js"></script>
+	<script>
+		console.log("getting usernames");
+		usernames();
+	</script>
 	<!--- For the SearchBox -->
 	<!--- switch to resources/usernames.js if we want to use server usernames --->
 	<script src="server/usernames.js"></script> <!-- List of usernames; updated daily on the server  -->
