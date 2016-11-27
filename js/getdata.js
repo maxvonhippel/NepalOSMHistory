@@ -1,5 +1,5 @@
 // this script gets data from the server
-var baseurl = "http://192.168.1.161:8000/";
+var baseurl = "http://192.168.1.33:8080/";
 
 // get and return the array of usernames
 // example: see server/geodjango/example output/testusernames.txt

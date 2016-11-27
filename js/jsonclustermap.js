@@ -149,6 +149,8 @@ function setSearchBoxContent(val) {
 }
 
 function request_for_data() {
+	if (gStartTime == null || gEndTime == null)
+		return;
 	console.log("Requesting for Data with the following parameters:\n gNorth:" +
 	gNorth +"\n gSouth:" +
 	gSouth +"\n gEast:"+

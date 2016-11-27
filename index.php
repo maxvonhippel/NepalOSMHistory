@@ -11,11 +11,9 @@
 	<script type="text/javascript" src="js/getdata.js"></script>
 	<script>
 		console.log("getting usernames");
-		usernames();
+		var usernames = usernames();
 	</script>
 	<!--- For the SearchBox -->
-	<!--- switch to resources/usernames.js if we want to use server usernames --->
-	<script src="server/usernames.js"></script> <!-- List of usernames; updated daily on the server  -->
 	<link href="css/search.css" rel="stylesheet">
 	<!--fa icons-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
