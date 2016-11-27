@@ -13,14 +13,21 @@ function usernames () {
 		data: null,
 		type: 'GET',
     	crossDomain: true,
-		dataType: 'jsonp',
+		dataType: 'txt',
 		success: function(data) {
 			usernames = data;
 			console.log("got usernames:");
     		console.log(usernames);
     		return usernames;
 		},
-		error: function() { alert('Failed!'); }
+		error: function(xhr, status, text) {
+	        var response = xhr.responseText;
+
+	        console.log('Failure!');
+
+	        if (response)
+	            console.log(response.error);
+    	}
 
 	});
 	return null;
