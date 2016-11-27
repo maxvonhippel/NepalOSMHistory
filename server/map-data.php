@@ -21,13 +21,14 @@ $listener = new \JsonStreamingParser\Listener\GeoJsonListener(function ($item) {
     $data = json_encode($item);
     if ($data) {
 	   sendMessage($lastId, $data);
-	   $lastId++; 
+	   $lastId++;
     }
 });
 $stream = fopen($testfile, 'r');
 try {
     $parser = new \JsonStreamingParser\Parser($stream, $listener);
     $parser->parse();
+	sendMessage("end", "end");
     fclose($stream);
 } catch (Exception $e) {
     fclose($stream);

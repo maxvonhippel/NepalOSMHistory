@@ -1,24 +1,30 @@
+var total = 477369;
+var cur = 0;
+
 function getContent()
 {
 	if (!!window.EventSource) {
 		// http://www.howopensource.com/2014/12/introduction-to-server-sent-events/
     		var source = new EventSource("server/map-data.php");
     		source.addEventListener("message", function(e) {
-			var json = $.parseJSON(e.data);
-			parseresponse(json);
-		}, false);
-		
-		source.addEventListener("open", function(e) {
-			console.log("Connection was opened.");
-		}, false);
-		
-		source.addEventListener("error", function(e) {
-			console.log("Error - connection was lost.");
-		}, false);
-		
-    	} else {
-		alert("Your browser does not support Server-sent events! Please upgrade it!");
-	}
+
+				var json = $.parseJSON(e.data);
+				if (json[0] == "end" && json[1] == "end")
+					console.log("Finished streaming GEOJSON over PHP from server.");
+				else parseresponse(json);
+
+			}, false);
+
+			source.addEventListener("open", function(e) {
+				console.log("Connection was opened.");
+			}, false);
+
+			source.addEventListener("error", function(e) {
+				console.log("Error - connection was lost.");
+			}, false);
+
+    } else alert("Your browser does not support Server-sent events! Please upgrade it!");
+
 
 }
 
@@ -29,6 +35,10 @@ $(function() {
 
 // this function parses our response once we get it (see code above in fillmap() )
 function parseresponse(json) {
+	cur += 1;
+	if (cur == total)
+		print("done parsing geojson!");
+
 	var lon = json.geometry.coordinates[0];
 	var lat = json.geometry.coordinates[1];
 	// for now we are only mapping features which have a lon and lat, so not relations or ways unfortunately
