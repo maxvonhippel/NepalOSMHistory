@@ -1,55 +1,70 @@
-var total = 477369;
-var cur = 0;
-
-function getContent()
-{
-	if (!!window.EventSource) {
-		// http://www.howopensource.com/2014/12/introduction-to-server-sent-events/
-    		var source = new EventSource("server/map-data.php");
-    		source.addEventListener("message", function(e) {
-
-				var json = $.parseJSON(e.data);
-				if (json[0] == "end" && json[1] == "end")
-					console.log("Finished streaming GEOJSON over PHP from server.");
-				else parseresponse(json);
-
-			}, false);
-
-			source.addEventListener("open", function(e) {
-				console.log("Connection was opened.");
-			}, false);
-
-			source.addEventListener("error", function(e) {
-				console.log("Error - connection was lost.");
-			}, false);
-
-    } else alert("Your browser does not support Server-sent events! Please upgrade it!");
-
-
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
 }
 
-// initialize jQuery
-$(function() {
-    getContent();
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
+
+var width = 1;
+var hundredth = 200000;
+
+function move() {
+	var elem = document.getElementById("myBar");
+	if (width >= 100) {
+		width = 1;
+		elem.style.width = width + '%';
+	} else {
+		width++;
+		elem.style.width = width + '%';
+	}
+}
+
+var a = 0;
+var mks = 0;
+
+Papa.parse("http://localhost:8888/NepalOSMHistory/data/sampledaily/nodes.csv", {
+	download: true,
+	dynamicTyping: true,
+	delimiter: ",",
+	step: function(row) {
+		parseresponse(row.data[0]);
+	},
+	complete: function() {
+		console.log("All done!");
+		document.getElementById("myBar").remove();
+		document.getElementById("myProgress").remove();
+		map.addLayer(leafletView);
+	}
 });
 
 // this function parses our response once we get it (see code above in fillmap() )
-function parseresponse(json) {
-	cur += 1;
-	if (cur == total)
-		print("done parsing geojson!");
-
-	var lon = json.geometry.coordinates[0];
-	var lat = json.geometry.coordinates[1];
-	// for now we are only mapping features which have a lon and lat, so not relations or ways unfortunately
-	// would be a good feature to add in the future!
-	// but we do consider relations and ways in all of our printed statistics on the website in cards and charts
-	if (lon !== 0.0 && lat !== 0.0) {
-		// initialize a marker in our prune cluster object for this feature from the json
-		var marker = new PruneCluster.Marker(lat, lon);
-		marker.data.datestamp = new Date(json.properties.timestamp);
-		marker.data.popup = "user: " + json.properties.user + " timestamp: " + marker.data.datestamp + " version: " + json.properties.version + " feature_id: " + json.properties.feature_id;
-		markers.push(marker);
-		leafletView.RegisterMarker(marker);
-	}
+function parseresponse(c) {
+	try {
+		var marker = new PruneCluster.Marker(c[2], c[1]);
+		marker.data.id = c[0];
+		w = 0;
+		var versions = []
+		Papa.parse(c[3].slice(1, -1), {
+			delimiter: ",",
+			step: function(edit) {
+				a += 1;
+				if (a % hundredth == 0)
+					move();
+				w += 1;
+				versions.push([c[edit.data[0][0]], c[edit.data[0][1]]]);
+			}
+		});
+		if (w > 0) {
+			marker.weight = w; // number of items in the cluster
+			marker.data.versions = versions;
+			mks += 1;
+			markers.push(marker);
+			leafletView.RegisterMarker(marker); // this is the slow part
+		}
+	} catch (err) { console.log(err + c); }
 }

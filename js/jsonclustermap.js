@@ -76,9 +76,6 @@ window.setInterval(function () {
 
 }, 500);
 
-// we add the leaflet view to the map, thus showing the clusters from the prune cluster object
-map.addLayer(leafletView);
-
 //Fire this when map is panned/zoomed/reset
 map.on('moveend', function(ev){
 	//set new values for global geo coordinates

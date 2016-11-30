@@ -2,6 +2,8 @@
 <head>
 	<!---- global debug variable --->
 	<script src="js/global-debug.js"></script>
+	<!---- papa parse --->
+	<script src="js/papaparse.min.js"></script>
 	<!---- jquery --->
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/jquery.csv.js"></script>
@@ -11,7 +13,7 @@
 	<script type="text/javascript" src="js/getdata.js"></script>
 	<!--- get usernames --->
 	<script>
-		var usernames = usernames ();
+		var usernames = this.usernames ();
 	</script>
 	<!script type="text/javascript" src="http://192.168.1.19:8080/usernames/"><!/script>
 	<!--- For the SearchBox -->
@@ -71,6 +73,11 @@
 					<ul id="username" class="w3-ul w3-card-2"></ul>
 				</div>
 				<!-- End of searchbox -->
+				<!--- progress bar --->
+				<div id="myProgress">
+					<div id="myBar"></div>
+				</div>
+				<!--- End of progress bar --->
 			</div> <!--- end of map -->
 			<script type="text/javascript" src="js/jsonclustermap.js"></script>
 			<!--- start of chart -->

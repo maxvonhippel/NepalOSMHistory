@@ -44,7 +44,6 @@ function makeCorsRequest(url) {
     	console.log('Woops, there was an error making the request.');
     	return null;
   	};
-
   	xhr.send();
 }
 
