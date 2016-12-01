@@ -4,6 +4,8 @@
 	<script src="js/global-debug.js"></script>
 	<!---- papa parse --->
 	<script src="js/papaparse.min.js"></script>
+	<!--- google charts --->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<!---- cross filter --->
 	<script src="js/crossfilter.min.js"></script>
 	<!---- jquery --->
@@ -22,8 +24,6 @@
 	<link href="css/search.css" rel="stylesheet">
 	<!--fa icons-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-	<!--- google charts --->
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<!---- css ---->
 	<link href="http://www.w3schools.com/lib/w3.css" rel="stylesheet"/>
 	<link href="css/styles.css" rel="stylesheet"/>

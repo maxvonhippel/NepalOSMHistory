@@ -32,18 +32,21 @@ var mks = 0; // how many total node ids have we seen?
 
 // -------------------------- CSV PARSING FOR THE MAP ----------------------------------
 
-Papa.parse("http://localhost:80/NepalOSMHistory/data/sampledaily/nodes.csv", {
+Papa.parse("http://localhost:8888/NepalOSMHistory/data/sampledaily/nodes.csv", {
 	download: true, 		// downloads the file, otherwise it doesn't work
 	dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
 	delimiter: ",", 		// explicit statement improves speed
 	step: function(row) {
-		parseresponse(row.data[0]);		// parse row by row for speed
+		if (row.data[0].length == 4)
+			parseresponse(row.data[0]);		// parse row by row for speed
 	},
 	complete: function() {
 		console.log("All done!");
 		// remove progress bar
 		document.getElementById("myBar").remove();
 		document.getElementById("myProgress").remove();
+		// clean up markers array
+		markers.length = mks;
 		// put stuff on map
 		map.addLayer(leafletView);
 	}
@@ -62,7 +65,7 @@ function parseresponse(c) {
 		var versions = []; // possibly use new Array(n) later if I can find way to calculate N.
 		// remove { and } around array string literal, maybe unnecesary?
 		// then iterate over the csv within
-		Papa.parse(c[3].slice(1, -1), {
+		Papa.parse(c[3].toString().slice(1, -1), {
 			delimiter: ",",	// explicit delimiter statement for speed
 			step: function(edit) {
 				a += 1;	// keep track of number of versions total parsed
@@ -80,5 +83,5 @@ function parseresponse(c) {
 			markers[mks] = marker;	// add to array used for filtering
 			leafletView.RegisterMarker(marker); // add to map (not yet rendered)
 		}
-	} catch (err) { console.log(err + c); } // log error and move on, usually can expect a couple, it's ok
+	} catch (err) { console.log(err + " full str: " + c.toString() + " and the pat to split: " + c[4].toString()); } // log error and move on, usually can expect a couple, it's ok
 }

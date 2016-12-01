@@ -54,8 +54,11 @@ map.addControl( new L.Control.Search({
 // initialize the prune cluster object
 var leafletView = new PruneClusterForLeaflet(160);
 var size = 10000;
-var markers = new Array(4000000); // much faster than pushing, but may need to increase size if we ever surpass that
-var cf = null;
+// much faster than pushing, but may need to increase size if we ever surpass that
+nr = 4000000
+var markers = new Array(nr);
+var ir = 0;
+while ( ir < nr ) { markers[ir] =0; ir++; }
 
 /*
 var lastUpdate = 0;

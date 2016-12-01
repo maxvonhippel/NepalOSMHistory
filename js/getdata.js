@@ -1,5 +1,5 @@
 // this script gets data from the server
-var baseurl = "http://192.168.1.19:8080/";
+var baseurl = "http://139.59.37.112:8080/";
 
 // Create the XHR object.
 function createCORSRequest(method, url) {
@@ -96,6 +96,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 	console.log("nothing found on server for selection");
 	return null;
 	*/
+
 }
 
 // get and return the csv data on activity
