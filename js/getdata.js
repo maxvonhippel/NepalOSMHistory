@@ -72,7 +72,7 @@ function country_stats () {
 
 // get and return the json of selection data
 function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
-
+	/*
 	// format the url
 	if (!user || user == null || user == "")
 		user = "user";	// for now, fix the actual server later to be able to handle empty user param
@@ -95,6 +95,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 
 	console.log("nothing found on server for selection");
 	return null;
+	*/
 }
 
 // get and return the csv data on activity

@@ -54,9 +54,10 @@ map.addControl( new L.Control.Search({
 // initialize the prune cluster object
 var leafletView = new PruneClusterForLeaflet(160);
 var size = 10000;
-var markers = [];
+var markers = new Array(4000000); // much faster than pushing, but may need to increase size if we ever surpass that
+var cf = null;
 
-// this handles updates to what should be visible on the map
+/*
 var lastUpdate = 0;
 window.setInterval(function () {
 	var now = +new Date();
@@ -74,7 +75,7 @@ window.setInterval(function () {
 	leafletView.ProcessView();
 	lastUpdate = now;
 
-}, 500);
+}, 500); */
 
 //Fire this when map is panned/zoomed/reset
 map.on('moveend', function(ev){

@@ -4,6 +4,8 @@
 	<script src="js/global-debug.js"></script>
 	<!---- papa parse --->
 	<script src="js/papaparse.min.js"></script>
+	<!---- cross filter --->
+	<script src="js/crossfilter.min.js"></script>
 	<!---- jquery --->
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/jquery.csv.js"></script>

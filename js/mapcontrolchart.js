@@ -68,7 +68,7 @@ function init() {
 					//request data from the server with new [gStartTime] and [gEndTime]
 					if (gStartTime != null && gEndTime != null) {
 						request_for_data();
-					self.date_range_change(gStartTime, gEndTime);
+						self.date_range_change(gStartTime, gEndTime);
 					}
 
 				}
