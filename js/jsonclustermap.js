@@ -1,5 +1,3 @@
-// USE THIS SITE FOR DEBUGGING: http://jshint.com
-
 // set up the options for our initial map
 var southWest = L.latLng(26.487043, 78.739439);
 var northEast = L.latLng(30.688485, 89.847341);
@@ -157,8 +155,8 @@ function request_for_data() {
 	gSouth +"\n gEast:"+
 	gEast +"\n gWest:"+
 	gWest +"\n gStartTime:"+
-	gStartTime.getFullYear() + "-" + gStartTime.getMonth() + "-" + gStartTime.getDay() + "T" + gStartTime.getHours() + ":" + gStartTime.getMinutes() + ":" + gStartTime.getSeconds() + gStartTime.getTimezoneOffset() +"\n gEndTime:"+
-	gEndTime.getFullYear() + "-" + gEndTime.getMonth() + "-" + gEndTime.getDay() + "T" + gEndTime.getHours() + ":" + gEndTime.getMinutes() + ":" + gEndTime.getSeconds() + gEndTime.getTimezoneOffset() +"\n gUsername:"+
+	gStartTime.getFullYear() + "-" + gStartTime.getMonth() + "-" + gStartTime.getDay() + "\n gEndTime:"+
+	gEndTime.getFullYear() + "-" + gEndTime.getMonth() + "-" + gEndTime.getDay() + "\n gUsername:"+
 	gUsername
 	);
 

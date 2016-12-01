@@ -47,11 +47,6 @@
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.mobile.min.css">
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.min.css">
 
-	<script>
-		var gStartTime = null;
-		var gEndTime = null;
-	</script>
-
 </head>
 
 <body>

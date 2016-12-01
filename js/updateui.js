@@ -8,7 +8,7 @@ function date_range_change(start, end) {
 		var m = markers[i];
 		if (m && m.hasOwnProperty(data) && m.hasOwnProperty(weight)) {
 			m.weight = m.data.versions.reduce(function(n, version) {
-				return n + (version[1] >= start && version[1] <= end);
+				return n + (version[1].getDate() >= start.getDate() && version[1].getDate() <= end.getDate());
 			}, 0);
 			m.filtered = m.weight == 0;
 		}
