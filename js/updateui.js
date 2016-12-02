@@ -48,11 +48,18 @@ function filter_map(start, end) {
 	// process changes
 	leafletView.ProcessView();
 	// leaderboards calculation
-	var keys = []; for(var key in hash) keys.push(key);
+	var keys = [];
+	for(var key in hash)  {
+		keys.push(key);
+	}
 	var r = keys.sort(function(a,b){ return hash[a] - hash[b]} );
 	var ret = new Array(5);
 	for (var q = 0; q < 5 && q < r.length; q++) {
 		ret[r[q]] = this.hash[r[q]];
+	}
+	var place = 0;
+	for (var key in ret) {
+		console.log("Place: ", ++place, " User: ", key, " Nodes mapped: ", ret[key]);
 	}
 
 }
