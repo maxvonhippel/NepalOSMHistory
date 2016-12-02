@@ -11,25 +11,25 @@ function updateCardsRange(start, end) {
 	document.getElementById("endDate").innerHTML = end.getUTCDay() + " " + months[end.getUTCMonth()] + " " + end.getUTCFullYear();
 }
 
-function updateNepalStatistics(tables){
-	$("#nepalMappers").html(numberWithCommas(tables["Nepal Statistics"].Mappers));
-	$("#nepalBuildings").html(numberWithCommas(tables["Nepal Statistics"].Buildings));
-	$("#nepalRoads").html(numberWithCommas(tables["Nepal Statistics"].Roads));
-	$("#nepalSchools").html(numberWithCommas(tables["Nepal Statistics"].Schools));
-	$("#nepalHospitals").html(numberWithCommas(tables["Nepal Statistics"].Hospitals));
+function updateNepalStatistics(cStats){
+	$("#nepalMappers").html(numberWithCommas(cStats.Mappers));
+	$("#nepalBuildings").html(numberWithCommas(cStats.Buildings));
+	$("#nepalRoads").html(numberWithCommas(cStats.Roads));
+	$("#nepalEducation").html(numberWithCommas(cStats.Education));
+	$("#nepalHealth").html(numberWithCommas(cStats.Health));	
 }
 
-function updateSelectedStatistics(tables){
-	$("#selectedBuildings_start").html(numberWithCommas(tables["Selection Statistics"].Buildings_start));
-	$("#selectedBuildings_end").html(numberWithCommas(tables["Selection Statistics"].Buildings_end));
-	$("#selectedRoads_start").html(numberWithCommas(tables["Selection Statistics"].Roads_start));
-	$("#selectedRoads_end").html(numberWithCommas(tables["Selection Statistics"].Roads_end));
-	$("#selectedSchools_start").html(numberWithCommas(tables["Selection Statistics"].Schools_start));
-	$("#selectedSchools_end").html(numberWithCommas(tables["Selection Statistics"].Schools_end));
-	$("#selectedHospitals_start").html(numberWithCommas(tables["Selection Statistics"].Hospitals_start));
-	$("#selectedHospitals_end").html(numberWithCommas(tables["Selection Statistics"].Hospitals_end));
-
-	//Update [], [] and [] below the Selection Statistics Table as well:
+function updateSelectionStatistics(sStats){
+	$("#selectedBuildings_start").html(numberWithCommas(sStats.Buildings_start));
+	$("#selectedBuildings_end").html(numberWithCommas(sStats.Buildings_end));
+	$("#selectedRoads_start").html(numberWithCommas(sStats.Roads_start));
+	$("#selectedRoads_end").html(numberWithCommas(sStats.Roads_end));
+	$("#selectedEducation_start").html(numberWithCommas(sStats.Education_start));
+	$("#selectedEducation_end").html(numberWithCommas(sStats.Education_end));
+	$("#selectedHealth_start").html(numberWithCommas(sStats.Health_start));
+	$("#selectedHealth_end").html(numberWithCommas(sStats.Health_end));
+	
+	//Update [current OSM username], [gStartTime] and [gEndTime] below the Selection Statistics Table as well:
 	$("#sel_stat_startDate").html(gStartTime);
 	$("#sel_stat_endDate").html(gEndTime);
 	if (gUsername==""){
@@ -37,30 +37,41 @@ function updateSelectedStatistics(tables){
 	}
 	if(gUsername!=""){
 		$("#sel_stat_name").html("OSM user "+gUsername);
-
+		
 	}
-
-
+	
+	
 }
 
-function updateNodes(tables){
+function updateNodesOld(tables){
 	$("#tblNodes > tbody").empty();
 	for (row in tables.Nodes){
 		$("#tblNodes tbody").append('<tr><td class="center">'+tables.Nodes[row]["Rank"]+'</td><td class="center">'+tables.Nodes[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(tables.Nodes[row]["Nodes"])+'</td><td class="center">'+tables.Nodes[row]["Most Frequently edited POI"]+'</td></tr>');
-
+		
 		if(tables.Nodes[row].hasOwnProperty('highlight')){
 			$("#tblNodes tr td:contains("+tables.Nodes[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-teal highlighted')});
 		}
 	}
 }
 
-function updateWays(tables){
-	$("#tblWays > tbody").empty();
-	for (row in tables.Ways){
-		$("#tblWays tbody").append('<tr><td class="center">'+tables.Ways[row]["Rank"]+'</td><td class="center">'+tables.Ways[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(tables.Ways[row]["Ways"])+'</td><td class="center">'+tables.Ways[row]["Most Frequently edited POI"]+'</td></tr>');
+function updateNodes(nodesTable){
+	$("#tblNodes > tbody").empty();
+	for (row in nodesTable){
+		$("#tblNodes tbody").append('<tr><td class="center">'+nodesTable[row]["Rank"]+'</td><td class="center">'+nodesTable[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(nodesTable[row]["Nodes"])+'</td><td class="center">'+nodesTable[row]["Most Frequently edited POI"]+'</td></tr>');
+		
+		if(nodesTable[row].hasOwnProperty('highlight')){
+			$("#tblNodes tr td:contains("+nodesTable[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-teal highlighted')});
+		}
+	}
+}
 
-		if(tables.Ways[row].hasOwnProperty('highlight')){
-			$("#tblWays tr td:contains("+tables.Ways[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-teal highlighted')});
+function updateWays(waysTable){
+	$("#tblWays > tbody").empty();
+	for (row in waysTable){
+		$("#tblWays tbody").append('<tr><td class="center">'+waysTable[row]["Rank"]+'</td><td class="center">'+waysTable[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(waysTable[row]["Ways"])+'</td><td class="center">'+waysTable[row]["Most Frequently edited POI"]+'</td></tr>');
+		
+		if(waysTable[row].hasOwnProperty('highlight')){
+			$("#tblWays tr td:contains("+waysTable[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-teal highlighted')});
 		}
 	}
 }

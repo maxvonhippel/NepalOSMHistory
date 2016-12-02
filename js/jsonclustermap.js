@@ -20,6 +20,8 @@ gEast = northEast.lng,
 gWest = southWest.lng,
 gSouth = southWest.lat,
 gUsername="";
+gStartTime=new Date("March 18, 2007 11:13:00");
+gEndTime=new Date();
 gCallFlag=0;
 countTimes=0;
 countTest=0;
@@ -163,14 +165,24 @@ function request_for_data() {
 
 	//show load icon and keep it displayed till ajax returns
 	//$("#block-everything").toggle();
-	$("#block-everything").show();
+	//$("#block-everything").show();
 	$("#glassy-effect").css("filter","blur(1px)");
 
 	//disable_map_controls();
 	console.log("asking for json object for selection statistics");
 
+	//update Nepal Statistics table
+	var responseNepalStatistics = country_stats();
+	//update selections statistics table
+	var responseSelectionStatistics = selection_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
+	//update nodes table
+	var responseNodesTable = nodes_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
+	//update ways table
+	var responseWaysTable = ways_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
+	//var responseWays =;
+	
+	
 
-	var response = selection_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
 	/*
 	var _obj = JSON.parse(response);
 	console.log("requested selection statistics");
@@ -184,12 +196,13 @@ function request_for_data() {
 	updateWays(_obj);
 	//hide load icon
 	*/
-	$("#block-everything").hide();
+	//$("#block-everything").hide();
 
 }
 
 function matched(searchText) {
 	console.log("keyup...");
+	//if (gUsernames=="") gUsernames=usernames();
 	//document.getElementById('console').innerHTML = "";
 	document.getElementById('username').innerHTML = "";
 	var _matchCount=0; //variable to determine how many resutls are being shown on the name list; initialized to zero

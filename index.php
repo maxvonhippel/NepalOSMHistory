@@ -10,7 +10,8 @@
 	<script type="text/javascript" src="js/updateui.js"></script>
 	<script type="text/javascript" src="js/getdata.js"></script>
 	<!--- get usernames --->
-	<script type="text/javascript" src="http://192.168.1.33:8080/usernames/"></script>
+	<!-- <script type="text/javascript" src="http://139.59.37.112:8080/usernames/"></script> -->
+	<script type="text/javascript" src="resources/usernamesCopy.js"></script> 
 	<!--- For the SearchBox -->
 	<link href="css/search.css" rel="stylesheet">
 	<!--fa icons-->
@@ -105,12 +106,12 @@
 						<td id="nepalRoads" class="right">94,000</td>
 					</tr>
 					<tr>
-						<td>Schools</td>
-						<td id="nepalSchools" class="right">3,216</td>
+						<td>Education</td>
+						<td id="nepalEducation" class="right">3,216</td>
 					</tr>
 					<tr>
-						<td>Hospitals</td>
-						<td id="nepalHospitals" class="right">1,012</td>
+						<td>Health</td>
+						<td id="nepalHealth" class="right">1,012</td>
 					</tr>
 				</table>
 			</div>
@@ -140,14 +141,14 @@
 						<td id="selectedRoads_end" class="right">94,000</td>
 					</tr>
 					<tr>
-						<td>Schools</td>
-						<td id="selectedSchools_start" class="center">53</td>
-						<td id="selectedSchools_end" class="right">3,216</td>
+						<td>Education</td>
+						<td id="selectedEducation_start" class="center">53</td>
+						<td id="selectedEducation_end" class="right">3,216</td>
 					</tr>
 					<tr>
-						<td>Hospitals</td>
-						<td id="selectedHospitals_start" class="center">23</td>
-						<td id="selectedHospitals_end" class="right">1,012</td>
+						<td>Health</td>
+						<td id="selectedHealth_start" class="center">23</td>
+						<td id="selectedHealth_end" class="right">1,012</td>
 					</tr>
 				</table>
 				<p align="right" style="font-style:italic;font-family:testFont">Currently showing statistics for <span id="sel_stat_name">all OSM users</span> within <span id="sel_stat_startDate">18 July 2016</span> and <span id="sel_stat_endDate">21 Nov 2016</span></p>
