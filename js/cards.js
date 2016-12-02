@@ -7,8 +7,10 @@ function updateCardsRange(start, end) {
 	var months = ["January", "February", "March", "April", "May", "June",
 		"July", "August", "September", "October", "November", "December"
 	];
-	document.getElementById("startDate").innerHTML = start.getUTCDay() + " " + months[start.getUTCMonth()] + " " + start.getUTCFullYear();
-	document.getElementById("endDate").innerHTML = end.getUTCDay() + " " + months[end.getUTCMonth()] + " " + end.getUTCFullYear();
+	dstart = new Date(start);
+	dend = new Date(end);
+	document.getElementById("startDate").innerHTML = dstart.getDate() + " " + months[dstart.getMonth()] + " " + dstart.getFullYear();
+	document.getElementById("endDate").innerHTML = dend.getDate() + " " + months[dend.getMonth()] + " " + dend.getFullYear();
 }
 
 function updateNepalStatistics(tables){

@@ -31,17 +31,17 @@ var a = 0; // how many total versions have we seen?
 var mks = 0; // how many total node ids have we seen?
 
 // -------------------------- CSV PARSING FOR THE MAP ----------------------------------
-
-Papa.parse("http://localhost:8888/NepalOSMHistory/data/sampledaily/nodes.csv", {
+Papa.parse("http://localhost:8888/NepalOSMHistory/data/sampledaily/nodes-min.csv", {
 	download: true, 		// downloads the file, otherwise it doesn't work
 	dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
 	delimiter: ",", 		// explicit statement improves speed
+	worker: true,
 	step: function(row) {
 		if (row.data[0].length == 4)
 			parseresponse(row.data[0]);		// parse row by row for speed
 	},
 	complete: function() {
-		console.log("All done!");
+		console.log("All done parsing nodes for map from csv!");
 		// remove progress bar
 		document.getElementById("myBar").remove();
 		document.getElementById("myProgress").remove();
@@ -63,11 +63,14 @@ function parseresponse(c) {
 		w = 0;
 		// array of versions
 		var versions = []; // possibly use new Array(n) later if I can find way to calculate N.
+		marker.data.versions = [];
 		// remove { and } around array string literal, maybe unnecesary?
 		// then iterate over the csv within
-		Papa.parse(c[3].toString().slice(1, -1), {
+		var secondparse = c[3].toString().slice(1, -1);
+		Papa.parse(secondparse, {
 			delimiter: ",",	// explicit delimiter statement for speed
 			step: function(edit) {
+				console.log("parsing edit: ", edit.data[0].toString());
 				a += 1;	// keep track of number of versions total parsed
 				if (a % hundredth == 0)
 					move();	// iterate the progress bar accordingly
@@ -80,8 +83,8 @@ function parseresponse(c) {
 			marker.weight = w; // number of items in the cluster
 			marker.data.versions = versions; // hold all versions in data as array
 			mks += 1; // keep track of total node ids parsed
-			markers[mks] = marker;	// add to array used for filtering
+			markers.push(marker);	// add to array used for filtering
 			leafletView.RegisterMarker(marker); // add to map (not yet rendered)
 		}
-	} catch (err) { console.log(err + " full str: " + c.toString() + " and the pat to split: " + c[4].toString()); } // log error and move on, usually can expect a couple, it's ok
+	} catch (err) { console.log(err + " full str: " + c.toString()); } // log error and move on, usually can expect a couple, it's ok
 }

@@ -7,6 +7,7 @@ var self = this;
 var file = "http://localhost:8888/NepalOSMHistory/data/sampledaily/activity.csv";
 
 $(document).ready(function () {
+	var done = false;
     var dchart = new Dygraph(
         document.getElementById(div),
         file,
@@ -18,11 +19,16 @@ $(document).ready(function () {
             showRangeSelector: true,
             rangeSelectorHeight: 30,
             axisLabelFontSize: 11,
-            zoomCallback: function(minX, maxX, yRanges) {
-				gStartTime.setUTCMilliseconds(minX);
-				gEndTime.setUTCMilliseconds(maxX);
-				// console.log("start: ", gStartTime.toString(), " end: ", gEndTime.toString());
-				date_range_change(gStartTime, gEndTime);
+            drawCallback: function() {
+	            done = true;
+            },
+            zoomCallback: function(minDate, maxDate, yRanges) {
+	            if (done) {
+		            gStartTime = new Date(minDate);
+					gEndTime = new Date(maxDate);
+					date_range_change(gStartTime, gEndTime);
+					done = false;
+	            }
   			}
             // http://dygraphs.com/options.html
         }
