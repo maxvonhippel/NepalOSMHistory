@@ -26,7 +26,7 @@ $(document).ready(function () {
 	            if (done) {
 		            gStartTime = new Date(minDate);
 					gEndTime = new Date(maxDate);
-					date_range_change(gStartTime, gEndTime);
+					self.date_range_change(gStartTime, gEndTime);
 					done = false;
 	            }
   			}

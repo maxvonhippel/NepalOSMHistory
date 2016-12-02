@@ -66,17 +66,14 @@ function parseresponse(c) {
 		marker.data.versions = [];
 		// remove { and } around array string literal, maybe unnecesary?
 		// then iterate over the csv within
-		var secondparse = c[3].toString().slice(1, -1);
-		Papa.parse(secondparse, {
-			delimiter: ",",	// explicit delimiter statement for speed
-			step: function(edit) {
-				console.log("parsing edit: ", edit.data[0].toString());
-				a += 1;	// keep track of number of versions total parsed
-				if (a % hundredth == 0)
-					move();	// iterate the progress bar accordingly
-				w += 1;	// keep track of number of versions of this specific node for weight var
-				versions.push([c[edit.data[0][0]], new Date(c[edit.data[0][1]])]); // add each version to versions arr
-			}
+		c[3].toString().replace(/["'{}]/g, "").replace(/([^:,]+):([^,]*)/g, function(noStep3, name, stamp) {
+			// console.log("edit: ", name, " and stamp: ", stamp);
+			a += 1;	// keep track of number of versions total parsed
+			w += 1;
+			if (a % hundredth == 0)
+				move();	// iterate the progress bar accordingly
+			versions.push([Object.freeze(name.toString()), Object.freeze(new Date(stamp.toString()))]);
+
 		});
 		// do we have a legit node to add now?
 		if (w > 0) {
