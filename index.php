@@ -4,6 +4,8 @@
 	<script src="js/global-debug.js"></script>
 	<!---- papa parse --->
 	<script src="js/papaparse.min.js"></script>
+	<!---- dygraphs --->
+	<script src="js/dygraph-combined.js"></script>
 	<!--- google charts --->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<!---- cross filter --->

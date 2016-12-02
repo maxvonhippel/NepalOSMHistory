@@ -63,7 +63,7 @@ function Data() {
                     };
 
                     /*returnFeature.properties.getAttributes = function(){
-                     
+
                      };*/
 
                     return returnFeature;
@@ -350,7 +350,7 @@ function Data() {
             if (params.query.geometries) {
                 if (geometries[params.query.geometries.type])
                     /*TODO:                 /*if(typeof params.query.geometries.group==="object") {
-                     
+
                      params.query.geometries.group = data.features[0].properties[params.query.geometries.group.column];
                      geometries[params.query.geometries.type][params.query.geometries.group] = data;
                      } else {*/

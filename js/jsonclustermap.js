@@ -89,23 +89,6 @@ map.on('moveend', function(ev){
 	gEast=_bounds.getEast();
 	gWest=_bounds.getWest();
 	request_for_data();
-
-	//
-
-	/*
-		$.ajax({
-		url:"server/api.php", //processing script on the server
-		type: "POST",
-		data: {"north":north, "south":south,"east":east,"west":west},
-		success: function(response){
-		//alert(response);
-		},
-		error: function (xhr, errmsg, err) {
-		alert (xhr.status + "\n\n" + xhr.responseText);
-		}
-
-		})
-	*/
 });
 
 // For the SearchBox
@@ -167,6 +150,7 @@ function request_for_data() {
 	//$("#block-everything").show();
 	$("#glassy-effect").css("filter","blur(1px)");
 
+
 	//disable_map_controls();
 	console.log("asking for json object for selection statistics");
 
@@ -196,6 +180,13 @@ function request_for_data() {
 	//hide load icon
 	*/
 	//$("#block-everything").hide();
+
+	// ask for selection statistics
+	// update the cards
+	// filter the map
+
+	$("#block-everything").hide();
+
 
 }
 
