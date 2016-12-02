@@ -21,10 +21,24 @@
 	src: url(../fonts/ClearSans/ClearSans-Italic.ttf);
 }
 
+#myProgress {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    background-color: grey;
+}
+
+#myBar {
+    position: absolute;
+    width: 1%;
+    height: 100%;
+    background-color: green;
+}
+
 body, table{
 	color:#47525e;
 	background-color:#EAF2F5;
-	
+
 }
 
 h1.pageTitle{
@@ -43,10 +57,10 @@ h1.pageTitle{
 	width: 100%;
 	position:absolute;
 	z-index:5000;
-	overflow:hidden; 
+	overflow:hidden;
 	height:57px;
-	
-	
+
+
 }
 
 #mapchartbox{
@@ -70,7 +84,7 @@ h1.pageTitle{
 	min-height:295px;
 	z-index:5000;
 	background-color:#EAF2F5; /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
-		
+
 }
 #selectionStatistics{
 	font-family:regular;
@@ -79,7 +93,7 @@ h1.pageTitle{
 	overflow:hidden;
 	z-index:5000;
 	background-color:#EAF2F5; /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
-	
+
 }
 h2.sectionTitle{
 	font-family:testFont;
@@ -96,14 +110,14 @@ h2.sectionTitle{
 	background-color: #09B0A5 ; /* #0BB094 #0DCEAD, rgba(119,164,178, 1)*/
 	width: 100%;
 	/* position:absolute; z-index:5000; */
-	overflow:hidden; 
+	overflow:hidden;
 	height:57px;
-	
+
 }
 
 table .left{
 	text-align:left !important;
-	
+
 }
 table .center{
 	text-align:center !important;
@@ -111,7 +125,7 @@ table .center{
 table .right{
 	text-align:right !important;
 	padding-right: 16px;
-	
+
 }
 tr .highlighted{
 	color:white !important;
@@ -125,21 +139,21 @@ th.th_left{
 th.th_right{
 	text-align:right !important;
 	padding-right: 16px;
-	font-family: testFonts; 
+	font-family: testFonts;
 	color:#002D3F;
 }
 
 
 th.th_center{
 	text-align:center !important;
-	font-family: testFonts; 
+	font-family: testFonts;
 	color:#002D3F;
 }
 
 
 table.center{
 	margin-right:auto;
-	margin-left:auto; 
+	margin-left:auto;
 	float:none;
 }
 
@@ -150,7 +164,7 @@ div#block-everything{
 	height:100%;
 	width:100%;
 	display:none;
-	background-color:#eaeab3;	
+	background-color:#eaeab3;
 }
 
 div#glassy-effect{
@@ -162,17 +176,17 @@ div#glassy-effect{
 }
 
 #titleOpenStreetMap{
-	color:white; 
+	color:white;
 	font-family:regular;
-	margin:0px 0px 10px 30px; 
+	margin:0px 0px 10px 30px;
 	letter-spacing:0.5px;
 }
 
 #titleStatisticsTool{
-	color:white; 
-	overflow:hidden; 
+	color:white;
+	overflow:hidden;
 	font-family:testFont;
-	margin:0px 0px 0px 0px; 
+	margin:0px 0px 0px 0px;
 	letter-spacing:-1px;
 }
 
@@ -183,23 +197,23 @@ div#glassy-effect{
 }
 
 #sectionLeaderboards{
-	overflow:hidden; 
+	overflow:hidden;
 	font-family:testFont;
 	margin:0px 0px 0px 0px;
 	letter-spacing:-1px
 	padding-bottom:2px;
 	/* border-bottom: 2px solid #fc721b; */
-	
+
 }
 
 .custom-tooltip{
-	font-family: testFonts; 
+	font-family: testFonts;
 	color:#002D3F;
 }
 
 .tableHeading{
-	font-family: testFonts; 
-	color:#002D3F;	
+	font-family: testFonts;
+	color:#002D3F;
 }
 
 #tblWays , #tblNodes{
@@ -208,7 +222,7 @@ div#glassy-effect{
 
 .tooltip{
 	font-family: Regular;
-	margin-top: 10px; 
+	margin-top: 10px;
 	font-size: 12px;
 	padding: 7px;
 	font-weight:normal;

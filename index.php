@@ -2,6 +2,12 @@
 <head>
 	<!---- global debug variable --->
 	<script src="js/global-debug.js"></script>
+	<!---- papa parse --->
+	<script src="js/papaparse.min.js"></script>
+	<!--- google charts --->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<!---- cross filter --->
+	<script src="js/crossfilter.min.js"></script>
 	<!---- jquery --->
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/jquery.csv.js"></script>
@@ -10,14 +16,19 @@
 	<script type="text/javascript" src="js/updateui.js"></script>
 	<script type="text/javascript" src="js/getdata.js"></script>
 	<!--- get usernames --->
+
 	<!-- <script type="text/javascript" src="http://139.59.37.112:8080/usernames/"></script> -->
-	<script type="text/javascript" src="resources/usernamesCopy.js"></script> 
+	<!--<script type="text/javascript" src="resources/usernamesCopy.js"></script> -->
+
+	<script>
+		var usernames = this.usernames ();
+	</script>
+	<!--script type="text/javascript" src="http://192.168.1.19:8080/usernames/"><!/script>-->
+
 	<!--- For the SearchBox -->
 	<link href="css/search.css" rel="stylesheet">
 	<!--fa icons-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-	<!--- google charts --->
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<!---- css ---->
 	<link href="http://www.w3schools.com/lib/w3.css" rel="stylesheet"/>
 	<link href="css/styles.css" rel="stylesheet"/>
@@ -40,11 +51,6 @@
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.mobile.src.css">
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.mobile.min.css">
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.min.css">
-
-	<script>
-		var gStartTime = null;
-		var gEndTime = null;
-	</script>
 
 </head>
 
@@ -69,6 +75,11 @@
 					<ul id="username" class="w3-ul w3-card-2"></ul>
 				</div>
 				<!-- End of searchbox -->
+				<!--- progress bar --->
+				<div id="myProgress">
+					<div id="myBar"></div>
+				</div>
+				<!--- End of progress bar --->
 			</div> <!--- end of map -->
 			<script type="text/javascript" src="js/jsonclustermap.js"></script>
 			<!--- start of chart -->

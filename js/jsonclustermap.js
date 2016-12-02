@@ -1,5 +1,3 @@
-// USE THIS SITE FOR DEBUGGING: http://jshint.com
-
 // set up the options for our initial map
 var southWest = L.latLng(26.487043, 78.739439);
 var northEast = L.latLng(30.688485, 89.847341);
@@ -56,9 +54,13 @@ map.addControl( new L.Control.Search({
 // initialize the prune cluster object
 var leafletView = new PruneClusterForLeaflet(160);
 var size = 10000;
-var markers = [];
+// much faster than pushing, but may need to increase size if we ever surpass that
+nr = 4000000
+var markers = new Array(nr);
+var ir = 0;
+while ( ir < nr ) { markers[ir] =0; ir++; }
 
-// this handles updates to what should be visible on the map
+/*
 var lastUpdate = 0;
 window.setInterval(function () {
 	var now = +new Date();
@@ -76,10 +78,7 @@ window.setInterval(function () {
 	leafletView.ProcessView();
 	lastUpdate = now;
 
-}, 500);
-
-// we add the leaflet view to the map, thus showing the clusters from the prune cluster object
-map.addLayer(leafletView);
+}, 500); */
 
 //Fire this when map is panned/zoomed/reset
 map.on('moveend', function(ev){
@@ -158,8 +157,8 @@ function request_for_data() {
 	gSouth +"\n gEast:"+
 	gEast +"\n gWest:"+
 	gWest +"\n gStartTime:"+
-	gStartTime.getFullYear() + "-" + gStartTime.getMonth() + "-" + gStartTime.getDay() + "T" + gStartTime.getHours() + ":" + gStartTime.getMinutes() + ":" + gStartTime.getSeconds() + gStartTime.getTimezoneOffset() +"\n gEndTime:"+
-	gEndTime.getFullYear() + "-" + gEndTime.getMonth() + "-" + gEndTime.getDay() + "T" + gEndTime.getHours() + ":" + gEndTime.getMinutes() + ":" + gEndTime.getSeconds() + gEndTime.getTimezoneOffset() +"\n gUsername:"+
+	gStartTime.getFullYear() + "-" + gStartTime.getMonth() + "-" + gStartTime.getDay() + "\n gEndTime:"+
+	gEndTime.getFullYear() + "-" + gEndTime.getMonth() + "-" + gEndTime.getDay() + "\n gUsername:"+
 	gUsername
 	);
 

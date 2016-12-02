@@ -1,15 +1,61 @@
 // this script gets data from the server
 var baseurl = "http://139.59.37.112:8080/";
 
-//sazal var baseurl = "http://localhost/NepalOSMHistory/NepalOSMHistory/resources/usernamesCopy.js";
 
+// Create the XHR object.
+function createCORSRequest(method, url) {
+	var xhr = new XMLHttpRequest();
+	if ("withCredentials" in xhr) {
+    	// XHR for Chrome/Firefox/Opera/Safari.
+		xhr.open(method, url, true);
+  	} else if (typeof XDomainRequest != "undefined") {
+    	// XDomainRequest for IE.
+		xhr = new XDomainRequest();
+		xhr.open(method, url);
+  	} else {
+    	// CORS not supported.
+		xhr = null;
+  	}
+  	return xhr;
+}
+
+// Helper method to parse the title tag from the response.
+function getTitle(text) {
+  	return text.match('<title>(.*)?</title>')[1];
+}
+
+// Make the actual CORS request.
+function makeCorsRequest(url) {
+
+  	var xhr = createCORSRequest('GET', url);
+  	if (!xhr) {
+    	alert('CORS not supported');
+		return null;
+  	}
+
+  	// Response handlers.
+  	xhr.onload = function() {
+    	var text = xhr.responseText;
+		var title = getTitle(text);
+		console.log('Response from CORS request to ' + url + ': ' + title);
+		return text;
+  	};
+
+  	xhr.onerror = function() {
+    	console.log('Woops, there was an error making the request.');
+    	return null;
+  	};
+  	xhr.send();
+}
 
 
 // get and return the array of usernames
 // example: see server/geodjango/example output/testusernames.txt
 function usernames () {
+	console.log("requesting usernames");
 	// format the url
 	url = baseurl + "usernames/";
+
 	var usernames = [];
 	$.ajax({
 		
@@ -35,6 +81,9 @@ function usernames () {
 		
 	});
 	return null;
+
+	return makeCorsRequest(url);
+
 }
 
 // get and return the json of country data
@@ -62,6 +111,7 @@ function country_stats () {
 
 // get and return the json of selection data
 function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
+
 	
 	/*Remove from here.... when CORS is taken care of*/
 	var sStats={
@@ -78,6 +128,9 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 	//return 0;
 	/*Remove upto here.... when CORS is taken care of*/
 	
+
+	/*
+
 	// format the url
 	if (!user || user == null || user == "")
 	user = "user";	// for now, fix the actual server later to be able to handle empty user param
@@ -107,6 +160,8 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 	
 	console.log("nothing found on server for selection");
 	return null;
+	*/
+
 }
 
 

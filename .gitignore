@@ -5,3 +5,4 @@
 /vendor/**/.git
 /plugins/phpjson1
 /data/dirtydate1.json
+data/sampledaily/*.csv
