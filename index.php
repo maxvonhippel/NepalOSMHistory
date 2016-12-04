@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+	<script>var markers = [];</script>
 	<!---- global debug variable --->
 	<script src="js/global-debug.js"></script>
 	<!---- papa parse --->
@@ -19,6 +20,7 @@
 	<script type="text/javascript" src="js/getdata.js"></script>
 	<!--- get usernames --->
 
+
 	<!-- <script type="text/javascript" src="http://139.59.37.112:8080/usernames/"></script> -->
 	<!--<script type="text/javascript" src="resources/usernamesCopy.js"></script> -->
 
@@ -26,6 +28,8 @@
 		var usernames = this.usernames ();
 	</script>
 	<!--script type="text/javascript" src="http://192.168.1.19:8080/usernames/"><!/script>-->
+
+	<script type="text/javascript" src="http://139.59.37.112:8080/usernames/"></script>
 
 	<!--- For the SearchBox -->
 	<link href="css/search.css" rel="stylesheet">

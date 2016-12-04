@@ -3,68 +3,64 @@
 // what to do when the date range changes
 function date_range_change(start, end) {
 
+	updateCardsRange(start, end);
 	filter_map(start, end);
-	// updateCardsRange function in cards.js
-	self.updateCardsRange(gStartTime, gEndTime);
 
-}
-
-function bubbleSort(arr) {
-	var n = arr.length, swapped, tmp;
-	do {
-    	swapped = false;
-		for (var i = 1; i < n; i++) {
-			if (arr[i-1][1] < arr[i][1]) {
-				tmp = arr[i];
-				arr[i] = arr[i-1];
-				arr[i-1] = tmp;
-				swapped = true;
-      		}
-    	}
-  	} while (swapped && n--)
 }
 
 function filter_map(start, end) {
 	// get current zoom bounds
-	var zoom = pruneCluster._map.getZoom();
-	// for leaderboards
-	var okusers = {}
-	var countedusers = 0;
-	var thisuser = 0;
+	var zoom = map.getBounds();
 
-	var usersparsed;
-	// turns out this is way faster than foreach
-	for (usersparsed = 0; usersparsed < markers.length; usersparsed++) {
-		var m = markers[usersparsed];
-		if (m && m.hasOwnProperty(data) && m.hasOwnProperty(weight)) {
-			var wei = 0;
-			var pos = m.getLatLng();
-			for (var version in m.data.versions) {
-				if (version[1].getDate() >= start.getDate() && version[1].getDate() <= end.getDate()) {
-					wei += 1;
-					var pos = m.getLatLng();
-					var b1 = pos.lat >= zoom.minLat;
-					var b2 = pos.lat <= zoom.maxLat;
-					var b3 = pos.lng >= zoom.minLng;
-					var b4 = pos.lng <= zoom.maxLng;
-					if (b1 && b2 && b3 && b4) {
-						// this item can be considered for the leaderboards
-						var thisusername = version[0];
-						// need to do something here with leaderboard not sure how yet
-					}
+	// console.log("filter map called - range: ", start.toString(), " , ", end.toString(), " , username: ", gUsername, " box: ", zoom.toBBoxString());
+
+	hash = {};
+	var num = 0;
+	markers.forEach(function(m) {
+		++num;
+		var wei = 0;
+		var pos = m.position;
+		var veruser = m.data.versions[0][0];
+		var cver = 0;
+		var isuser = (gUsername == "" || !gUsername) ? true : false;
+		while (true) {
+			try {
+				if (veruser == gUsername)
+					isuser = true;
+				verdate = m.data.versions[cver][1];
+				var inzoom = (zoom._southWest.lat <= m.position.lat && zoom._southWest.lng <= m.position.lng && zoom._northEast.lat >= m.position.lat && zoom._northEast.lng >= m.position.lng);
+				if (verdate.getDate() >= start.getDate() && verdate.getDate() <= end.getDate() && inzoom) {
+					++wei;
+					if (veruser in hash)
+						hash[veruser] += 1;
+					else hash[veruser] = 1;
 				}
-			}
-			m.weight = wei;
-			var b5 = m.weight == 0;
-			var b6 = (gUsername != "" && !m.data.versions.some(function(a){return a[0]===gUsername}));
-			m.filtered = (b5 || b6);
+				// console.log(" start date: ", start.toDateString(), " verdate: ", verdate.toDateString(), " end date: ", end.toDateString(), " in zoom? ", inzoom);
+				veruser = m.data.versions[++cver][0];
+			} catch (err) { break; }
 		}
-	}
-	okusers.length = usersparsed + 1;
+
+		m.weight = wei;
+		if (m.weight == 0 || !isuser) {
+			m.filtered = true;
+		} else m.filtered = false;
+	});
 	// process changes
 	leafletView.ProcessView();
 	// leaderboards calculation
-
+	var keys = [];
+	for(var key in hash)  {
+		keys.push(key);
+	}
+	var r = keys.sort(function(a,b){ return hash[a] - hash[b]} );
+	var ret = new Array(5);
+	for (var q = 0; q < 5 && q < r.length; q++) {
+		ret[r[q]] = this.hash[r[q]];
+	}
+	var place = 0;
+	for (var key in ret) {
+		console.log("Place: ", ++place, " User: ", key, " Nodes mapped: ", ret[key]);
+	}
 
 }
 
