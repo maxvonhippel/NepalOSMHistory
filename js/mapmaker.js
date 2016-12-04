@@ -25,9 +25,16 @@ var mymap = L.map('mapid', mapOptions);
 
 var latLngGeom = nepal_border; //Define real geometry here
 var osm = L.TileLayer.boundaryCanvas('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    boundary: nepal_border, 
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>'
+    boundary: nepal_border 
+    //attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>'
 }).addTo(mymap);
+
+/*var attrib = L.control.attribution(
+	position: 'bottomleft'
+).addAttribution('Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>').addTo(mymap);*/
+
+
+
 
 //Make sure to add the slider to the map ;-) // Doing it in mapmaker.js
 //mymap.addControl(sliderControl);

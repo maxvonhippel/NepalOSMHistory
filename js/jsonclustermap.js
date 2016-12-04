@@ -6,7 +6,8 @@ var mapOptions = {
 	zoom: 7,
     minZoom:7,
 	maxZoom:18,
-	maxBounds: L.latLngBounds(southWest, northEast)
+	maxBounds: L.latLngBounds(southWest, northEast),
+	attributionControl:false
 };
 
 // find the div and put the map there
@@ -30,9 +31,13 @@ var latLngGeom = nepal_border;
 
 // get the map tiles and initialize the tiles and boundary mask on the leflet map
 var osm = L.TileLayer.boundaryCanvas('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    boundary: nepal_border,
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>'
+    boundary: nepal_border
+    //attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>'
 }).addTo(map);
+
+var attrib = L.control.attribution({position:'bottomleft'});
+attrib.addAttribution('Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>');
+attrib.addTo(map);
 
 /*
 //Add leaflet-search controls here
