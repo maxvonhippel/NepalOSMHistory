@@ -1,4 +1,5 @@
 // this script gets data from the server
+
 var baseurl = "http://139.59.37.112:8080/";
 
 

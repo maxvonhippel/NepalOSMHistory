@@ -35,7 +35,7 @@ var mks = 0; // how many total node ids have we seen?
 
 //Papa.parse("http://localhost/NepalOSMHistory/NepalOSMHistory/data/sampledaily/nodes.csv", {
 
-Papa.parse("http://localhost:8888/NepalOSMHistory/data/sampledaily/nodes-min.csv", {
+Papa.parse("http://localhost/NepalOSMHistory/NepalOSMHistory/data/sampledaily/nodes-min.csv", {
 
 	download: true, 		// downloads the file, otherwise it doesn't work
 	dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
