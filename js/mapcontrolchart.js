@@ -4,7 +4,7 @@ var gEndTime = new Date(0);
 var div = "chart";
 var chart, data;
 var self = this;
-var file = "http://localhost/NepalOSMHistory/NepalOSMHistory/data/sampledaily/activity.csv";
+var file = "http://localhost/NepalOSMHistory/data/sampledaily/activity.csv";
 
 $(document).ready(function () {
 	var done = false;
@@ -13,7 +13,7 @@ $(document).ready(function () {
         file,
         {
             labelsKMG2: true,
-			showRoller: true,
+			showRoller: false,
             customBars: false,
             legend: 'always',
             labelsDivStyles: { 'textAlign': 'right' },
