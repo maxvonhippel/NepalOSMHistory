@@ -74,7 +74,7 @@
 
 	<div class="w3-row w3-center"> <!-- holds map, chart, nepal statistics and selected statistics -->
 		<div id="#mapchartbox" class="w3-border w3-border-blue-grey w3-col l9 s12 w3-display-container">
-			<div id="mapid" class="w3-border w3-col l9 s12">
+			<div id="mapid" class="w3-border w3-col l9 s12" style="position:relative">
 				<!-- For the searchbox -->
 				<div id="wrap" class="w3-col l4 s10">
 					<input id="searchBox" type="text" onfocus="this.select();" onkeyup="matched(this.value)" placeholder="Search for OSM username..." onfocusout="myfocusout()"/>
@@ -86,6 +86,7 @@
 					<div id="myBar"></div>
 				</div>
 				<!--- End of progress bar --->
+				<div id="dy_legend" style="position:absolute; right:0px; bottom:0px">Test</div>
 			</div> <!--- end of map -->
 			<script type="text/javascript" src="js/jsonclustermap.js"></script>
 			<!--- start of chart -->
