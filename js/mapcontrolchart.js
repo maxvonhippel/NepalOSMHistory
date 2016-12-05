@@ -12,6 +12,7 @@ $(document).ready(function () {
         document.getElementById(div),
         file,
         {
+            labelsSeparateLines: true,
             labelsKMG2: true,
 			showRoller: false,
             customBars: false,

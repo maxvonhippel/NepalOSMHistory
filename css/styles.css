@@ -241,6 +241,28 @@ hr.style-one {
 }
 
 .dygraph-legend{
+	min-height:74px !important;
+	width:194px  !important;
+	font-family: testFonts;
+	text-align:left !important;
+	font-weight:normal !important;
+	z-index:10000 !important;
+	top:-75px !important;
+	overflow:absolute !important;
+	padding:4px 6px 4px 6px !important;
+	display: inline !important;
+	left:1229px !important;
+	overflow:hidden !important;
+	background-color:rgba(234, 242, 245,.8) !important;
+	position:absolute !important;
+	border-top: 1px solid rgba(180, 184, 185, 0.96) !important;
+	border-left: 1px solid rgba(180, 184, 185, 0.96)!important;
+	border-bottom: 1px solid rgba(180, 184, 185, 0.96) !important;
 	/*display:none;*/
 }
+.dygraph-legend *{
+	
+	margin-top:15px !important;
+}
+
 
