@@ -4,7 +4,7 @@ var gEndTime = new Date(0);
 var div = "chart";
 var chart, data;
 var self = this;
-var file = "http://localhost/NepalOSMHistory/data/sampledaily/activity.csv";
+var file = "http://localhost:8888/NepalOSMHistory/data/sampledaily/activity.csv";
 
 $(document).ready(function () {
 	var done = false;
