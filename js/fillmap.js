@@ -33,7 +33,7 @@ var mks = 0; // how many total node ids have we seen?
 // -------------------------- CSV PARSING FOR THE MAP ----------------------------------
 
 
-Papa.parse("data/sampledaily/nodes.csv", {
+Papa.parse("../data/sampledaily/nodes.csv", {
 
 	download: true, 		// downloads the file, otherwise it doesn't work
 	dynamicTyping: true, 	// automatically figures out if something is a string, number, etc

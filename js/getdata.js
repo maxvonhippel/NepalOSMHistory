@@ -1,5 +1,6 @@
 // this script gets data from the server
 
+
 var baseurl = "http://127.0.0.1:8080/";
 
 
@@ -48,6 +49,7 @@ function makeCorsRequest(url) {
   	};
   	xhr.send();
 }
+
 
 
 // get and return the array of usernames
@@ -147,7 +149,6 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 	    success: function(response) {
 			debugger;
 			updateSelectedStatistics(response);
-
 			return response;
 		},
 	    error: function(jqXHR, textStatus, errorThrown) {

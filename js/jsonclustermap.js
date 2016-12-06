@@ -166,6 +166,7 @@ function request_for_data() {
 
 
 
+
 	/*
 	var _obj = JSON.parse(response);
 	console.log("requested selection statistics");

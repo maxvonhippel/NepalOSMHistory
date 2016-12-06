@@ -46,7 +46,6 @@
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.mobile.src.css">
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.mobile.min.css">
 	<link rel="stylesheet" href="plugins/leaflet-search/leaflet-search.min.css">
-
 </head>
 
 <body>
