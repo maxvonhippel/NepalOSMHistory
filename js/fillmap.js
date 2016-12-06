@@ -17,6 +17,8 @@ var hundredth = 200000; // one one hundredth of the total number of nodes we wil
 
 // iterates the progress bar by 1%, or resets if at 100 (that shouldn't happen though)
 function move() {
+	if (width % 10 == 0)
+		console.log("incrementing the progress bar");
 	var elem = document.getElementById("myBar");
 	if (width >= 100) {
 		width = 1;
@@ -31,35 +33,41 @@ var a = 0; // how many total versions have we seen?
 var mks = 0; // how many total node ids have we seen?
 
 // -------------------------- CSV PARSING FOR THE MAP ----------------------------------
+var filled = false;
+function fillmap() {
+	if (filled)
+		return;
+	console.log("filling map");
+	Papa.parse("../data/sampledaily/nodes.csv", {
 
+		download: true, 		// downloads the file, otherwise it doesn't work
+		dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
+		delimiter: ",", 		// explicit statement improves speed
+		worker: true,
+		step: function(row) {
+			if (row.data[0].length == 4)
+				parseresponse(row.data[0]);		// parse row by row for speed
+		},
+		complete: function() {
+			console.log("All done parsing nodes for map from csv!");
+			// remove progress bar
+			document.getElementById("myBar").remove();
+			document.getElementById("myProgress").remove();
+			// clean up markers array
+			markers.length = mks;
+			// put stuff on map
+			map.addLayer(leafletView);
+			filled = true;
+		},
+		error: function(err, file, inputElem, reason)
+		{
+			// executed if an error occurs while loading the file,
+			// or if before callback aborted for some reason
+			console.log(err, reason);
+		}
+	});
 
-Papa.parse("../data/sampledaily/nodes.csv", {
-
-	download: true, 		// downloads the file, otherwise it doesn't work
-	dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
-	delimiter: ",", 		// explicit statement improves speed
-	worker: true,
-	step: function(row) {
-		if (row.data[0].length == 4)
-			parseresponse(row.data[0]);		// parse row by row for speed
-	},
-	complete: function() {
-		console.log("All done parsing nodes for map from csv!");
-		// remove progress bar
-		document.getElementById("myBar").remove();
-		document.getElementById("myProgress").remove();
-		// clean up markers array
-		markers.length = mks;
-		// put stuff on map
-		map.addLayer(leafletView);
-	},
-	error: function(err, file, inputElem, reason)
-	{
-		// executed if an error occurs while loading the file,
-		// or if before callback aborted for some reason
-		console.log(err, reason);
-	}
-});
+}
 
 // this function parses our response once we get it (see code above in fillmap() )
 function parseresponse(c) {

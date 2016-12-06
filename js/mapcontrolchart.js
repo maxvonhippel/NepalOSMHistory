@@ -7,6 +7,7 @@ var self = this;
 var file = "data/sampledaily/activity.csv";
 
 $(document).ready(function () {
+	console.log("filling dygraph chart.");
 	var done = false;
     var dchart = new Dygraph(
         document.getElementById(div),
@@ -39,4 +40,5 @@ $(document).ready(function () {
             // http://dygraphs.com/options.html
         }
     );
+    fillmap();
 });

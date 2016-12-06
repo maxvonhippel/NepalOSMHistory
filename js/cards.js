@@ -2,6 +2,8 @@
 // in accordance with the changes in bounding box, date range,
 // and other filters selected in the GUI
 
+// use class="w3-teal highlighted" to highlight user in list
+
 function updateCardsRange(start, end) {
 	// update the selection statistics box
 	var months = ["January", "February", "March", "April", "May", "June",

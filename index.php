@@ -19,7 +19,7 @@
 	<script type="text/javascript" src="js/updateui.js"></script>
 	<script type="text/javascript" src="js/getdata.js"></script>
 	<!--- get usernames --->
-	<script type="text/javascript" src="http://139.59.37.112:8080/usernames/"></script>
+	<script type="text/javascript" src="http://127.0.0.1:8080/usernames/"></script>
 	<!--- For the SearchBox -->
 	<link href="css/search.css" rel="stylesheet">
 	<!--fa icons-->
@@ -59,10 +59,10 @@
 			<span id="titleStatisticsTool">Nepal Statistics</span>
 		</h1>
 		<!--- progress bar -->
-				<div id="myProgress">
-					<div id="myBar"></div>
-				</div>
-				<!--- End of progress bar -->
+		<div id="myProgress">
+			<div id="myBar"></div>
+		</div>
+		<!--- End of progress bar -->
 	</div>
 
 	<div class="w3-row w3-center"> <!-- holds map, chart, nepal statistics and selected statistics -->
@@ -103,25 +103,25 @@
 					</tr>
 					<tr>
 						<td>Mappers</td>
-						<td id="nepalMappers" class="right">1,920</td>
+						<td id="nepalMappers" class="right">-</td>
 
 					</tr>
 					<tr>
 						<td>Buildings</td>
 
-						<td id="nepalBuildings" class="right">600,000</td>
+						<td id="nepalBuildings" class="right">-</td>
 					</tr>
 					<tr>
 						<td>Roads (in km)</td>
-						<td id="nepalRoads" class="right">94,000</td>
+						<td id="nepalRoads" class="right">-</td>
 					</tr>
 					<tr>
 						<td>Education</td>
-						<td id="nepalEducation" class="right">3,216</td>
+						<td id="nepalEducation" class="right">-</td>
 					</tr>
 					<tr>
 						<td>Health</td>
-						<td id="nepalHealth" class="right">1,012</td>
+						<td id="nepalHealth" class="right">-</td>
 					</tr>
 				</table>
 			</div>
@@ -130,38 +130,38 @@
 				<p class="w3-tooltip custom-tooltip">Selection Statistics
 					<img src="resources/i_icon.png" width="20px"</img>
 					<span class="w3-text w3-card-2 w3-animate-opacity w3-light-grey tooltip">
-						Shows the statisics of the selected user within the selected date range and the selected (zoomed in) area of the map
+						Shows the statistics of the selected user within the selected date range and the selected (zoomed in) area of the map
 					</span>
 				</p>
 
 				<table class="w3-table-all w3-card-2" align="center">
 					<tr>
 						<th class="th_left">Features</th>
-						<th id="startDate" class="th_center">18 March 2007</th>
-						<th id="endDate" class="th_right">Oct 2016</th>
+						<th id="startDate" class="th_center">-</th>
+						<th id="endDate" class="th_right">-</th>
 					</tr>
 					<tr>
 						<td>Buildings</td>
-						<td id="selectedBuildings_start" class="center">2,114</td>
-						<td id="selectedBuildings_end" class="right"class="right">600,000</td>
+						<td id="selectedBuildings_start" class="center">-</td>
+						<td id="selectedBuildings_end" class="right"class="right">-</td>
 					</tr>
 					<tr>
 						<td>Roads (in km)</td>
-						<td id="selectedRoads_start" class="center">1,517</td>
-						<td id="selectedRoads_end" class="right">94,000</td>
+						<td id="selectedRoads_start" class="center">-</td>
+						<td id="selectedRoads_end" class="right">-</td>
 					</tr>
 					<tr>
 						<td>Education</td>
-						<td id="selectedEducation_start" class="center">53</td>
-						<td id="selectedEducation_end" class="right">3,216</td>
+						<td id="selectedEducation_start" class="center">-</td>
+						<td id="selectedEducation_end" class="right">-</td>
 					</tr>
 					<tr>
 						<td>Health</td>
-						<td id="selectedHealth_start" class="center">23</td>
-						<td id="selectedHealth_end" class="right">1,012</td>
+						<td id="selectedHealth_start" class="center">-</td>
+						<td id="selectedHealth_end" class="right">-</td>
 					</tr>
 				</table>
-				<p align="right" style="font-style:italic;font-family:testFont">Currently showing statistics for <span id="sel_stat_name">all OSM users</span> within <span id="sel_stat_startDate">18 July 2016</span> and <span id="sel_stat_endDate">21 Nov 2016</span></p>
+				<p align="right" style="font-style:italic;font-family:testFont">Currently showing statistics for <span id="sel_stat_name">all OSM users</span> within <span id="sel_stat_startDate">-</span> and <span id="sel_stat_endDate">-</span></p>
 			</div><hr class="style-one"/>
 		</div>
 	</div> <!-- END OF holds map, chart, nepal statistics and selected statistics -->
@@ -185,28 +185,41 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="w3-teal highlighted">
-						<td class="center">1</td>
-						<td class="center">Nama Budhathoki</td>
-						<td class="center">12,14,145</td>
-						<td class="center">Restaurant</td>
-
+					<tr>
+						<td class="center">-</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
 					</tr>
 					<tr>
-						<td class="center">2</td>
-						<td class="center">Pratik Gautam</td>
-						<td class="center">10,18,216</td>
-						<td class="center">Airport</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
 					</tr>
 					<tr>
-						<td class="center">3</td>
-						<td class="center">Sazal(Solaris)</td>
-						<td class="center">10,18,216</td>
-						<td class="center">Airport</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
+					</tr>
+					<tr>
+						<td class="center">-</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
+					</tr>
+					<tr>
+						<td class="center">-</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
+						<td class="center">-</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+		<?php
+		/*
 		<div class="tableHeading w3-col l6 s12 w3-display-container"><p>Ways</p>
 			<table id= "tblWays" class="w3-table-all w3-card-2 w3-col l11 s12 center"><!--Ways Table-->
 				<thead>
@@ -240,6 +253,8 @@
 				</tbody>
 			</table>
 		</div>
+		*/
+		?>
 	</div> <!-- END OF Holds all leaderboard tables -->
 
 	<br/>
