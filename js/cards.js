@@ -11,6 +11,7 @@ function updateCardsRange(start, end) {
 	dend = new Date(end);
 	document.getElementById("startDate").innerHTML = dstart.getDate() + " " + months[dstart.getMonth()] + " " + dstart.getFullYear();
 	document.getElementById("endDate").innerHTML = dend.getDate() + " " + months[dend.getMonth()] + " " + dend.getFullYear();
+
 }
 
 function updateNepalStatistics(cStats){
@@ -18,7 +19,7 @@ function updateNepalStatistics(cStats){
 	$("#nepalBuildings").html(numberWithCommas(cStats.Buildings));
 	$("#nepalRoads").html(numberWithCommas(cStats.Roads));
 	$("#nepalEducation").html(numberWithCommas(cStats.Education));
-	$("#nepalHealth").html(numberWithCommas(cStats.Health));	
+	$("#nepalHealth").html(numberWithCommas(cStats.Health));
 }
 
 
@@ -31,7 +32,7 @@ function updateSelectionStatistics(sStats){
 	$("#selectedEducation_end").html(numberWithCommas(sStats.Education_end));
 	$("#selectedHealth_start").html(numberWithCommas(sStats.Health_start));
 	$("#selectedHealth_end").html(numberWithCommas(sStats.Health_end));
-	
+
 	//Update [current OSM username], [gStartTime] and [gEndTime] below the Selection Statistics Table as well:
 	$("#sel_stat_startDate").html(gStartTime);
 	$("#sel_stat_endDate").html(gEndTime);
@@ -40,17 +41,17 @@ function updateSelectionStatistics(sStats){
 	}
 	if(gUsername!=""){
 		$("#sel_stat_name").html("OSM user "+gUsername);
-		
+
 	}
-	
-	
+
+
 }
 
 function updateNodesOld(tables){
 	$("#tblNodes > tbody").empty();
 	for (row in tables.Nodes){
 		$("#tblNodes tbody").append('<tr><td class="center">'+tables.Nodes[row]["Rank"]+'</td><td class="center">'+tables.Nodes[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(tables.Nodes[row]["Nodes"])+'</td><td class="center">'+tables.Nodes[row]["Most Frequently edited POI"]+'</td></tr>');
-		
+
 		if(tables.Nodes[row].hasOwnProperty('highlight')){
 			$("#tblNodes tr td:contains("+tables.Nodes[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-teal highlighted')});
 		}
@@ -61,7 +62,7 @@ function updateNodes(nodesTable){
 	$("#tblNodes > tbody").empty();
 	for (row in nodesTable){
 		$("#tblNodes tbody").append('<tr><td class="center">'+nodesTable[row]["Rank"]+'</td><td class="center">'+nodesTable[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(nodesTable[row]["Nodes"])+'</td><td class="center">'+nodesTable[row]["Most Frequently edited POI"]+'</td></tr>');
-		
+
 		if(nodesTable[row].hasOwnProperty('highlight')){
 			$("#tblNodes tr td:contains("+nodesTable[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-teal highlighted')});
 		}
@@ -72,7 +73,7 @@ function updateWays(waysTable){
 	$("#tblWays > tbody").empty();
 	for (row in waysTable){
 		$("#tblWays tbody").append('<tr><td class="center">'+waysTable[row]["Rank"]+'</td><td class="center">'+waysTable[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(waysTable[row]["Ways"])+'</td><td class="center">'+waysTable[row]["Most Frequently edited POI"]+'</td></tr>');
-		
+
 		if(waysTable[row].hasOwnProperty('highlight')){
 			$("#tblWays tr td:contains("+waysTable[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-teal highlighted')});
 		}
