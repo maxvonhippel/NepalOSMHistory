@@ -11,7 +11,11 @@ $(document).ready(function () {
     var dchart = new Dygraph(
         document.getElementById(div),
         file,
-        {
+        {   
+        
+            axisLineColor:'#09b0a5',
+            colors:['#15A6B7','#FF7C33'],
+            labelsDiv:"dy_legend",
             labelsSeparateLines: true,
             labelsKMG2: true,
 			showRoller: false,

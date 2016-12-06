@@ -22,17 +22,34 @@
 }
 
 #myProgress {
-    position: relative;
-    width: 100%;
-    height: 30px;
-    background-color: grey;
+	position: relative;
+	width: 100%;
+	height: 4px;
+	background-color: #128e9c; 
+	width: 100%;
+	margin-top: auto;
+	margin-top:56px;
+	
+	/* background-color: #16B2C4; #06606A #0D6F7A #19A5A5
+	height: 4px;
+	width: 100%;
+	margin-top: auto;
+	margin-top:57px; */
+	position: absolute;
+	z-index:5000;
 }
 
 #myBar {
-    position: absolute;
-    width: 1%;
-    height: 100%;
-    background-color: green;
+	/* position: absolute;
+	width: 1%;
+	height: 100%;
+	background-color: red; 
+	border-right: 0.001em solid rgba(255, 255, 255, 0.9);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#15A6B7), color-stop(100%,#0DCEAD)); */
+	background: linear-gradient(#CC6633,#FF7C33,#CC6633); /*(#d25c4e,#ff884d,#d25c4e ) (#a7a9ac,#fff,#bcbec0 ) #ff988d*/
+	/* border-right: 4px solid rgb(255, 136, 77); */
+	height: 100%;
+	width: 1%;
 }
 
 body, table{
@@ -42,7 +59,7 @@ body, table{
 }
 
 h1.pageTitle{
-	font-family: testFont;
+font-family: testFont;
 	text-align: center;
 	display: inline-block;
 	margin: 0;
@@ -58,9 +75,8 @@ h1.pageTitle{
 	position:absolute;
 	z-index:5000;
 	overflow:hidden;
-	height:57px;
-
-
+	height:60px;
+	/* height:57px;  */
 }
 
 #mapchartbox{
@@ -178,7 +194,7 @@ div#glassy-effect{
 #titleOpenStreetMap{
 	color:white;
 	font-family:regular;
-	margin:0px 0px 10px 30px;
+/*	margin:0px 0px 10px 30px; */
 	letter-spacing:0.5px;
 }
 
@@ -241,28 +257,49 @@ hr.style-one {
 }
 
 .dygraph-legend{
-	min-height:74px !important;
-	width:194px  !important;
+	/*min-height:74px ;
+	width:194px  ;
 	font-family: testFonts;
-	text-align:left !important;
-	font-weight:normal !important;
-	z-index:10000 !important;
-	top:-75px !important;
-	overflow:absolute !important;
-	padding:4px 6px 4px 6px !important;
-	display: inline !important;
-	left:1229px !important;
-	overflow:hidden !important;
-	background-color:rgba(234, 242, 245,.8) !important;
-	position:absolute !important;
-	border-top: 1px solid rgba(180, 184, 185, 0.96) !important;
-	border-left: 1px solid rgba(180, 184, 185, 0.96)!important;
-	border-bottom: 1px solid rgba(180, 184, 185, 0.96) !important;
+	text-align:left ;
+	font-weight:normal ;
+	z-index:10000 ;
+	top:-75px ;
+	padding:4px 6px 4px 6px ;
+	display: inline ;
+	left:1229px;
+	overflow:hidden;
+	background-color:rgba(234, 242, 245,.80);
+	position:absolute ;
+	border-top: 1px solid rgba(180, 184, 185, 0.96) ;
+	border-left: 1px solid rgba(180, 184, 185, 0.96);
+	border-bottom: 1px solid rgba(180, 184, 185, 0.96) ;
 	/*display:none;*/
 }
-.dygraph-legend *{
+
+
+/* .dygraph-legend *{
 	
 	margin-top:15px !important;
+}
+*/
+
+#dy_legend{
+	letter-spacing:0.2px;
+	font-size:15px;
+	background-color:rgba(234, 242, 245,.90);
+	display: inline;
+	padding:4px 6px 4px 6px ;
+	width:192px;
+	min-height:74px;
+	text-align:left;
+	font-family: testFonts;
+	position:absolute;
+	right:0px; 
+	bottom:0px;
+	z-index:10000;
+	border-top: 1px solid rgba(180, 184, 185, 0.96);
+	border-left: 1px solid rgba(180, 184, 185, 0.96);
+	
 }
 
 
