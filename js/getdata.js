@@ -1,6 +1,6 @@
 // this script gets data from the server
 
-var baseurl = "http://139.59.37.112:8080/";
+var baseurl = "http://127.0.0.1:8080/";
 
 
 // Create the XHR object.
@@ -59,7 +59,7 @@ function usernames () {
 
 	var usernames = [];
 	$.ajax({
-		
+
     	url: url,
 		data: null,
 		type: 'GET',
@@ -73,13 +73,13 @@ function usernames () {
 		},
 		error: function(xhr, status, text) {
 	        var response = xhr.responseText;
-			
+
 	        console.log('Failure!');
-			
+
 	        if (response)
 			console.log(response.error);
 		}
-		
+
 	});
 	return null;
 
@@ -96,7 +96,7 @@ function country_stats () {
 		updateNepalStatistics(cStats);
 		return 0;*/
 	/*Remove upto here.... when CORS is taken care of*/
-	
+
 	// format the url
 	url = baseurl + "jsoncountry/";
 	// get the data
@@ -113,7 +113,7 @@ function country_stats () {
 // get and return the json of selection data
 function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 
-	
+
 	/*Remove from here.... when CORS is taken care of*/
 	var sStats={
 		"Buildings_start":1000,
@@ -128,7 +128,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 	updateSelectionStatistics(sStats);
 	//return 0;
 	/*Remove upto here.... when CORS is taken care of*/
-	
+
 
 	/*
 
@@ -136,9 +136,9 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 	if (!user || user == null || user == "")
 	user = "user";	// for now, fix the actual server later to be able to handle empty user param
 	url = baseurl + "jsonselection/" + start.getFullYear() + "-" + start.getMonth() + "-" + start.getDay() + "T" + start.getHours() + ":" + start.getMinutes() + ":" + start.getSeconds() + start.getTimezoneOffset() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + end.getDay() + "T" + end.getHours() + ":" + end.getMinutes() + ":" + end.getSeconds() + end.getTimezoneOffset() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + user + "/";
-	
+
 	debugger;
-	
+
 	$.ajax({
 	    url: url,
 		type: "GET",
@@ -147,7 +147,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 	    success: function(response) {
 			debugger;
 			updateSelectedStatistics(response);
-			
+
 			return response;
 		},
 	    error: function(jqXHR, textStatus, errorThrown) {
@@ -158,7 +158,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 			}
 		}
 	});
-	
+
 	console.log("nothing found on server for selection");
 	return null;
 	*/
@@ -167,7 +167,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 
 
 function nodes_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername){
-	
+
 	/*Remove from here.... when CORS is taken care of*/
 	var nodesTable = {
 		"first":{
@@ -175,7 +175,7 @@ function nodes_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUserna
 			"OSM Username":"Nama Budhathoki",
 			"Nodes":1214145,
 			"Most Frequently edited POI":"Restaurant"
-			
+
 		}
 		,
 		"second":{
@@ -208,12 +208,12 @@ function nodes_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUserna
 	updateNodes(nodesTable);
 	return 0;
 	/*Remove upto here.... when CORS is taken care of*/
-	
+
 }
 
 
 function ways_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername){
-	
+
 	/*Remove from here.... when CORS is taken care of*/
 	var waysTable = {
 		"first":{
@@ -253,7 +253,7 @@ function ways_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsernam
 	updateWays(waysTable);
 	return 0;
 	/*Remove upto here.... when CORS is taken care of*/
-	
+
 }
 // get and return the csv data on activity
 

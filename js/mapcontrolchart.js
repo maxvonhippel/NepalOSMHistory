@@ -4,15 +4,15 @@ var gEndTime = new Date(0);
 var div = "chart";
 var chart, data;
 var self = this;
-var file = "http://localhost/NepalOSMHistory/data/sampledaily/activity.csv";
+var file = "data/sampledaily/activity.csv";
 
 $(document).ready(function () {
 	var done = false;
     var dchart = new Dygraph(
         document.getElementById(div),
         file,
-        {   
-        
+        {
+
             axisLineColor:'#09b0a5',
             colors:['#15A6B7','#FF7C33'],
             labelsDiv:"dy_legend",

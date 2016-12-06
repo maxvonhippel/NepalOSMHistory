@@ -163,8 +163,8 @@ function request_for_data() {
 	//update ways table
 	var responseWaysTable = ways_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
 	//var responseWays =;
-	
-	
+
+
 
 	/*
 	var _obj = JSON.parse(response);
