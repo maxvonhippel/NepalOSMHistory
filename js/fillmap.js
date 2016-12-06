@@ -17,8 +17,6 @@ var hundredth = 200000; // one one hundredth of the total number of nodes we wil
 
 // iterates the progress bar by 1%, or resets if at 100 (that shouldn't happen though)
 function move() {
-	if (width % 10 == 0)
-		console.log("incrementing the progress bar");
 	var elem = document.getElementById("myBar");
 	if (width >= 100) {
 		width = 1;
@@ -87,8 +85,10 @@ function parseresponse(c) {
 			// console.log("edit: ", name, " and stamp: ", stamp);
 			a += 1;	// keep track of number of versions total parsed
 			w += 1;
-			if (a % hundredth == 0)
+			if (a % hundredth == 0) {
+				console.log("incrementing the progress bar");
 				move();	// iterate the progress bar accordingly
+			}
 			versions.push([Object.freeze(name.toString()), Object.freeze(new Date(stamp.toString()))]);
 
 		});
