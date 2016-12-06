@@ -22,7 +22,6 @@ function updateNepalStatistics(cStats){
 	$("#nepalHealth").html(numberWithCommas(cStats.Health));
 }
 
-
 function updateSelectionStatistics(sStats){
 	$("#selectedBuildings_start").html(numberWithCommas(sStats.Buildings_start));
 	$("#selectedBuildings_end").html(numberWithCommas(sStats.Buildings_end));

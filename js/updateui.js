@@ -60,9 +60,7 @@ function filter_map(start, end) {
 		ret[r[q]] = this.hash[r[q]];
 	}
 	var place = 0;
-	for (var key in ret) {
-		console.log("Place: ", ++place, " User: ", key, " Nodes mapped: ", ret[key]);
-	}
+	nodes_stats(ret);
 
 }
 
