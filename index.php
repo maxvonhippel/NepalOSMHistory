@@ -70,6 +70,11 @@
 			<span id="titleOpenStreetMap">OpenStreetMap</span>
 			<span id="titleStatisticsTool">Nepal Statistics</span>
 		</h1>
+		<!--- progress bar -->
+				<div id="myProgress">
+					<div id="myBar"></div>
+				</div>
+				<!--- End of progress bar -->
 	</div>
 
 	<div class="w3-row w3-center"> <!-- holds map, chart, nepal statistics and selected statistics -->
@@ -81,12 +86,11 @@
 					<ul id="username" class="w3-ul w3-card-2"></ul>
 				</div>
 				<!-- End of searchbox -->
-				<!--- progress bar --->
-				<div id="myProgress">
-					<div id="myBar"></div>
-				</div>
-				<!--- End of progress bar --->
-				<div id="dy_legend" style="position:absolute; right:0px; bottom:0px">Test</div>
+				<!--- Legend of Slider -->
+				<div id="dy_legend">
+					<span id="newFeatures">New Features</span><br>
+					<span id="editedFeatures">Edited Features</span>
+				</div><!--- End of Legend of Slider -->
 			</div> <!--- end of map -->
 			<script type="text/javascript" src="js/jsonclustermap.js"></script>
 			<!--- start of chart -->
