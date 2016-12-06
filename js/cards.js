@@ -46,17 +46,6 @@ function updateSelectionStatistics(sStats){
 	
 }
 
-function updateNodesOld(tables){
-	$("#tblNodes > tbody").empty();
-	for (row in tables.Nodes){
-		$("#tblNodes tbody").append('<tr><td class="center">'+tables.Nodes[row]["Rank"]+'</td><td class="center">'+tables.Nodes[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(tables.Nodes[row]["Nodes"])+'</td><td class="center">'+tables.Nodes[row]["Most Frequently edited POI"]+'</td></tr>');
-		
-		if(tables.Nodes[row].hasOwnProperty('highlight')){
-			$("#tblNodes tr td:contains("+tables.Nodes[row]["OSM Username"]+")").each(function(){$(this).parent().children().addClass('w3-teal highlighted')});
-		}
-	}
-}
-
 function updateNodes(nodesTable){
 	$("#tblNodes > tbody").empty();
 	for (row in nodesTable){

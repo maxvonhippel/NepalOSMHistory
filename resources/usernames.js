@@ -1,4 +1,4 @@
-usernames=[
+var usernames=[
 "Sazal(Solaris)",
 "NamaBudhathoki",
 "PratikGautam"];
