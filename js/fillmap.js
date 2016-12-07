@@ -51,23 +51,18 @@ function handlenodes(data) {
 		delimiter: ",", 		// explicit statement improves speed
 		worker: true,			// so the website doesn't lag
 		step: function(row) {
-
 			if (row.data[0].length == 4)
 				parseresponse(row.data[0]);		// parse row by row for speed
-
-
 		},
 		complete: function() {
 			console.log("All done parsing nodes for map from csv!");
 			// remove progress bar
-
 			document.getElementById("myBar").remove();
 			document.getElementById("myProgress").remove();
 			// clean up markers array
 			markers.length = mks;
 			// put stuff on map
 			map.addLayer(leafletView);
-
 		},
 		error: function(err, file, inputElem, reason)
 		{
