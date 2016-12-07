@@ -62,6 +62,7 @@ Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv", {
 
 function parseresponse(c) {
 	try {
+		console.log("parsing a line");
 		// initialize new marker
 		var marker = new PruneCluster.Marker(c[2], c[1]);
 		// feature_id
