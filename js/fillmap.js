@@ -34,7 +34,7 @@ var mks = 0; // how many total node ids have we seen?
 function fillmap() {
 	// -------------------------- CSV PARSING FOR THE MAP ----------------------------------
 	console.log("filling map");
-	Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv", {
+	Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes-min.csv", {
 
 		download: true, 		// downloads the file, otherwise it doesn't work
 		dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
