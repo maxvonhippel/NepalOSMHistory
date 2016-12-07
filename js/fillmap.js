@@ -60,7 +60,6 @@ Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv", {
 	}
 });
 
-// this function parses our response once we get it (see code above in fillmap() )
 function parseresponse(c) {
 	try {
 		// initialize new marker
