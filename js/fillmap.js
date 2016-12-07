@@ -15,22 +15,30 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
 }
 
 // -------------------------- HELPER FUNCTION TO ANIMATE PROGRESS BAR UI ----------------------------------
+var elem;
+window.onload = function () {
+    elem = document.getElementById("myBar");
+	fillmap();
+};
 
 // iterates the progress bar by 1%, or resets if at 100 (that shouldn't happen though)
 function move() {
-	var elem = document.getElementById("myBar");
-	if (width >= 100) {
+	if (!elem)
+		console.log("no elem");
+	else if (width >= 100) {
 		width = 1;
 		elem.style.width = width + '%';
 	} else {
 		width++;
 		elem.style.width = width + '%';
 	}
+	$('#myProgress').hide().show(0);
 }
 
 var a = 0; // how many total versions have we seen?
 var mks = 0; // how many total node ids have we seen?
 
+/*
 function fillmap() {
 	console.log("downloading nodes gzip file");
 	$.ajax({
@@ -41,10 +49,11 @@ function fillmap() {
     });
 }
 
-function handlenodes(data) {
+*/
+function fillmap() {
 	// -------------------------- CSV PARSING FOR THE MAP ----------------------------------
 	console.log("filling map");
-	Papa.parse(data, {
+	Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv", {
 
 		download: false, 		// downloads the file, otherwise it doesn't work
 		dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
