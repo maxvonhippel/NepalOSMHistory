@@ -37,7 +37,7 @@ Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv", {
 	download: true, 		// downloads the file, otherwise it doesn't work
 	dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
 	delimiter: ",", 		// explicit statement improves speed
-	worker: true,
+	worker: false,			// so we can update our progress bar
 	step: function(row) {
 		if (row.data[0].length == 4)
 			parseresponse(row.data[0]);		// parse row by row for speed
@@ -62,7 +62,6 @@ Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv", {
 
 function parseresponse(c) {
 	try {
-		console.log("parsing a line");
 		// initialize new marker
 		var marker = new PruneCluster.Marker(c[2], c[1]);
 		// feature_id
