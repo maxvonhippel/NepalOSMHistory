@@ -42,5 +42,8 @@ $(document).ready(function () {
     );
 });
 
+// start updating cards
+updateCardsRange(start, end);
+selection_stats(zoom._southWest.lng, zoom._southWest.lat, zoom._northEast.lng, zoom._northEast.lat, gStartTime, gEndTime, gUsername);
 // start map parsing
 fillmap();

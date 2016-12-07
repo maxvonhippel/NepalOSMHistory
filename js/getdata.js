@@ -48,17 +48,6 @@ function makeCorsRequest(url) {
   	xhr.send();
 }
 
-function usernames () {
-	console.log("requesting usernames");
-	// format the url
-	var url = baseurl + "usernames/";
-
-	var usernames = [];
-	usernames = makeCorsRequest(url);
-	return usernames;
-
-}
-
 function country_stats () {
 	/*Remove from here.... when CORS is taken care of*/
 		/*var cStats={"Buildings": 22560, "Roads": 2512, "Education": 1, "Health": 9, "Mappers": 9465};

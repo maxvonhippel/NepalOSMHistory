@@ -13,7 +13,7 @@ var mymap = L.map('mapid', mapOptions);
 /*L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>'
 }).addTo(mymap);*/
-	
+
 
    /* var nepalBorderLatLngArray = [];
 
@@ -25,7 +25,7 @@ var mymap = L.map('mapid', mapOptions);
 
 var latLngGeom = nepal_border; //Define real geometry here
 var osm = L.TileLayer.boundaryCanvas('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    boundary: nepal_border 
+    boundary: nepal_border
     //attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>'
 }).addTo(mymap);
 
@@ -59,8 +59,8 @@ mymap.on('moveend', function(ev){
 		'<br/>west='+west
 	);*/
 	//AJAX new output
-	
+
 	//update #selectedStatistics
-	
+
 	//update tables
 });
