@@ -90,7 +90,10 @@ function nodes_stats(ret, start, end){
 	var nodesTable = {};
 	var nums = [ "first", "second", "third", "fourth", "fifth" ];
 	// ^topnodes/timerange/mn_x/mn_y/mx_x/mx_y/first/second/third/fourth/fifth/
-	var url = baseurl + "topnodes/" + start.getFullYear() + "-" + start.getMonth() + "-" + start.getDay() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + end.getDay() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + ret[0] + "/" + ret[1] + "/" + ret[2] + "/" + ret[3] + "/" + ret[4] + "/";
+	var url;
+	try {
+		url = baseurl + "topnodes/" + start.getFullYear() + "-" + start.getMonth() + "-" + start.getDay() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + end.getDay() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + ret[0] + "/" + ret[1] + "/" + ret[2] + "/" + ret[3] + "/" + ret[4] + "/";
+	} catch (err) { return null; }
 
 	function handleNodesData(response) {
 		var st = 0;
