@@ -25,7 +25,7 @@ function getTitle(text) {
 }
 
 // Make the actual CORS request.
-function makeCorsRequest(url) {
+function makeCorsRequest(url, callback) {
 
   	var xhr = createCORSRequest('GET', url);
   	if (!xhr) {
@@ -38,6 +38,8 @@ function makeCorsRequest(url) {
     	var text = xhr.responseText;
 		var title = getTitle(text);
 		console.log('Response from CORS request to ' + url + ': ' + title);
+		if (callback)
+			callback(text);
 		return text;
   	};
 
@@ -50,16 +52,9 @@ function makeCorsRequest(url) {
 
 function country_stats () {
 	console.log("getting country stats.");
-	/*Remove from here.... when CORS is taken care of*/
-		/*var cStats={"Buildings": 22560, "Roads": 2512, "Education": 1, "Health": 9, "Mappers": 9465};
-		updateNepalStatistics(cStats);
-		return 0;*/
-	/*Remove upto here.... when CORS is taken care of*/
-
 	// format the url
 	var url = baseurl + "jsoncountry/";
-	var cStats = makeCorsRequest(url);
-	updateNepalStatistics(cStats);
+	var cStats = makeCorsRequest(url, updateNepalStatistics);
 	return cStats; // doesn't do much; just returning in keeping up with the norm.
 }
 
@@ -80,14 +75,12 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 	};
 	updateSelectionStatistics(sStats);
 	*/
-
 	// format the url
 	if (!user || user == null || user == "")
 		user = "";
 	var url = baseurl + "jsonselection/" + start.getFullYear() + "-" + start.getMonth() + "-" + start.getDay() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + end.getDay() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + user + "/";
-
-	var response = makeCorsRequest(url);
-	updateSelectionStatistics(response);
+	var response = [];
+	response = makeCorsRequest(url, updateSelectionStatistics);
 	return response;
 }
 
@@ -99,28 +92,32 @@ function nodes_stats(ret, start, end){
 	// ^topnodes/timerange/mn_x/mn_y/mx_x/mx_y/first/second/third/fourth/fifth/
 	var url = baseurl + "topnodes/" + start.getFullYear() + "-" + start.getMonth() + "-" + start.getDay() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + end.getDay() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + ret[0] + "/" + ret[1] + "/" + ret[2] + "/" + ret[3] + "/" + ret[4] + "/";
 
-	var response = makeCorsRequest(url);
-	var st = 0;
-	Papa.parse(response, {
-		download: true, 		// might not need this
-		dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
-		delimiter: ",", 		// explicit statement improves speed
-		worker: true,
-		step: function(row) {
-			// row.data[0]
-			var arr = row.data[0].split(':');
-			nodesTable[nums[st]] = {};
-			nodesTable[nums[st]]["Rank"] = st + 1;
-			nodesTable[nums[st]]["OSM Username"] = arr[0];
-			nodesTable[nums[st]]["Most Frequently edited POI"] = arr[1];
-			++st;
-		},
-		complete: function() {
-			updateNodes(nodesTable);
-			return 0;
-		}
-	});
-	return 1; // failure
+	function handleNodesData(response) {
+		var st = 0;
+		Papa.parse(response, {
+			download: true, 		// might not need this
+			dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
+			delimiter: ",", 		// explicit statement improves speed
+			worker: true,
+			step: function(row) {
+				// row.data[0]
+				var arr = row.data[0].split(':');
+				nodesTable[nums[st]] = {};
+				nodesTable[nums[st]]["Rank"] = st + 1;
+				nodesTable[nums[st]]["OSM Username"] = arr[0];
+				nodesTable[nums[st]]["Most Frequently edited POI"] = arr[1];
+				++st;
+			},
+			complete: function() {
+				updateNodes(nodesTable);
+				return 0;
+			}
+		});
+		return 1; // failure
+	}
+
+	var response = makeCorsRequest(url, handleNodesData);
+	return response;
 }
 
 /*

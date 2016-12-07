@@ -88,7 +88,8 @@ map.on('moveend', function(ev){
 	gSouth=_bounds.getSouth();
 	gEast=_bounds.getEast();
 	gWest=_bounds.getWest();
-	request_for_data();
+	if (map_built)
+		request_for_data();
 });
 
 // For the SearchBox
