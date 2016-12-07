@@ -31,7 +31,7 @@ function move() {
 var a = 0; // how many total versions have we seen?
 var mks = 0; // how many total node ids have we seen?
 
-function fillmap() {
+/*function fillmap() {
 	console.log("downloading nodes gzip file");
 	$.ajax({
         type: "GET",
@@ -39,22 +39,22 @@ function fillmap() {
 		dataType: "text",
 		success: function(data) { handlenodes(data); }
     });
-}
+}*/
 
-function handlenodes(data) {
+function fillmap() {
 	// -------------------------- CSV PARSING FOR THE MAP ----------------------------------
 	console.log("filling map");
-	Papa.parse(data, {
+	Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz", {
 
 		download: false, 		// downloads the file, otherwise it doesn't work
 		dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
 		delimiter: ",", 		// explicit statement improves speed
 		worker: true,			// so the website doesn't lag
 		step: function(row) {
-			/*
+
 			if (row.data[0].length == 4)
 				parseresponse(row.data[0]);		// parse row by row for speed
-				*/
+
 
 		},
 		complete: function() {
