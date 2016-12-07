@@ -31,7 +31,7 @@ function move() {
 var a = 0; // how many total versions have we seen?
 var mks = 0; // how many total node ids have we seen?
 
-/*function fillmap() {
+function fillmap() {
 	console.log("downloading nodes gzip file");
 	$.ajax({
         type: "GET",
@@ -39,12 +39,12 @@ var mks = 0; // how many total node ids have we seen?
 		dataType: "text",
 		success: function(data) { handlenodes(data); }
     });
-}*/
+}
 
-function fillmap() {
+function handlenodes(data) {
 	// -------------------------- CSV PARSING FOR THE MAP ----------------------------------
 	console.log("filling map");
-	Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz", {
+	Papa.parse(data, {
 
 		download: false, 		// downloads the file, otherwise it doesn't work
 		dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
@@ -60,14 +60,14 @@ function fillmap() {
 		complete: function() {
 			console.log("All done parsing nodes for map from csv!");
 			// remove progress bar
-			/*
+
 			document.getElementById("myBar").remove();
 			document.getElementById("myProgress").remove();
 			// clean up markers array
 			markers.length = mks;
 			// put stuff on map
 			map.addLayer(leafletView);
-			*/
+
 		},
 		error: function(err, file, inputElem, reason)
 		{
