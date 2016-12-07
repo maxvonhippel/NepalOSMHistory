@@ -34,26 +34,30 @@ var mks = 0; // how many total node ids have we seen?
 function fillmap() {
 	// -------------------------- CSV PARSING FOR THE MAP ----------------------------------
 	console.log("filling map");
-	Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes-min.csv", {
+	Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv", {
 
 		download: true, 		// downloads the file, otherwise it doesn't work
 		dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
 		delimiter: ",", 		// explicit statement improves speed
 		worker: true,			// so the website doesn't lag
 		step: function(row) {
+			/*
 			if (row.data[0].length == 4)
 				parseresponse(row.data[0]);		// parse row by row for speed
+				*/
+
 		},
 		complete: function() {
 			console.log("All done parsing nodes for map from csv!");
 			// remove progress bar
+			/*
 			document.getElementById("myBar").remove();
 			document.getElementById("myProgress").remove();
 			// clean up markers array
 			markers.length = mks;
 			// put stuff on map
 			map.addLayer(leafletView);
-			self.close();
+			*/
 		},
 		error: function(err, file, inputElem, reason)
 		{
