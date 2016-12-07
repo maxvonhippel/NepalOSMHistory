@@ -1,7 +1,5 @@
-importScripts('papaparse.min.js');
-importScripts('mapcontrolchart.js');
-importScripts('updateui.js');
-importScripts('getdata.js');
+importScripts('papaparse.min.js', 'jsonclustermap.js', 'updateui.js');
+
 
 // For threading
 // Setup an event listener that will handle messages sent to the worker.

@@ -1,4 +1,5 @@
 // a script to call all the UI changes that need to happen upon a variable change
+var markers = [];
 
 // what to do when the date range changes
 function date_range_change(start, end) {
