@@ -49,6 +49,7 @@ function makeCorsRequest(url) {
 }
 
 function country_stats () {
+	console.log("getting country stats.");
 	/*Remove from here.... when CORS is taken care of*/
 		/*var cStats={"Buildings": 22560, "Roads": 2512, "Education": 1, "Health": 9, "Mappers": 9465};
 		updateNepalStatistics(cStats);
@@ -64,6 +65,7 @@ function country_stats () {
 
 // get and return the json of selection data
 function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
+	console.log("getting selection stats");
 	/*
 	// sample data
 	var sStats={
@@ -91,7 +93,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 
 
 function nodes_stats(ret, start, end){
-
+	console.log("getting nodes stats");
 	var nodesTable = {};
 	var nums = [ "first", "second", "third", "fourth", "fifth" ];
 	// ^topnodes/timerange/mn_x/mn_y/mx_x/mx_y/first/second/third/fourth/fifth/
