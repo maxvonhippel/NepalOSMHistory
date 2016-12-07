@@ -36,7 +36,7 @@ function fillmap() {
 	if (filled)
 		return;
 	console.log("filling map");
-	Papa.parse("../data/sampledaily/nodes.csv", {
+	Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv", {
 
 		download: true, 		// downloads the file, otherwise it doesn't work
 		dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
