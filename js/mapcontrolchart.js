@@ -43,4 +43,4 @@ $(document).ready(function () {
 });
 
 // start map parsing
-startworker();
+fillmap();
