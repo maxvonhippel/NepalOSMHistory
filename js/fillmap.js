@@ -1,4 +1,4 @@
-importScripts('papaparse.min.js', 'jsonclustermap.js', 'updateui.js');
+importScripts('papaparse.min.js', 'jsonclustermap.js', 'updateui.js', 'jsonclustermap.js');
 
 
 // For threading
