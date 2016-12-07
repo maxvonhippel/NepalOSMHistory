@@ -33,14 +33,12 @@ var mks = 0; // how many total node ids have we seen?
 
 function fillmap() {
 	console.log("downloading nodes gzip file");
-	$(document).ready(function() {
-    	$.ajax({
-        	type: "GET",
-			url: "http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz",
-			dataType: "text",
-			success: function(data) { handlenodes(data);}
-     	});
-	});
+	$.ajax({
+        type: "GET",
+		url: "http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz",
+		dataType: "text",
+		success: function(data) { handlenodes(data); }
+    });
 }
 
 function handlenodes(data) {
