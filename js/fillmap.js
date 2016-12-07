@@ -1,4 +1,4 @@
-importScripts('papaparse.min.js', 'jsonclustermap.js', 'updateui.js', 'jsonclustermap.js');
+importScripts('papaparse.min.js', 'jsonclustermap.js', 'updateui.js', 'jsonclustermap.js', 'leaflet.js', '../plugins/PruneCluster/dist/PruneCluster.js');
 
 
 // For threading
