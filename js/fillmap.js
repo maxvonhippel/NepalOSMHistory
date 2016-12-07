@@ -26,7 +26,6 @@ function move() {
 		width++;
 		elem.style.width = width + '%';
 	}
-	Application.DoEvents();
 }
 
 var a = 0; // how many total versions have we seen?
@@ -98,5 +97,5 @@ function parseresponse(c) {
 			markers.push(marker);	// add to array used for filtering
 			leafletView.RegisterMarker(marker); // add to map (not yet rendered)
 		}
-	} catch (err) { console.log(err + " full str: " + c.toString()); } // log error and move on, usually can expect a couple, it's ok
+	} catch (err) { console.log(err + "; full str: " + c.toString()); } // log error and move on, usually can expect a couple, it's ok
 }
