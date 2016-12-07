@@ -28,10 +28,6 @@ $(document).ready(function () {
             axisLabelFontSize: 11,
             drawCallback: function() {
 	            done = true;
-	            gStartTime = new Date(minDate);
-				gEndTime = new Date(maxDate);
-				updateCardsRange(gStartTime, gEndTime);
-				selection_stats(zoom._southWest.lng, zoom._southWest.lat, zoom._northEast.lng, zoom._northEast.lat, gStartTime, gEndTime, gUsername);
             },
             zoomCallback: function(minDate, maxDate, yRanges) {
 	            if (done) {
