@@ -165,7 +165,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 }
 
 
-function nodes_stats(ret){
+function nodes_stats(ret, start, end){
 
 	var nodesTable = {};
 	var nums = [ "first", "second", "third", "fourth", "fifth" ];

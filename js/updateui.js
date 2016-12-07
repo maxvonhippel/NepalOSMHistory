@@ -61,7 +61,7 @@ function filter_map(start, end) {
 		ret[r[q]] = this.hash[r[q]];
 	}
 	var place = 0;
-	nodes_stats(ret);
+	nodes_stats(ret, start, end);
 
 }
 
