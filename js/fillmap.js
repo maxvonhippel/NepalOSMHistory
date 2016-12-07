@@ -1,6 +1,7 @@
 // move code
 var width = 1; // current width out of 100 of the progress bar
 var hundredth = 200000; // one one hundredth of the total number of nodes we will parse, approximately
+var map_built = false;
 // -------------------------- HELPER FUNCTIONS TO REMOVE PROGRESS BARS FROM UI ----------------------------------
 Element.prototype.remove = function() {
 	this.parentElement.removeChild(this);
@@ -72,6 +73,7 @@ function handlenodes(data) {
 			markers.length = mks;
 			// put stuff on map
 			map.addLayer(leafletView);
+			map_built = true;
 		},
 		error: function(err, file, inputElem, reason)
 		{

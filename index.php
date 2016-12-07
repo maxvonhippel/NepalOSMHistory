@@ -111,7 +111,7 @@
 						<td id="nepalBuildings" class="right">-</td>
 					</tr>
 					<tr>
-						<td>Roads (in km)</td>
+						<td>Roads</td>
 						<td id="nepalRoads" class="right">-</td>
 					</tr>
 					<tr>
@@ -145,7 +145,7 @@
 						<td id="selectedBuildings_end" class="right"class="right">-</td>
 					</tr>
 					<tr>
-						<td>Roads (in km)</td>
+						<td>Roads</td>
 						<td id="selectedRoads_start" class="center">-</td>
 						<td id="selectedRoads_end" class="right">-</td>
 					</tr>
