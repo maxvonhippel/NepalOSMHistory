@@ -1,64 +1,54 @@
-// -------------------------- HELPER FUNCTIONS TO REMOVE PROGRESS BARS FROM UI ----------------------------------
-Element.prototype.remove = function() {
-    this.parentElement.removeChild(this);
-}
+importScripts('papaparse.min.js');
+importScripts('mapcontrolchart.js');
+importScripts('updateui.js');
+importScripts('getdata.js');
 
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for(var i = this.length - 1; i >= 0; i--) {
-        if(this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
-        }
-    }
-}
-
-// -------------------------- HELPER FUNCTION TO ANIMATE PROGRESS BAR UI ----------------------------------
-var width = 1; // current width out of 100 of the progress bar
-var hundredth = 200000; // one one hundredth of the total number of nodes we will parse, approximately
-
-// iterates the progress bar by 1%, or resets if at 100 (that shouldn't happen though)
-function move() {
-	var elem = document.getElementById("myBar");
-	if (width >= 100) {
-		width = 1;
-		elem.style.width = width + '%';
-	} else {
-		width++;
-		elem.style.width = width + '%';
-	}
-}
+// For threading
+// Setup an event listener that will handle messages sent to the worker.
+self.addEventListener('message', function(e) {
+  	// Send the message back.
+  	if (e.data == "fill!") {
+		console.log("roger that!  Starting to fill the map!");
+		fillmap();
+  	}
+}, false);
 
 var a = 0; // how many total versions have we seen?
 var mks = 0; // how many total node ids have we seen?
 
-// -------------------------- CSV PARSING FOR THE MAP ----------------------------------
-console.log("filling map");
-Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv", {
+function fillmap() {
+	// -------------------------- CSV PARSING FOR THE MAP ----------------------------------
+	console.log("filling map");
+	Papa.parse("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv", {
 
-	download: true, 		// downloads the file, otherwise it doesn't work
-	dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
-	delimiter: ",", 		// explicit statement improves speed
-	worker: false,			// so we can update our progress bar
-	step: function(row) {
-		if (row.data[0].length == 4)
-			parseresponse(row.data[0]);		// parse row by row for speed
-	},
-	complete: function() {
-		console.log("All done parsing nodes for map from csv!");
-		// remove progress bar
-		document.getElementById("myBar").remove();
-		document.getElementById("myProgress").remove();
-		// clean up markers array
-		markers.length = mks;
-		// put stuff on map
-		map.addLayer(leafletView);
-	},
-	error: function(err, file, inputElem, reason)
-	{
-		// executed if an error occurs while loading the file,
-		// or if before callback aborted for some reason
-		console.log("error parsing map: ", err, reason);
-	}
-});
+		download: true, 		// downloads the file, otherwise it doesn't work
+		dynamicTyping: true, 	// automatically figures out if something is a string, number, etc
+		delimiter: ",", 		// explicit statement improves speed
+		worker: true,			// so the website doesn't lag
+		step: function(row) {
+			if (row.data[0].length == 4)
+				parseresponse(row.data[0]);		// parse row by row for speed
+		},
+		complete: function() {
+			console.log("All done parsing nodes for map from csv!");
+			// remove progress bar
+			document.getElementById("myBar").remove();
+			document.getElementById("myProgress").remove();
+			// clean up markers array
+			markers.length = mks;
+			// put stuff on map
+			map.addLayer(leafletView);
+			self.close();
+		},
+		error: function(err, file, inputElem, reason)
+		{
+			// executed if an error occurs while loading the file,
+			// or if before callback aborted for some reason
+			console.log("error parsing map: ", err, reason);
+		}
+	});
+}
+
 
 function parseresponse(c) {
 	try {
@@ -79,7 +69,7 @@ function parseresponse(c) {
 			w += 1;
 			if (a % hundredth == 0) {
 				console.log("incrementing the progress bar");
-				move();	// iterate the progress bar accordingly
+				self.postMessage('move!');
 			}
 			versions.push([Object.freeze(name.toString()), Object.freeze(new Date(stamp.toString()))]);
 

@@ -38,7 +38,7 @@
 	<!--- cards updater --->
 	<script type="text/javascript" src="js/cards.js"></script>
 	<!--- map filler --->
-	<script type="text/javascript" src="js/fillmap.js"></script>
+	<script type="text/javascript" src="js/handleworkers.js"></script>
 	<!-- Leaflet Search -->
 	<script src="plugins/leaflet-search/leaflet-search.min.js"></script>
 	<script src="plugins/leaflet-search/leaflet-search.src.js"></script>
