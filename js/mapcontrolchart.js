@@ -40,5 +40,4 @@ $(document).ready(function () {
             // http://dygraphs.com/options.html
         }
     );
-    fillmap();
 });
