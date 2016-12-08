@@ -19,14 +19,14 @@ function updateCardsRange(start, end) {
 function updateNepalStatistics(cStats) {
 	console.log("updating nepal stats card: ", cStats);
 	$("#nepalMappers").html(numberWithCommas(cStats.Mappers));
-	$("#nepalBuildings").html(numberWithCommas(cStats.Buildings));
+	$("#nepalBuildings").html(numberWithCommas(cStats.Building));
 	$("#nepalRoads").html(numberWithCommas(cStats.Roads));
 	$("#nepalEducation").html(numberWithCommas(cStats.Education));
 	$("#nepalHealth").html(numberWithCommas(cStats.Health));
 }
 
 function updateSelectionStatistics(sStats) {
-	console.log("updating selection stats card: ", cStats);
+	console.log("updating selection stats card: ", sStats);
 	$("#selectedBuildings_start").html(numberWithCommas(sStats.Buildings_start));
 	$("#selectedBuildings_end").html(numberWithCommas(sStats.Buildings_end));
 	$("#selectedRoads_start").html(numberWithCommas(sStats.Roads_start));
