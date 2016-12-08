@@ -1,6 +1,7 @@
-// initialize vars
-var gStartTime = new Date(0);
-var gEndTime = new Date(0);
+var gStartTime = new Date(2008-01-01);
+var gEndTime = new Date();
+self.date_range_change(gStartTime, gEndTime);
+
 var div = "chart";
 var chart, data;
 var self = this;
