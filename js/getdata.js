@@ -52,6 +52,8 @@ function country_stats () {
 
 // get and return the json of selection data
 function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
+	if (start == end)
+		return;
 	console.log("getting selection stats");
 	/*
 	// sample data
@@ -77,7 +79,9 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 }
 
 
-function nodes_stats(ret, start, end){
+function nodes_stats(ret, start, end) {
+	if (start == end)
+		return;
 	console.log("getting nodes stats");
 	var nodesTable = {};
 	var nums = [ "first", "second", "third", "fourth", "fifth" ];
