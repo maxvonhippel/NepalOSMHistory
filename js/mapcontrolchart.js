@@ -1,6 +1,9 @@
 var gStartTime = new Date(2008-01-01);
 var gEndTime = new Date();
-self.date_range_change(gStartTime, gEndTime);
+
+window.onload = function () {
+	self.date_range_change(gStartTime, gEndTime);
+}
 
 var div = "chart";
 var chart, data;
