@@ -2,13 +2,6 @@ var gStartTime = new Date(2008-01-01);
 var gEndTime = new Date();
 var elem;
 
-window.onload = function () {
-	country_stats();
-	self.date_range_change(gStartTime, gEndTime);
-	elem = document.getElementById("myBar");
-	fillmap();
-}
-
 var div = "chart";
 var chart, data;
 var self = this;
@@ -49,4 +42,8 @@ $(document).ready(function () {
             // http://dygraphs.com/options.html
         }
     );
+    country_stats();
+	self.date_range_change(gStartTime, gEndTime);
+	elem = document.getElementById("myBar");
+	fillmap();
 });
