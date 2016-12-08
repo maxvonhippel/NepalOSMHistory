@@ -1,11 +1,24 @@
 var gStartTime = new Date(2008-01-01);
 var gEndTime = new Date();
 var elem;
+var FULLVERSION = true;
 
 var div = "chart";
 var chart, data;
 var self = this;
 var file = "data/sampledaily/activity.csv";
+
+function getConfirmation() {
+    var retVal = confirm("Would you like to load the full version of the website?  This could take 3 to 10 minutes, on a standard Nepali internet connection.  Press OK to load the full version, or CANCEL to load the lite version.");
+    if ( retVal == true ){
+	    FULLVERSION = true;
+        fillmap();
+    } else {
+        // lite version
+        FULLVERSION = false;
+        fillmap_lite();
+    }
+}
 
 $(document).ready(function () {
 	console.log("filling dygraph chart.");
@@ -45,5 +58,5 @@ $(document).ready(function () {
     country_stats();
 	self.date_range_change(gStartTime, gEndTime);
 	elem = document.getElementById("myBar");
-	fillmap();
+	getConfirmation();
 });

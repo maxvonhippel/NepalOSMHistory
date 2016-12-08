@@ -35,11 +35,24 @@ var a = 0; // how many total versions have we seen?
 var mks = 0; // how many total node ids have we seen?
 
 
+// -------------------- full vs lite held in bool var FULLVERSION --------------------
+
 function fillmap() {
 	console.log("downloading nodes gzip file");
+	get_map_data("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz")
+}
+
+function fillmap_lite() {
+	// what is the center of the current range?
+	var midpoint = new Date((gStartTime.getTime() + gEndTime.getTime()) / 2);
+	url = "http://139.59.37.112/today/" + midpoint.getFullYear() + "-" + (parseInt(midpoint.getMonth()) + 1).toString() + midpoint.getDate() + "/";
+	get_map_data(url);
+}
+
+function get_map_data(url) {
 	$.ajax({
         type: "GET",
-		url: "http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz",
+		url: url,
 		dataType: "text",
 		success: function(data) { handlenodes(data); },
 		error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
