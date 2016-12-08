@@ -16,8 +16,8 @@ function updateCardsRange(start, end) {
 
 }
 
-function updateNepalStatistics(cStats){
-	console.log("updating nepal stats card");
+function updateNepalStatistics(cStats) {
+	console.log("updating nepal stats card: ", cStats);
 	$("#nepalMappers").html(numberWithCommas(cStats.Mappers));
 	$("#nepalBuildings").html(numberWithCommas(cStats.Buildings));
 	$("#nepalRoads").html(numberWithCommas(cStats.Roads));
@@ -25,8 +25,8 @@ function updateNepalStatistics(cStats){
 	$("#nepalHealth").html(numberWithCommas(cStats.Health));
 }
 
-function updateSelectionStatistics(sStats){
-	console.log("updating selection stats card");
+function updateSelectionStatistics(sStats) {
+	console.log("updating selection stats card: ", cStats);
 	$("#selectedBuildings_start").html(numberWithCommas(sStats.Buildings_start));
 	$("#selectedBuildings_end").html(numberWithCommas(sStats.Buildings_end));
 	$("#selectedRoads_start").html(numberWithCommas(sStats.Roads_start));
@@ -50,8 +50,8 @@ function updateSelectionStatistics(sStats){
 
 }
 
-function updateNodesOld(tables){
-	console.log("update nodes old cards");
+function updateNodesOld(tables) {
+	console.log("update nodes old cards: ", tables);
 	$("#tblNodes > tbody").empty();
 	for (row in tables.Nodes){
 		$("#tblNodes tbody").append('<tr><td class="center">'+tables.Nodes[row]["Rank"]+'</td><td class="center">'+tables.Nodes[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(tables.Nodes[row]["Nodes"])+'</td><td class="center">'+tables.Nodes[row]["Most Frequently edited POI"]+'</td></tr>');
@@ -62,8 +62,8 @@ function updateNodesOld(tables){
 	}
 }
 
-function updateNodes(nodesTable){
-	console.log("update nodes cards");
+function updateNodes(nodesTable) {
+	console.log("update nodes cards: ", nodesTable);
 	$("#tblNodes > tbody").empty();
 	for (row in nodesTable){
 		$("#tblNodes tbody").append('<tr><td class="center">'+nodesTable[row]["Rank"]+'</td><td class="center">'+nodesTable[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(nodesTable[row]["Nodes"])+'</td><td class="center">'+nodesTable[row]["Most Frequently edited POI"]+'</td></tr>');
@@ -74,8 +74,8 @@ function updateNodes(nodesTable){
 	}
 }
 
-function updateWays(waysTable){
-	console.log("update ways cards");
+function updateWays(waysTable) {
+	console.log("update ways cards: ", waysTable);
 	$("#tblWays > tbody").empty();
 	for (row in waysTable){
 		$("#tblWays tbody").append('<tr><td class="center">'+waysTable[row]["Rank"]+'</td><td class="center">'+waysTable[row]["OSM Username"]+'</td>	<td class="center">'+numberWithCommas(waysTable[row]["Ways"])+'</td><td class="center">'+waysTable[row]["Most Frequently edited POI"]+'</td></tr>');

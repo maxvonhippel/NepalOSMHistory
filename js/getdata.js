@@ -9,15 +9,8 @@ function getsomething(url, callback, type) {
 		dataType: type,
 		success: function(data) {
 			if (callback)
-				callback(url);
+				callback(data);
 			console.log("URL: ", url);
-			/*
-			try {
-				console.log("DATA: ", data);
-			} catch (err) {
-				console.log("Couldn't print data.  Error message: ", err);
-			}
-			*/
       		return data;
       	},
       	error: function() {
