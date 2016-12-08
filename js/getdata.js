@@ -31,8 +31,6 @@ function usernames () {
 	getsomething(url, setusernames, "text");
 }
 
-getsomething("http://139.59.37.112:8080/jsonselection/2007-2-18,2016-7-8/79.29931640625001/26.07652055985697/89.84619140625001/31.071755902820133//", null);
-
 usernames();
 
 function country_stats () {

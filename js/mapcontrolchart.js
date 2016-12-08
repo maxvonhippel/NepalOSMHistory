@@ -2,6 +2,7 @@ var gStartTime = new Date(2008-01-01);
 var gEndTime = new Date();
 
 window.onload = function () {
+	country_stats();
 	self.date_range_change(gStartTime, gEndTime);
 }
 

@@ -13,10 +13,6 @@ var mapOptions = {
 // find the div and put the map there
 var map = L.map("mapid", mapOptions);
 
-window.onload = function () {
-	country_stats();
-};
-
 // initialize global variables here
 gNorth = northEast.lat,
 gEast = northEast.lng,
