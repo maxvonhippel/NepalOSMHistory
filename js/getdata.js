@@ -61,7 +61,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 	// format the url
 	if (!user || user == null || user == "")
 		user = "";
-	var url = baseurl + "jsonselection/" + start.getFullYear() + "-" + start.getMonth() + "-" + (parseInt(start.getDay()) + 1).toString() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + (parseInt(end.getDay()) + 1).toString() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + user + "/";
+	var url = baseurl + "jsonselection/" + start.getFullYear() + "-" + start.getMonth() + "-" + start.getDate() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + end.getDate() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + user + "/";
 	var response = [];
 	response = getsomething(url, updateSelectionStatistics);
 	return response;
@@ -75,7 +75,7 @@ function nodes_stats(ret, start, end){
 	// ^topnodes/timerange/mn_x/mn_y/mx_x/mx_y/first/second/third/fourth/fifth/
 	var url;
 	try {
-		url = baseurl + "topnodes/" + start.getFullYear() + "-" + start.getMonth() + "-" + (parseInt(start.getDay()) + 1).toString() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + (parseInt(end.getDay()) + 1).toString() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + ret[0] + "/" + ret[1] + "/" + ret[2] + "/" + ret[3] + "/" + ret[4] + "/";
+		url = baseurl + "topnodes/" + start.getFullYear() + "-" + start.getMonth() + "-" + start.getDate() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + end.getDate() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + ret[0] + "/" + ret[1] + "/" + ret[2] + "/" + ret[3] + "/" + ret[4] + "/";
 	} catch (err) { return null; }
 
 	function handleNodesData(response) {
