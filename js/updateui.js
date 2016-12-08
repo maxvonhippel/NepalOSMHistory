@@ -4,6 +4,12 @@ var markers = [];
 // what to do when the date range changes
 function date_range_change(start, end) {
 
+	if (start.getDate() == 0) {
+		start.setDate(start.getDate() + 1);
+	}
+	if (end.getDate() == 0) {
+		end.setDate(end.getDate() + 1);
+	}
 	updateCardsRange(start, end);
 	var zoom = map.getBounds();
 	selection_stats(zoom._southWest.lng, zoom._southWest.lat, zoom._northEast.lng, zoom._northEast.lat, start, end, gUsername);
