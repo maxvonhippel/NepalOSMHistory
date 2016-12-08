@@ -5,7 +5,8 @@ var mapOptions = {
 	zoom: 7,
     minZoom:7,
 	maxZoom:19,
-	maxBounds: L.latLngBounds(southWest, northEast)
+	maxBounds: L.latLngBounds(southWest, northEast),
+	scrollWheelZoom: false
 };
 
 var mymap = L.map('mapid', mapOptions);
