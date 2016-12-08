@@ -16,11 +16,6 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
 }
 
 // -------------------------- HELPER FUNCTION TO ANIMATE PROGRESS BAR UI ----------------------------------
-var elem;
-window.onload = function () {
-    elem = document.getElementById("myBar");
-	fillmap();
-};
 
 // iterates the progress bar by 1%, or resets if at 100 (that shouldn't happen though)
 function move() {
@@ -46,7 +41,8 @@ function fillmap() {
         type: "GET",
 		url: "http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz",
 		dataType: "text",
-		success: function(data) { handlenodes(data); }
+		success: function(data) { handlenodes(data); },
+		error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
     });
 }
 
