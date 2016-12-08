@@ -165,7 +165,7 @@ function request_for_data() {
 	//update ways table
 	// ways_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
 	//var responseWays =;
-	date_range_change(start, end)
+	date_range_change(gStartTime, gEndTime)
 
 
 

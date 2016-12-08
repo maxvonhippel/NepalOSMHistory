@@ -11,11 +11,13 @@ function getsomething(url, callback, type) {
 			if (callback)
 				callback(url);
 			console.log("URL: ", url);
+			/*
 			try {
 				console.log("DATA: ", data);
 			} catch (err) {
 				console.log("Couldn't print data.  Error message: ", err);
 			}
+			*/
       		return data;
       	},
       	error: function() {
