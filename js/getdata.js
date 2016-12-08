@@ -2,15 +2,17 @@
 var baseurl = "http://139.59.37.112:8080/";
 var usernames;
 
-function getsomething(url, callback) {
+function getsomething(url, callback, type) {
 	$.ajax({
     	crossOrigin: true,
 		url: url,
+		dataType: type,
 		success: function(data) {
 			if (callback)
 				callback(url);
 			console.log("URL: ", url);
-			console.log("DATA: ", data);
+			if (type == "text")
+				console.log("DATA: ", data);
       		return data;
       	},
       	error: function() {
@@ -28,8 +30,10 @@ function setusernames(data) {
 function usernames () {
 	console.log("requesting usernames");
 	url = baseurl + "usernames/";
-	getsomething(url, setusernames);
+	getsomething(url, setusernames, "text");
 }
+
+getsomething("http://139.59.37.112:8080/jsonselection/2007-2-18,2016-7-8/79.29931640625001/26.07652055985697/89.84619140625001/31.071755902820133//", null);
 
 usernames();
 
@@ -37,7 +41,7 @@ function country_stats () {
 	console.log("getting country stats.");
 	// format the url
 	var url = baseurl + "jsoncountry/";
-	var cStats = getsomething(url, updateNepalStatistics);
+	var cStats = getsomething(url, updateNepalStatistics, "json");
 	return cStats; // doesn't do much; just returning in keeping up with the norm.
 }
 
@@ -63,7 +67,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 		user = "";
 	var url = baseurl + "jsonselection/" + start.getFullYear() + "-" + start.getMonth() + "-" + start.getDate() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + end.getDate() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + user + "/";
 	var response = [];
-	response = getsomething(url, updateSelectionStatistics);
+	response = getsomething(url, updateSelectionStatistics, "json");
 	return response;
 }
 
@@ -102,7 +106,7 @@ function nodes_stats(ret, start, end){
 		return 1; // failure
 	}
 
-	var response = getsomething(url, handleNodesData);
+	var response = getsomething(url, handleNodesData, "json");
 	return response;
 }
 
