@@ -11,8 +11,8 @@ function updateCardsRange(start, end) {
 	];
 	dstart = new Date(start);
 	dend = new Date(end);
-	document.getElementById("startDate").innerHTML = dstart.getDate() + " " + months[dstart.getMonth()] + " " + dstart.getFullYear();
-	document.getElementById("endDate").innerHTML = dend.getDate() + " " + months[dend.getMonth()] + " " + dend.getFullYear();
+	$("#startDate").html(dstart.getDate() + " " + months[dstart.getMonth()] + " " + dstart.getFullYear());
+	$("#endDate").html(dend.getDate() + " " + months[dend.getMonth()] + " " + dend.getFullYear());
 
 }
 
