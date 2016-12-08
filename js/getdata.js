@@ -1,60 +1,43 @@
 // this script gets data from the server
-
 var baseurl = "http://139.59.37.112:8080/";
+var usernames;
 
-// Create the XHR object.
-function createCORSRequest(method, url) {
-	var xhr = new XMLHttpRequest();
-	if ("withCredentials" in xhr) {
-    	// XHR for Chrome/Firefox/Opera/Safari.
-		xhr.open(method, url, true);
-  	} else if (typeof XDomainRequest != "undefined") {
-    	// XDomainRequest for IE.
-		xhr = new XDomainRequest();
-		xhr.open(method, url);
-  	} else {
-    	// CORS not supported.
-		xhr = null;
-  	}
-  	return xhr;
+function getsomething(url, callback) {
+	$.ajax({
+    	crossOrigin: true,
+		url: url,
+		success: function(data) {
+			if (callback)
+				callback(url);
+			console.log("URL: ", url);
+			console.log("DATA: ", data);
+      		return data;
+      	},
+      	error: function() {
+	      	console.log("error requesting ", url);
+	      	return null;
+      	}
+    });
 }
 
-// Helper method to parse the title tag from the response.
-function getTitle(text) {
-  	return text.match('<title>(.*)?</title>')[1];
+function setusernames(data) {
+	console.log("setting usernames");
+	usernames = data;
 }
 
-// Make the actual CORS request.
-function makeCorsRequest(url, callback) {
-
-  	var xhr = createCORSRequest('GET', url);
-  	if (!xhr) {
-    	alert('CORS not supported');
-		return null;
-  	}
-
-  	// Response handlers.
-  	xhr.onload = function() {
-    	var text = xhr.responseText;
-		var title = getTitle(text);
-		console.log('Response from CORS request to ' + url + ': ' + title);
-		if (callback)
-			callback(text);
-		return text;
-  	};
-
-  	xhr.onerror = function() {
-    	console.log('Woops, there was an error making the request.');
-    	return null;
-  	};
-  	xhr.send();
+function usernames () {
+	console.log("requesting usernames");
+	url = baseurl + "usernames/";
+	getsomething(url, setusernames);
 }
+
+usernames();
 
 function country_stats () {
 	console.log("getting country stats.");
 	// format the url
 	var url = baseurl + "jsoncountry/";
-	var cStats = makeCorsRequest(url, updateNepalStatistics);
+	var cStats = getsomething(url, updateNepalStatistics);
 	return cStats; // doesn't do much; just returning in keeping up with the norm.
 }
 
@@ -80,7 +63,7 @@ function selection_stats (mn_x, mn_y, mx_x, mx_y, start, end, user) {
 		user = "";
 	var url = baseurl + "jsonselection/" + start.getFullYear() + "-" + start.getMonth() + "-" + start.getDay() + "," + end.getFullYear() + "-" + end.getMonth() + "-" + end.getDay() + "/" + mn_x.toString() + "/" + mn_y.toString() + "/" + mx_x.toString() + "/" + mx_y.toString() + "/" + user + "/";
 	var response = [];
-	response = makeCorsRequest(url, updateSelectionStatistics);
+	response = getsomething(url, updateSelectionStatistics);
 	return response;
 }
 
@@ -119,7 +102,7 @@ function nodes_stats(ret, start, end){
 		return 1; // failure
 	}
 
-	var response = makeCorsRequest(url, handleNodesData);
+	var response = getsomething(url, handleNodesData);
 	return response;
 }
 

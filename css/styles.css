@@ -25,11 +25,11 @@
 	position: relative;
 	width: 100%;
 	height: 4px;
-	background-color: #128e9c; 
+	background-color: #128e9c;
 	width: 100%;
 	margin-top: auto;
 	margin-top:56px;
-	
+
 	/* background-color: #16B2C4; #06606A #0D6F7A #19A5A5
 	height: 4px;
 	width: 100%;
@@ -43,7 +43,7 @@
 	/* position: absolute;
 	width: 1%;
 	height: 100%;
-	background-color: red; 
+	background-color: red;
 	border-right: 0.001em solid rgba(255, 255, 255, 0.9);
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#15A6B7), color-stop(100%,#0DCEAD)); */
 	background: linear-gradient(#CC6633,#FF7C33,#CC6633); /*(#d25c4e,#ff884d,#d25c4e ) (#a7a9ac,#fff,#bcbec0 ) #ff988d*/
@@ -59,7 +59,7 @@ body, table{
 }
 
 h1.pageTitle{
-font-family: testFont;
+	font-family: testFont;
 	text-align: center;
 	display: inline-block;
 	margin: 0;
@@ -82,6 +82,7 @@ font-family: testFont;
 #mapchartbox{
 	min-height:640px;
 }
+
 #mapid{
 	min-height:520px;
 	width:100%;
@@ -278,7 +279,7 @@ hr.style-one {
 
 
 /* .dygraph-legend *{
-	
+
 	margin-top:15px !important;
 }
 */
@@ -294,12 +295,12 @@ hr.style-one {
 	text-align:left;
 	font-family: testFonts;
 	position:absolute;
-	right:0px; 
+	right:0px;
 	bottom:0px;
 	z-index:10000;
 	border-top: 1px solid rgba(180, 184, 185, 0.96);
 	border-left: 1px solid rgba(180, 184, 185, 0.96);
-	
+
 }
 
 

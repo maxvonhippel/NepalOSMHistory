@@ -14,11 +14,10 @@
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/jquery.csv.js"></script>
 	<script src="js/jquery.csv.min.js"></script>
+	<script src="js/jquery.ajax-cross-origin.min.js"></script>
 	<!--- update ui script --->
 	<script type="text/javascript" src="js/updateui.js"></script>
 	<script type="text/javascript" src="js/getdata.js"></script>
-	<!--- get usernames --->
-	<script type="text/javascript" src="http://139.59.37.112:8080/usernames"></script>
 	<!--- For the SearchBox -->
 	<link href="css/search.css" rel="stylesheet">
 	<!--fa icons-->

@@ -13,6 +13,10 @@ var mapOptions = {
 // find the div and put the map there
 var map = L.map("mapid", mapOptions);
 
+window.onload = function () {
+	country_stats();
+};
+
 // initialize global variables here
 gNorth = northEast.lat,
 gEast = northEast.lng,
@@ -88,8 +92,7 @@ map.on('moveend', function(ev){
 	gSouth=_bounds.getSouth();
 	gEast=_bounds.getEast();
 	gWest=_bounds.getWest();
-	if (map_built)
-		request_for_data();
+	request_for_data();
 });
 
 // For the SearchBox
@@ -155,15 +158,14 @@ function request_for_data() {
 	//disable_map_controls();
 	console.log("asking for json object for selection statistics");
 
-	//update Nepal Statistics table
-	var responseNepalStatistics = country_stats();
 	//update selections statistics table
-	var responseSelectionStatistics = selection_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
+	// selection_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
 	//update nodes table
-	var responseNodesTable = nodes_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
+	// nodes_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
 	//update ways table
-	var responseWaysTable = ways_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
+	// ways_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
 	//var responseWays =;
+	date_range_change(start, end)
 
 
 

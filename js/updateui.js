@@ -6,7 +6,7 @@ function date_range_change(start, end) {
 
 	updateCardsRange(start, end);
 	var zoom = map.getBounds();
-	selection_stats(zoom._southWest.lng, zoom._southWest.lat, zoom._northEast.lng, zoom._northEast.lat, gStartTime, gEndTime, gUsername);
+	selection_stats(zoom._southWest.lng, zoom._southWest.lat, zoom._northEast.lng, zoom._northEast.lat, start, end, gUsername);
 	filter_map(start, end);
 
 }

@@ -33,6 +33,7 @@ $(document).ready(function () {
 	            if (done) {
 		            gStartTime = new Date(minDate);
 					gEndTime = new Date(maxDate);
+					console.log("start date: ", minDate, " end date: ", maxDate);
 					self.date_range_change(gStartTime, gEndTime);
 					done = false;
 	            }
