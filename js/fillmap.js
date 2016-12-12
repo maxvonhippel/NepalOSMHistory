@@ -93,8 +93,11 @@ function get_map_data(url) {
 
 function handlenodes(data) {
 
-	// -------------------------- CSV PARSING FOR THE MAP ----------------------------------
 	console.log("filling map");
+	if (data == "null" || data == null || !data) {
+		console.log("no data for this day.");
+		return;
+	}
 
 	document.getElementById("myBar").style.visibility = 'visible';
 	document.getElementById("myProgress").style.visibility = 'visible';
@@ -120,7 +123,7 @@ function handlenodes(data) {
 				map.addLayer(leafletView);
 			map_built = true;
 
-			pruneCluster.ProcessView();
+			leafletView.ProcessView();
 		},
 		error: function(err, file, inputElem, reason)
 		{
