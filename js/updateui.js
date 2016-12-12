@@ -22,8 +22,12 @@ function filter_map(start, end) {
 
 	// debug vars
 	// console.log("filter map called - range: ", start.toString(), " , ", end.toString(), " , username: ", gUsername, " box: ", zoom.toBBoxString());
+	var markers_to_do;
+	if (FULLVERSION == true)
+		markers_to_do = markers;
+	else markers_to_do = lite_markers;
 
-	markers.forEach(function(m) {
+	markers_to_do.forEach(function(m) {
 		++num;
 		var wei = 0;
 		var pos = m.position;

@@ -41,12 +41,16 @@ function fillmap() {
 
 	while (FULLVERSION == true) {
 		console.log("downloading nodes gzip file");
-		var leafletView = new PruneClusterForLeaflet(160);
+		leafletView.clearLayers();
+		markers = [];
+		// TODO: make it so we can begin the download, save our progress, and start again from where we were
+		// this means doing the following:
+		// - a django header to tell us how many there are total to downlaod
+		// - javascript parsing thereof
+		// - when we start reading, skip to the line that is the number we've already parsed
+		// - make sure that items held in markers [] are actually re-added correctly
 		// add any data we have left over in our array
-		for (var m in markers) {
-			leafletView.RegisterMarker(m); // add to map (not yet rendered)
-
-		}
+		// for (var m in markers) { leafletView.RegisterMarker(m); }
 		get_map_data("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz");
 		break;
 	}
@@ -59,7 +63,7 @@ function fillmap_lite(point) {
 		return;
 	// remove all points on the map
 	lite_markers = [];
-	var leafletView = new PruneClusterForLeaflet(160);
+	leafletView.clearLayers();
 	// what is the center of the current range?
 	url = "http://139.59.37.112:8080/today/" + point.getFullYear() + "-" + (parseInt(point.getMonth()) + 1).toString() + "-" + point.getDate() + "/";
 	console.log("going to fill map with data requested from: ", url);
@@ -91,6 +95,10 @@ function handlenodes(data) {
 
 	// -------------------------- CSV PARSING FOR THE MAP ----------------------------------
 	console.log("filling map");
+
+	document.getElementById("myBar").style.visibility = 'visible';
+	document.getElementById("myProgress").style.visibility = 'visible';
+
 	Papa.parse(data, {
 
 		download: false, 		// downloads the file, otherwise it doesn't work
@@ -102,13 +110,17 @@ function handlenodes(data) {
 				parseresponse(row.data[0]);		// parse row by row for speed
 		},
 		complete: function() {
+
 			console.log("All done parsing nodes for map from csv!");
 			// remove progress bar
-			document.getElementById("myBar").remove();
-			document.getElementById("myProgress").remove();
+			document.getElementById("myBar").style.visibility = 'hidden'
+			document.getElementById("myProgress").style.visibility = 'hidden'
 			// put stuff on map
-			map.addLayer(leafletView);
+			if (map.hasLayer(leafletView) == false)
+				map.addLayer(leafletView);
 			map_built = true;
+
+			pruneCluster.ProcessView();
 		},
 		error: function(err, file, inputElem, reason)
 		{

@@ -25,12 +25,7 @@ function getConfirmation() {
 
 		}
 
-	} else {
-
-		confirmed = true;
-		FULLVERSION = false;
-
-	}
+	} else FULLVERSION = false;
 
 	if (confirmed == true) {
 
