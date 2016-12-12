@@ -58,7 +58,8 @@ function fillmap_lite(point) {
 	lite_markers = [];
 	var leafletView = new PruneClusterForLeaflet(160);
 	// what is the center of the current range?
-	url = "http://139.59.37.112/today/" + point.getFullYear() + "-" + (parseInt(point.getMonth()) + 1).toString() + point.getDate() + "/";
+	url = "http://139.59.37.112/today/" + point.getFullYear() + "-" + (parseInt(point.getMonth()) + 1).toString() + "-" + point.getDate() + "/";
+	console.log("going to fill map with data requested from: ", url);
 	get_map_data(url);
 
 }

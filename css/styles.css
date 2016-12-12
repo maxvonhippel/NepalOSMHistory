@@ -90,6 +90,7 @@ h1.pageTitle{
 	background-color:#EAF2F5; /*rgba(225, 237, 241, 0.72) #D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
 	position:relative;
 }
+
 #chart{
 	min-height:120px;
 	width:100%;
@@ -103,6 +104,7 @@ h1.pageTitle{
 	background-color:#EAF2F5; /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
 
 }
+
 #selectionStatistics{
 	font-family:regular;
 	min-height:345px;
@@ -112,6 +114,7 @@ h1.pageTitle{
 	background-color:#EAF2F5; /*#D9ECF2; */ /*rgba(48, 68, 97, 0.13)*/
 
 }
+
 h2.sectionTitle{
 	font-family:testFont;
 	text-align:center;
@@ -136,23 +139,28 @@ table .left{
 	text-align:left !important;
 
 }
+
 table .center{
 	text-align:center !important;
 }
+
 table .right{
 	text-align:right !important;
 	padding-right: 16px;
 
 }
+
 tr .highlighted{
 	color:white !important;
 }
+
 th.th_left{
 	text-align:left !important;
 	padding-left: 16px;
 	font-family: testFonts;
 	color:#002D3F;
 }
+
 th.th_right{
 	text-align:right !important;
 	padding-right: 16px;
@@ -160,13 +168,11 @@ th.th_right{
 	color:#002D3F;
 }
 
-
 th.th_center{
 	text-align:center !important;
 	font-family: testFonts;
 	color:#002D3F;
 }
-
 
 table.center{
 	margin-right:auto;

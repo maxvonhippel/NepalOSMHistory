@@ -11,20 +11,29 @@ var self = this;
 var file = "data/sampledaily/activity.csv";
 
 function getConfirmation() {
+
 	var confirmed = true;
 	if (FULLVERSION == false) {
+
 		var retVal = confirm("Would you like to load the full version of the website?  This could take 3 to 10 minutes, on a standard Nepali internet connection.");
 		FULLVERSION = retVal;
 		if (FULLVERSION == false) {
+
 			// if cancel, switch the ui switch back to lite!
 			$("#myonoffswitch").prop("checked", true);
 			confirmed = false;
+
 		}
+
 	} else {
+
 		confirmed = true;
 		FULLVERSION = false;
+
 	}
+
 	if (confirmed == true) {
+
 		// kill rangeselector object (this is not hcleared by dygraph)
 		delete dchart.rangeSelector_;
 		// update
@@ -34,6 +43,7 @@ function getConfirmation() {
 		var cur_height = $("#chart").height();
 		dchart.resize(10, 10);
 		dchart.resize(cur_width, cur_height);
+
 	}
 }
 
@@ -67,11 +77,14 @@ function popupate_chart() {
 					done = false;
 	            }
   			},
-  			annotationClickHandler: function(annotation, point, dg, event) {
+  			clickCallback: function(e, x, points) {
   				// are we in lite mode?  if so, populate map accordingly
   				if (!FULLVERSION) {
-	  				console.log("clicked on: ", new Date(ann.x));
-  					self.fillmap_lite(ann.x.toString());
+	  				// the date that was clicked
+	  				var clicked_date = new Date(x);
+	  				console.log("lite version, clicked on: ", clicked_date);
+	  				// update the map accordingly
+	  				fillmap_lite(clicked_date);
   				}
         	}
         }
