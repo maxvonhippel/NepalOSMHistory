@@ -4,23 +4,36 @@
 
 var gStartTime = new Date(2008-01-01);
 var gEndTime = new Date();
-var elem;
 var FULLVERSION = false;
-var dchart;
-
+var elem, dchart, version_switch, chart, data;
 var div = "chart";
-var chart, data;
 var self = this;
 var file = "data/sampledaily/activity.csv";
 
 function getConfirmation() {
-	if (!FULLVERSION) {
+	var confirmed = true;
+	if (FULLVERSION == false) {
 		var retVal = confirm("Would you like to load the full version of the website?  This could take 3 to 10 minutes, on a standard Nepali internet connection.");
 		FULLVERSION = retVal;
-		if (!FULLVERSION) {
-			// TODO: if cancel, switch the ui switch back to lite!
+		if (FULLVERSION == false) {
+			// if cancel, switch the ui switch back to lite!
+			$("#myonoffswitch").prop("checked", true);
+			confirmed = false;
 		}
-
+	} else {
+		confirmed = true;
+		FULLVERSION = false;
+	}
+	if (confirmed == true) {
+		// kill rangeselector object (this is not hcleared by dygraph)
+		delete dchart.rangeSelector_;
+		// update
+		dchart.updateOptions({ showRangeSelector: FULLVERSION });
+		// resize so redraw is forced
+		var cur_width = $("#chart").width();
+		var cur_height = $("#chart").height();
+		dchart.resize(10, 10);
+		dchart.resize(cur_width, cur_height);
 	}
 }
 
@@ -40,7 +53,7 @@ function popupate_chart() {
             customBars: false,
             legend: 'always',
             labelsDivStyles: { 'textAlign': 'right' },
-            showRangeSelector: true,
+            showRangeSelector: false,
             axisLabelFontSize: 11,
             drawCallback: function() {
 	            done = true;
@@ -75,7 +88,8 @@ $(document).ready(function () {
     // populate the chart
     popupate_chart();
 	// add a listener to the switch to switch to full mode
-	document.getElementById("myonoffswitch").addEventListener("click", getConfirmation);
+	version_switch = document.getElementById("myonoffswitch");
+	version_switch.addEventListener("click", getConfirmation);
 	// start filling the map
 	FULLVERSION = false;
     // trigger any other cards to update based on the time range
