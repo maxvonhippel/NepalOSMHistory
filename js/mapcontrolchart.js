@@ -66,6 +66,10 @@ function popupate_chart() {
             showRangeSelector: false,
             axisLabelFontSize: 11,
             drawCallback: function() {
+	            gStartTime = new Date(dchart.xAxisRange()[0]);
+				gEndTime = new Date(dchart.xAxisRange()[1]);
+				console.log("initialized chart with start date: ", gStartTime, " end date: ", gEndTime);
+				self.date_range_change(gStartTime, gEndTime);
 	            done = true;
             },
             zoomCallback: function(minDate, maxDate, yRanges) {

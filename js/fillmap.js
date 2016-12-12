@@ -38,16 +38,19 @@ var mks = 0; // how many total node ids have we seen?
 // -------------------- full vs lite held in bool var FULLVERSION --------------------
 
 function fillmap() {
-	console.log("downloading nodes gzip file");
-	var leafletView = new PruneClusterForLeaflet(160);
-	// add any data we have left over in our array
-	if (FULLVERSION) {
+
+	while (FULLVERSION == true) {
+		console.log("downloading nodes gzip file");
+		var leafletView = new PruneClusterForLeaflet(160);
+		// add any data we have left over in our array
 		for (var m in markers) {
 			leafletView.RegisterMarker(m); // add to map (not yet rendered)
 
 		}
+		get_map_data("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz");
+		break;
 	}
-	get_map_data("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz")
+
 }
 
 function fillmap_lite(point) {
@@ -66,13 +69,21 @@ function fillmap_lite(point) {
 
 function get_map_data(url) {
 
-	$.ajax({
-        type: "GET",
-		url: url,
-		dataType: "text",
-		success: function(data) { handlenodes(data); },
-		error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
-    });
+	var curversion = FULLVERSION;
+	var a = null;
+	while (FULLVERSION == curversion) {
+		a = $.ajax({
+        	type: "GET",
+			url: url,
+			dataType: "text",
+			success: function(data) { handlenodes(data); },
+			error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
+    	});
+		return;
+	}
+	if (a != null) {
+		a.abort();
+	}
 
 }
 
