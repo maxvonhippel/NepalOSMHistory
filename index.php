@@ -2,9 +2,6 @@
 <head>
 	<!---- global debug variable --->
 	<script src="js/global-debug.js"></script>
-	<!---- no ui slider --->
-	<link href="css/nouislider.min.css" rel="stylesheet"/>
-	<script type="text/javascript" src="js/nouislider.min.js"></script>
 	<!---- papa parse --->
 	<script src="js/papaparse.min.js"></script>
 	<!---- dygraphs --->
@@ -96,9 +93,6 @@
 			<div id="chart" class="w3-border w3-col l9 s12 chartposition"></div>
 			<script type="text/javascript" src="js/mapcontrolchart.js"></script>
 			<!--- end of chart -->
-			<!--- start of range slider -->
-			<div id="slider"></div>
-			<!--- end of range slider -->
 		</div> <!--- end of id=mapchartbox -->
 
 		<div class="w3-col l3 s12 w3-light-grey w3-left">

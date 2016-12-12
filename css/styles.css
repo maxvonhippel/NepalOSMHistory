@@ -308,7 +308,7 @@ hr.style-one {
 	left:10px;
 	bottom:30px;
 	z-index:10000;
-	width: 55px;
+	width: 80px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 
@@ -334,7 +334,7 @@ hr.style-one {
 
 .onoffswitch-inner:before {
     content: "LITE";
-    padding-left: 10px;
+    padding-left: 0px;
     background-color: #34A7C1; color: #FFFFFF;
 }
 

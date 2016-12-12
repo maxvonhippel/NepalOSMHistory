@@ -1,5 +1,6 @@
 // a script to call all the UI changes that need to happen upon a variable change
 var markers = [];
+var lite_markers = [];
 
 // what to do when the date range changes
 function date_range_change(start, end) {
@@ -12,13 +13,16 @@ function date_range_change(start, end) {
 }
 
 function filter_map(start, end) {
+
 	// get current zoom bounds
 	var zoom = map.getBounds();
+	// init local vars
+	var hash = {};
+	var num = 0;
 
+	// debug vars
 	// console.log("filter map called - range: ", start.toString(), " , ", end.toString(), " , username: ", gUsername, " box: ", zoom.toBBoxString());
 
-	hash = {};
-	var num = 0;
 	markers.forEach(function(m) {
 		++num;
 		var wei = 0;

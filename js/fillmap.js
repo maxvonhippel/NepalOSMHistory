@@ -39,17 +39,32 @@ var mks = 0; // how many total node ids have we seen?
 
 function fillmap() {
 	console.log("downloading nodes gzip file");
+	var leafletView = new PruneClusterForLeaflet(160);
+	// add any data we have left over in our array
+	if (FULLVERSION) {
+		for (var m in markers) {
+			leafletView.RegisterMarker(m); // add to map (not yet rendered)
+
+		}
+	}
 	get_map_data("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz")
 }
 
-function fillmap_lite() {
+function fillmap_lite(point) {
+
+	if (point == null)
+		return;
+	// remove all points on the map
+	lite_markers = [];
+	var leafletView = new PruneClusterForLeaflet(160);
 	// what is the center of the current range?
-	var midpoint = new Date((gStartTime.getTime() + gEndTime.getTime()) / 2);
-	url = "http://139.59.37.112/today/" + midpoint.getFullYear() + "-" + (parseInt(midpoint.getMonth()) + 1).toString() + midpoint.getDate() + "/";
+	url = "http://139.59.37.112/today/" + point.getFullYear() + "-" + (parseInt(point.getMonth()) + 1).toString() + point.getDate() + "/";
 	get_map_data(url);
+
 }
 
 function get_map_data(url) {
+
 	$.ajax({
         type: "GET",
 		url: url,
@@ -57,10 +72,11 @@ function get_map_data(url) {
 		success: function(data) { handlenodes(data); },
 		error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
     });
+
 }
 
-
 function handlenodes(data) {
+
 	// -------------------------- CSV PARSING FOR THE MAP ----------------------------------
 	console.log("filling map");
 	Papa.parse(data, {
@@ -78,8 +94,6 @@ function handlenodes(data) {
 			// remove progress bar
 			document.getElementById("myBar").remove();
 			document.getElementById("myProgress").remove();
-			// clean up markers array
-			markers.length = mks;
 			// put stuff on map
 			map.addLayer(leafletView);
 			map_built = true;
@@ -96,6 +110,7 @@ function handlenodes(data) {
 
 
 function parseresponse(c) {
+
 	try {
 		// initialize new marker
 		var marker = new PruneCluster.Marker(c[2], c[1]);
@@ -124,8 +139,13 @@ function parseresponse(c) {
 			marker.weight = w; // number of items in the cluster
 			marker.data.versions = versions; // hold all versions in data as array
 			mks += 1; // keep track of total node ids parsed
-			markers.push(marker);	// add to array used for filtering
+
+			if (FULLVERSION)
+				markers.push(marker);	// add to array used for filtering
+			else markers_lite.push(marker);
+
 			leafletView.RegisterMarker(marker); // add to map (not yet rendered)
 		}
 	} catch (err) { console.log(err + "; full str: " + c.toString()); } // log error and move on, usually can expect a couple, it's ok
+
 }
