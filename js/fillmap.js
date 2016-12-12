@@ -154,7 +154,7 @@ function parseresponse(c) {
 
 			if (FULLVERSION)
 				markers.push(marker);	// add to array used for filtering
-			else markers_lite.push(marker);
+			else lite_markers.push(marker);
 
 			leafletView.RegisterMarker(marker); // add to map (not yet rendered)
 		}
