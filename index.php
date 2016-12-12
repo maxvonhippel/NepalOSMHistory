@@ -2,6 +2,9 @@
 <head>
 	<!---- global debug variable --->
 	<script src="js/global-debug.js"></script>
+	<!---- no ui slider --->
+	<link href="css/nouislider.min.css" rel="stylesheet"/>
+	<script type="text/javascript" src="js/nouislider.min.js"></script>
 	<!---- papa parse --->
 	<script src="js/papaparse.min.js"></script>
 	<!---- dygraphs --->
@@ -71,7 +74,17 @@
 					<input id="searchBox" type="text" onfocus="this.select();" onkeyup="matched(this.value)" placeholder="Search for OSM username..." onfocusout="myfocusout()"/>
 					<ul id="username" class="w3-ul w3-card-2"></ul>
 				</div>
-				<!-- End of searchbox -->
+				<!--- End of searchbox -->
+				<!--- switch for full mode vs lite mode -->
+				<!--- source: (https://proto.io/freebies/onoff/) -->
+				<div class="onoffswitch">
+					<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    				<label class="onoffswitch-label" for="myonoffswitch">
+        				<span class="onoffswitch-inner"></span>
+        				<span class="onoffswitch-switch"></span>
+					</label>
+				</div>
+				<!--- end of full vs lite switch -->
 				<!--- Legend of Slider -->
 				<div id="dy_legend">
 					<span id="newFeatures">New Features</span><br>
@@ -82,6 +95,10 @@
 			<!--- start of chart -->
 			<div id="chart" class="w3-border w3-col l9 s12 chartposition"></div>
 			<script type="text/javascript" src="js/mapcontrolchart.js"></script>
+			<!--- end of chart -->
+			<!--- start of range slider -->
+			<div id="slider"></div>
+			<!--- end of range slider -->
 		</div> <!--- end of id=mapchartbox -->
 
 		<div class="w3-col l3 s12 w3-light-grey w3-left">
