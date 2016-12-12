@@ -2,33 +2,25 @@
 var width = 1; // current width out of 100 of the progress bar
 var hundredth = 200000; // one one hundredth of the total number of nodes we will parse, approximately
 var map_built = false;
-// -------------------------- HELPER FUNCTIONS TO REMOVE PROGRESS BARS FROM UI ----------------------------------
-Element.prototype.remove = function() {
-	this.parentElement.removeChild(this);
-}
-
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-	for(var i = this.length - 1; i >= 0; i--) {
-	    if(this[i] && this[i].parentElement) {
-	        this[i].parentElement.removeChild(this[i]);
-	    }
-	}
-}
 
 // -------------------------- HELPER FUNCTION TO ANIMATE PROGRESS BAR UI ----------------------------------
 
 // iterates the progress bar by 1%, or resets if at 100 (that shouldn't happen though)
 function move() {
-	if (!elem)
-		console.log("no elem");
-	else if (width >= 100) {
-		width = 1;
-		elem.style.width = width + '%';
-	} else {
-		width++;
-		elem.style.width = width + '%';
-	}
-	$('#myProgress').hide().show(0);
+	try {
+
+		if (!prog || !bar)
+			console.log("no elem");
+		else if (width >= 100) {
+			width = 1;
+			bar.style.width = width + '%';
+		} else {
+			width++;
+			bar.style.width = width + '%';
+		}
+		$('#myProgress').hide().show(0);
+
+	} catch (err) { console.log(err); }
 }
 
 var a = 0; // how many total versions have we seen?
@@ -41,7 +33,7 @@ function fillmap() {
 
 	while (FULLVERSION == true) {
 		console.log("downloading nodes gzip file");
-		leafletView.clearLayers();
+		leafletView.RemoveMarkers();
 		markers = [];
 		// TODO: make it so we can begin the download, save our progress, and start again from where we were
 		// this means doing the following:
@@ -63,7 +55,7 @@ function fillmap_lite(point) {
 		return;
 	// remove all points on the map
 	lite_markers = [];
-	leafletView.clearLayers();
+	leafletView.RemoveMarkers();
 	// what is the center of the current range?
 	url = "http://139.59.37.112:8080/today/" + point.getFullYear() + "-" + (parseInt(point.getMonth()) + 1).toString() + "-" + point.getDate() + "/";
 	console.log("going to fill map with data requested from: ", url);
@@ -99,8 +91,8 @@ function handlenodes(data) {
 		return;
 	}
 
-	document.getElementById("myBar").style.visibility = 'visible';
-	document.getElementById("myProgress").style.visibility = 'visible';
+	bar.style.visibility = 'visible';
+	prog.style.visibility = 'visible';
 
 	Papa.parse(data, {
 
@@ -116,8 +108,8 @@ function handlenodes(data) {
 
 			console.log("All done parsing nodes for map from csv!");
 			// remove progress bar
-			document.getElementById("myBar").style.visibility = 'hidden'
-			document.getElementById("myProgress").style.visibility = 'hidden'
+			bar.style.visibility = 'hidden'
+			prog.style.visibility = 'hidden'
 			// put stuff on map
 			if (map.hasLayer(leafletView) == false)
 				map.addLayer(leafletView);
