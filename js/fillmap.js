@@ -80,21 +80,17 @@ function fillmap_lite(point) {
 
 function get_map_data(url) {
 
-	if (FULLVERSION == false) {
-
-	} else {
-		console.log("getting map data");
-		$.ajax({
-	        type: "GET",
-			url: url,
-			dataType: "text",
-			success: function(data) {
-				console.log("success.  Calling handlenodes.");
-				handlenodes(data);
-			},
-			error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
-	    });
-	}
+	console.log("getting map data");
+	$.ajax({
+	    type: "GET",
+		url: url,
+		dataType: "text",
+		success: function(data) {
+			console.log("success.  Calling handlenodes.");
+			handlenodes(data);
+		},
+		error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
+   });
 
 }
 
@@ -116,7 +112,7 @@ function handlenodes(data) {
 		delimiter: ",", 		// explicit statement improves speed
 		worker: true,			// so the website doesn't lag
 		step: function(row) {
-			console.log("row: ", row.data[0].toString());
+			// console.log("row: ", row.data[0].toString());
 			if (row.data[0].length == 4)
 				parseresponse(row.data[0]);		// parse row by row for speed
 		},
@@ -149,7 +145,7 @@ function handlenodes(data) {
 function parseresponse(c) {
 
 	try {
-		console.log("parse response: ", c.toString());
+		// console.log("parse response: ", c.toString());
 		// initialize new marker
 		var marker = new PruneCluster.Marker(c[2], c[1]);
 		// feature_id
