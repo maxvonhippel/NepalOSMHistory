@@ -37,7 +37,7 @@ function fillmap() {
 	if (map_built == false) {
 		markers = [];
 		console.log("called fill_map, getting full map data");
-		get_map_data("http://139.59.37.112/dev/data/sampledaily/nodes-min.csv.gz");
+		get_map_data("http://139.59.37.112/dev/data/sampledaily/nodes.csv");
 	} else {
 		console.log("we already have markers, populating map now.");
 		for (var mnum = 0; mnum < markers.length; mnum++) {
@@ -80,18 +80,21 @@ function fillmap_lite(point) {
 
 function get_map_data(url) {
 
-	console.log("getting map data");
-	$.ajax({
-        type: "GET",
-		url: url,
-		dataType: "text",
-		success: function(data) {
-			console.log("success.  Calling handlenodes.");
-			handlenodes(data);
-		},
-		error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
-    });
+	if (FULLVERSION == false) {
 
+	} else {
+		console.log("getting map data");
+		$.ajax({
+	        type: "GET",
+			url: url,
+			dataType: "text",
+			success: function(data) {
+				console.log("success.  Calling handlenodes.");
+				handlenodes(data);
+			},
+			error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
+	    });
+	}
 
 }
 
