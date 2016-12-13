@@ -7,3 +7,4 @@ data/sampledaily/nodes.csv
 /plugins/phpjson1
 /data/dirtydate1.json
 data/sampledaily/*.csv
+data/sampledaily/*
