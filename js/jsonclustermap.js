@@ -57,7 +57,7 @@ map.addControl( new L.Control.Search({
 */
 
 // initialize the prune cluster object
-var leafletView = new PruneClusterForLeaflet(160);
+var leafletView = new PruneClusterForLeaflet();
 
 /*
 var lastUpdate = 0;

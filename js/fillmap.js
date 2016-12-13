@@ -31,22 +31,36 @@ var mks = 0; // how many total node ids have we seen?
 
 function fillmap() {
 
-	while (FULLVERSION == true) {
-		console.log("downloading nodes gzip file");
-		leafletView.RemoveMarkers();
+	console.log("downloading nodes gzip file");
+	leafletView.RemoveMarkers();
+
+	if (map_built == false) {
 		markers = [];
-		// TODO: make it so we can begin the download, save our progress, and start again from where we were
-		// this means doing the following:
-		// - a django header to tell us how many there are total to downlaod
-		// - javascript parsing thereof
-		// - when we start reading, skip to the line that is the number we've already parsed
-		// - make sure that items held in markers [] are actually re-added correctly
-		// add any data we have left over in our array
-		// for (var m in markers) { leafletView.RegisterMarker(m); }
 		console.log("called fill_map, getting full map data");
 		get_map_data("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz");
-		break;
+	} else {
+		console.log("we already have markers, populating map now.");
+		for (var mnum = 0; mnum < markers.length; mnum++) {
+			var marker = markers[mnum];
+			leafletView.RegisterMarker(marker); // add to map (not yet rendered)
+		}
+		if (map.hasLayer(leafletView) == false) {
+			console.log("map doesnt have layer so we are adding it");
+			map.addLayer(leafletView);
+		} else console.log("Map already has layer so we're not adding it.");
+		// now filter it
+		date_range_change(gStartTime, gEndTime);
+		console.log("map should now show full version stuff using previously downloaded data.");
 	}
+	// TODO: make it so we can begin the download, save our progress, and start again from where we were
+	// ... if that is the design we want.  I'm not sure.
+	// this means doing the following:
+	// - a django header to tell us how many there are total to downlaod
+	// - javascript parsing thereof
+	// - when we start reading, skip to the line that is the number we've already parsed
+	// - make sure that items held in markers [] are actually re-added correctly
+	// add any data we have left over in our array
+	// for (var m in markers) { leafletView.RegisterMarker(m); }
 
 }
 
@@ -105,12 +119,17 @@ function handlenodes(data) {
 		complete: function() {
 
 			console.log("All done parsing nodes for map from csv!");
+			console.log("size of markers array: ", markers.length);
+			console.log("size of markers_lite array: ", markers.length);
 			// remove progress bar
 			bar.style.visibility = 'hidden'
 			prog.style.visibility = 'hidden'
 			// put stuff on map
-			mymap.addLayer(leafletView);
+			if (map.hasLayer(leafletView) == false)
+				map.addLayer(leafletView);
 			leafletView.ProcessView();
+			if (FULLVERSION == true)
+				map_built = true;
 		},
 		error: function(err, file, inputElem, reason)
 		{
@@ -157,7 +176,7 @@ function parseresponse(c) {
 			if (FULLVERSION == true)
 				markers.push(marker);	// add to array used for filtering
 			else lite_markers.push(marker);
-			// console.log("adding marker to leaflet view");
+			//console.log("adding marker to leaflet view");
 			leafletView.RegisterMarker(marker); // add to map (not yet rendered)
 		}
 	} catch (err) { console.log(err + "; full str: " + c.toString()); } // log error and move on, usually can expect a couple, it's ok
