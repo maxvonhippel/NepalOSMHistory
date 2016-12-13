@@ -86,6 +86,7 @@ function popupate_chart() {
 	            }
   			},
   			clickCallback: function(e, x, points) {
+	  			console.log("clicked! Is it fullversion? ", FULLVERSION);
   				// are we in lite mode?  if so, populate map accordingly
   				if (FULLVERSION == false) {
 	  				if (click_to_see_day_warning == false) {
