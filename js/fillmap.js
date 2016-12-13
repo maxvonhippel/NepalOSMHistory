@@ -113,6 +113,7 @@ function handlenodes(data) {
 		delimiter: ",", 		// explicit statement improves speed
 		worker: true,			// so the website doesn't lag
 		step: function(row) {
+			console.log("row: ", row.data[0].toString());
 			if (row.data[0].length == 4)
 				parseresponse(row.data[0]);		// parse row by row for speed
 		},
