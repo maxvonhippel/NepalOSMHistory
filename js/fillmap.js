@@ -157,7 +157,7 @@ function parseresponse(c) {
 			if (FULLVERSION == true)
 				markers.push(marker);	// add to array used for filtering
 			else lite_markers.push(marker);
-			console.log("adding marker to leaflet view");
+			// console.log("adding marker to leaflet view");
 			leafletView.RegisterMarker(marker); // add to map (not yet rendered)
 		}
 	} catch (err) { console.log(err + "; full str: " + c.toString()); } // log error and move on, usually can expect a couple, it's ok
