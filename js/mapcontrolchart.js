@@ -42,6 +42,7 @@ function getConfirmation() {
 		var cur_height = $("#chart").height();
 		dchart.resize(10, 10);
 		dchart.resize(cur_width, cur_height);
+		fillmap();
 
 	}
 }
