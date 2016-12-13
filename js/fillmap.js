@@ -109,7 +109,7 @@ function handlenodes(data) {
 			bar.style.visibility = 'hidden'
 			prog.style.visibility = 'hidden'
 			// put stuff on map
-			map.addLayer(leafletView);
+			mymap.addLayer(leafletView);
 			leafletView.ProcessView();
 		},
 		error: function(err, file, inputElem, reason)
@@ -154,10 +154,10 @@ function parseresponse(c) {
 			marker.data.versions = versions; // hold all versions in data as array
 			mks += 1; // keep track of total node ids parsed
 
-			if (FULLVERSION)
+			if (FULLVERSION == true)
 				markers.push(marker);	// add to array used for filtering
 			else lite_markers.push(marker);
-
+			console.log("adding marker to leaflet view");
 			leafletView.RegisterMarker(marker); // add to map (not yet rendered)
 		}
 	} catch (err) { console.log(err + "; full str: " + c.toString()); } // log error and move on, usually can expect a couple, it's ok
