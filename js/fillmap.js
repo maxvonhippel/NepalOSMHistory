@@ -146,6 +146,7 @@ function handlenodes(data) {
 function parseresponse(c) {
 
 	try {
+		console.log("parse response: ", c.toString());
 		// initialize new marker
 		var marker = new PruneCluster.Marker(c[2], c[1]);
 		// feature_id
