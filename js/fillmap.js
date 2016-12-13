@@ -43,6 +43,7 @@ function fillmap() {
 		// - make sure that items held in markers [] are actually re-added correctly
 		// add any data we have left over in our array
 		// for (var m in markers) { leafletView.RegisterMarker(m); }
+		console.log("called fill_map, getting full map data");
 		get_map_data("http://139.59.37.112/NepalOSMHistory/data/sampledaily/nodes.csv.gz");
 		break;
 	}
@@ -65,21 +66,18 @@ function fillmap_lite(point) {
 
 function get_map_data(url) {
 
-	var curversion = FULLVERSION;
-	var a = null;
-	while (FULLVERSION == curversion) {
-		a = $.ajax({
-        	type: "GET",
-			url: url,
-			dataType: "text",
-			success: function(data) { handlenodes(data); },
-			error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
-    	});
-		return;
-	}
-	if (a != null) {
-		a.abort();
-	}
+	console.log("getting map data");
+	$.ajax({
+        type: "GET",
+		url: url,
+		dataType: "text",
+		success: function(data) {
+			console.log("success.  Calling handlenodes.");
+			handlenodes(data);
+		},
+		error: function(xhr, ajaxOptions, thrownError) { console.log("error getting map files: ", xhr.responseText); }
+    });
+
 
 }
 
@@ -111,10 +109,7 @@ function handlenodes(data) {
 			bar.style.visibility = 'hidden'
 			prog.style.visibility = 'hidden'
 			// put stuff on map
-			if (map.hasLayer(leafletView) == false)
-				map.addLayer(leafletView);
-			map_built = true;
-
+			map.addLayer(leafletView);
 			leafletView.ProcessView();
 		},
 		error: function(err, file, inputElem, reason)
