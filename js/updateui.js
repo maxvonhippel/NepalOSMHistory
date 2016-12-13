@@ -72,17 +72,3 @@ function filter_map(start, end) {
 	nodes_stats(ret, start, end);
 
 }
-
-// what to do when the bounding box changes
-/*
-function bounding_box_change(mn_x, mn_y, mx_x, mx_y) {
-
-}
-*/
-
-// what to do when a user is searched for
-/*
-function user_search(user) {
-
-}
-*/

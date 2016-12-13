@@ -8,11 +8,8 @@
 	<script src="js/dygraph-combined.js"></script>
 	<!--- google charts --->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<!---- cross filter --->
-	<script src="js/crossfilter.min.js"></script>
 	<!---- jquery --->
 	<script src="js/jquery-3.1.1.min.js"></script>
-	<script src="js/jquery.csv.js"></script>
 	<script src="js/jquery.csv.min.js"></script>
 	<script src="js/jquery.ajax-cross-origin.min.js"></script>
 	<!--- update ui script --->

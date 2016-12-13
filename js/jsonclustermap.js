@@ -39,46 +39,8 @@ var attrib = L.control.attribution({position:'bottomleft'});
 attrib.addAttribution('Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://kathmandulivinglabs.org/">Kathmandu Living Labs</a>');
 attrib.addTo(map);
 
-/*
-//Add leaflet-search controls here
-var searchLayer = L.layerGroup().addTo(map);
-//... adding data in searchLayer ...
-map.addControl( new L.Control.Search({
-	url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
-	jsonpParam: 'json_callback',
-	propertyName: 'display_name',
-	propertyLoc: ['lat','lon'],
-	marker: L.circleMarker([0,0],{radius:30}),
-	autoCollapse: true,
-	autoType: false,
-	minLength: 0
-}) );
-
-*/
-
 // initialize the prune cluster object
 var leafletView = new PruneClusterForLeaflet();
-
-/*
-var lastUpdate = 0;
-var size = 10000;
-window.setInterval(function () {
-	var now = +new Date();
-	if ((now - lastUpdate) < 400) {
-		return;
-	}
-	for (i = 0; i < size / 2; ++i) {
-		if (typeof markers != "undefined" && typeof markers[i] != "undefined" && markers[i].hasOwnProperty("<position>")) {
-			var coef = i < size / 8 ? 10 : 1;
-			var ll = markers[i].position;
-			ll.lat += (Math.random() - 0.5) * 0.00001 * coef;
-			ll.lng += (Math.random() - 0.5) * 0.00002 * coef;
-		}
-	}
-	leafletView.ProcessView();
-	lastUpdate = now;
-
-}, 500); */
 
 //Fire this when map is panned/zoomed/reset
 map.on('moveend', function(ev){
@@ -90,24 +52,6 @@ map.on('moveend', function(ev){
 	gWest=_bounds.getWest();
 	request_for_data();
 });
-
-// For the SearchBox
-/*
-function fetch_Addr_Username(value){
-	$.ajax({
-		url:"server/usernames.js",
-		type:"POST",
-		success:function(response){
-			//show_searchResults();
-			alert(response);
-		},
-		error: function (xhr, errmsg, err) {
-			alert (xhr.status + "\n\n" + xhr.responseText);
-		}
-
-	});
-}
-*/
 
 function show_searchResults(){
 	$("#username").show();
@@ -123,7 +67,6 @@ function hide_searchResults(){
 
 }
 
-
 function setSearchBoxContent(val) {
 	gCallFlag=1; //set gCallFlag
 	set_gUsername(val); //set global [gUsername] here
@@ -133,6 +76,7 @@ function setSearchBoxContent(val) {
 }
 
 function request_for_data() {
+
 	if (gStartTime == null || gEndTime == null)
 		return;
 	console.log("Requesting for Data with the following parameters:\n gNorth:" +
@@ -145,46 +89,10 @@ function request_for_data() {
 	gUsername
 	);
 
-	//show load icon and keep it displayed till ajax returns
-	//$("#block-everything").toggle();
-	//$("#block-everything").show();
 	$("#glassy-effect").css("filter","blur(1px)");
-
-
-	//disable_map_controls();
 	console.log("asking for json object for selection statistics");
 
-	//update selections statistics table
-	// selection_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
-	//update nodes table
-	// nodes_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
-	//update ways table
-	// ways_stats(gWest, gSouth, gEast, gNorth, gStartTime, gEndTime, gUsername);
-	//var responseWays =;
 	date_range_change(gStartTime, gEndTime)
-
-
-
-
-	/*
-	var _obj = JSON.parse(response);
-	console.log("requested selection statistics");
-	console.log(response);
-	console.log(_obj);
-	//Update Nepal Statistics Table
-	//updateNepalStatistics(_obj);
-	//Update Selection Statistics Table
-	updateSelectedStatistics(_obj);
-	updateNodes(_obj);
-	updateWays(_obj);
-	//hide load icon
-	*/
-	//$("#block-everything").hide();
-
-	// ask for selection statistics
-	// update the cards
-	// filter the map
-
 	$("#block-everything").hide();
 
 
