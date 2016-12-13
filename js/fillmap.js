@@ -37,7 +37,7 @@ function fillmap() {
 	if (map_built == false) {
 		markers = [];
 		console.log("called fill_map, getting full map data");
-		get_map_data("http://139.59.37.112/dev/data/sampledaily/nodes.csv");
+		get_map_data("http://139.59.37.112/dev/data/sampledaily/nodes-min.csv");
 	} else {
 		console.log("we already have markers, populating map now.");
 		for (var mnum = 0; mnum < markers.length; mnum++) {
