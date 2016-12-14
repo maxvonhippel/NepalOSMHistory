@@ -25,14 +25,6 @@ function setusernames(data) {
 	usernames = data;
 }
 
-function usernames () {
-	console.log("requesting usernames");
-	url = baseurl + "usernames/";
-	getsomething(url, setusernames, "text");
-}
-
-usernames();
-
 function country_stats () {
 	console.log("getting country stats.");
 	// format the url

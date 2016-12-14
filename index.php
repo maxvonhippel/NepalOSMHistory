@@ -2,6 +2,8 @@
 <head>
 	<!---- global debug variable --->
 	<script src="js/global-debug.js"></script>
+	<!---- usernames --->
+	<script type="text/javascript" src="http://139.59.37.112:8080/usernames/"></script>
 	<!---- papa parse --->
 	<script src="js/papaparse.min.js"></script>
 	<!---- dygraphs --->
