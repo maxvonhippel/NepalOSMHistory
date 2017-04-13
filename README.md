@@ -1,6 +1,6 @@
 ### Readme for Nepal OSM History Visualizer
 
-The **Nepal OSM History Visualizer** is a project by Kathmandu Living Labs and the Dartmouth Dickey Center.  It was built by Sazal and Max, and designed by Paras and Sazal.
+The **Nepal OSM History Visualizer** is a project by Kathmandu Living Labs and the Dartmouth Dickey Center.  It was built by Sazal and Max, and designed by Paras and Sazal.  A functioning, super light-weight demo of just the map and chart functionalities is live [here](http://mxvh.pl/blog%20posts/nepal_demo.html).
 
 ![](documentation/nepalstatskllosm.png)
 
